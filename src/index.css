@@ -121,7 +121,6 @@
     @apply inline-block border-2 border-ink px-8 py-4 bg-paper-warm;
   }
   .shadow-pop-yellow { box-shadow: var(--shadow-pop-yellow); }
-  }
   .hairline {
     height: 1px;
     background: hsl(var(--rule));
