@@ -10,18 +10,14 @@ import { SectionDivider } from "@/components/portfolio/SectionDivider";
 
 const Index = () => {
   return (
-    <main className="min-h-screen bg-paper">
+    <main className="min-h-screen bg-paper lg:pl-[220px]">
       <Nav />
       <Hero />
-      <SectionDivider n="✦ 02" label="The strategist behind the work" />
       <About />
-      <SectionDivider n="✦ 03" label="A timeline of the practice" />
       <Experience />
-      <Skills />
-      <SectionDivider n="✦ 05" label="Engagements I take on" />
       <Services />
-      <SectionDivider n="✦ 06" label="Selected case studies" />
       <Work />
+      <Skills />
       <Contact />
     </main>
   );
