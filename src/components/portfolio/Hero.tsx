@@ -20,9 +20,9 @@ export const Hero = () => {
 
           <div className="fade-up">
             <p className="text-sm font-bold uppercase tracking-[0.3em] text-ink-soft mb-3">Hi There!</p>
-            <h1 className="display-heading text-[14vw] sm:text-[10vw] lg:text-[6.5rem] xl:text-[8rem] text-ink">
+            <h1 className="display-heading text-[12vw] sm:text-[9vw] lg:text-[6rem] xl:text-[7.5rem] text-ink leading-[1.05]">
               I'M{" "}
-              <span className="relative inline-block">
+              <span className="relative inline-block pr-[0.08em]">
                 <span className="relative z-10 text-ink">ISHANK</span>
                 <span className="absolute left-0 right-0 bottom-1 h-[0.55em] bg-citrus -z-0" aria-hidden />
               </span>
