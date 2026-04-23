@@ -25,8 +25,13 @@ export const Nav = () => {
       }`}
     >
       <div className="container flex items-center justify-between h-16 md:h-20">
-        <a href="#top" className="font-serif text-xl md:text-2xl tracking-tight text-ink">
-          Ishank<span className="text-terracotta">.</span>
+        <a href="#top" className="flex flex-col leading-tight">
+          <span className="font-serif text-xl md:text-2xl tracking-tight text-ink">
+            Ishank Jha<span className="text-terracotta">.</span>
+          </span>
+          <span className="hidden sm:block text-[10px] uppercase tracking-[0.18em] text-ink-soft mt-0.5">
+            Strategy · Content · Growth systems that scale
+          </span>
         </a>
         <nav className="hidden md:flex items-center gap-8">
           {links.map((l) => (
