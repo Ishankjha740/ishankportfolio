@@ -68,7 +68,7 @@ export const Hero = () => {
             <div className="mt-14 grid grid-cols-3 gap-6 max-w-xl fade-up delay-500">
               {[
                 { n: "6.5L+", l: "Monthly reach scaled" },
-                { n: "4+ yrs", l: "Strategy & comms" },
+                { n: "2+ yrs", l: "Strategy & comms" },
                 { n: "12+", l: "Brands shaped" },
               ].map((s) => (
                 <div key={s.l} className="border-t border-ink pt-3">
