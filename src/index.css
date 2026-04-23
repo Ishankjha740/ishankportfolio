@@ -4,74 +4,75 @@
 
 @layer base {
   :root {
-    /* Bold editorial — light grey paper, deep black ink, electric yellow accent */
-    --background: 0 0% 92%;
-    --foreground: 0 0% 8%;
+    /* DARK MODE — deep ink paper, near-white text, signature gold accent */
+    --background: 0 0% 6%;
+    --foreground: 40 20% 96%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 8%;
+    --card: 0 0% 10%;
+    --card-foreground: 40 20% 96%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 8%;
+    --popover: 0 0% 10%;
+    --popover-foreground: 40 20% 96%;
 
-    --primary: 0 0% 8%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 45 90% 58%;
+    --primary-foreground: 0 0% 6%;
 
-    --secondary: 0 0% 96%;
-    --secondary-foreground: 0 0% 8%;
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 40 20% 96%;
 
-    --muted: 0 0% 88%;
-    --muted-foreground: 0 0% 35%;
+    --muted: 0 0% 14%;
+    --muted-foreground: 40 8% 65%;
 
-    --accent: 45 100% 55%;
-    --accent-foreground: 0 0% 8%;
+    --accent: 45 90% 58%;
+    --accent-foreground: 0 0% 6%;
 
-    --destructive: 0 75% 50%;
+    --destructive: 0 75% 55%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 80%;
-    --input: 0 0% 80%;
-    --ring: 45 100% 55%;
+    --border: 0 0% 22%;
+    --input: 0 0% 22%;
+    --ring: 45 90% 58%;
 
     --radius: 0.25rem;
 
-    /* Editorial tokens — high-contrast monochrome + signature yellow */
-    --ink: 0 0% 8%;
-    --ink-soft: 0 0% 35%;
-    --paper: 0 0% 92%;
-    --paper-warm: 0 0% 96%;
-    --rule: 0 0% 80%;
+    /* Editorial tokens — INVERTED for dark mode.
+       "ink" now = light text; "paper" = dark surface. All components flip automatically. */
+    --ink: 40 20% 96%;            /* near-white "ink" (text & borders on dark) */
+    --ink-soft: 40 8% 70%;
+    --paper: 0 0% 6%;             /* near-black "paper" (base surface) */
+    --paper-warm: 0 0% 10%;       /* slightly raised surface */
+    --rule: 0 0% 22%;
 
-    /* Signature accent (used everywhere) + minimal supports */
-    --citrus: 45 100% 55%;             /* signature yellow */
-    --citrus-soft: 48 100% 75%;
-    --terracotta: 45 100% 55%;          /* alias for legacy refs */
-    --terracotta-soft: 48 100% 80%;
-    --cobalt: 0 0% 8%;                 /* alias for legacy refs */
-    --cobalt-soft: 0 0% 70%;
-    --plum: 0 0% 8%;
-    --mint: 45 100% 55%;
+    /* Signature accent — warm gold (matches the gold accent on the new logo) */
+    --citrus: 45 90% 58%;
+    --citrus-soft: 45 80% 40%;
+    --terracotta: 45 90% 58%;     /* alias for legacy refs */
+    --terracotta-soft: 45 80% 40%;
+    --cobalt: 40 20% 96%;         /* alias for legacy refs */
+    --cobalt-soft: 40 8% 70%;
+    --plum: 40 20% 96%;
+    --mint: 45 90% 58%;
 
-    /* Gradients (kept simple, mostly solid yellow) */
-    --gradient-hero: linear-gradient(135deg, hsl(45 100% 55%) 0%, hsl(38 100% 50%) 100%);
-    --gradient-citrus: linear-gradient(120deg, hsl(45 100% 60%), hsl(38 100% 50%));
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(45 90% 58%) 0%, hsl(38 95% 50%) 100%);
+    --gradient-citrus: linear-gradient(120deg, hsl(45 90% 60%), hsl(38 95% 48%));
     --gradient-cobalt: linear-gradient(135deg, hsl(0 0% 12%), hsl(0 0% 0%));
-    --gradient-paper: linear-gradient(180deg, hsl(0 0% 96%) 0%, hsl(0 0% 90%) 100%);
+    --gradient-paper: linear-gradient(180deg, hsl(0 0% 10%) 0%, hsl(0 0% 6%) 100%);
 
-    --shadow-soft: 0 30px 60px -30px hsl(0 0% 0% / 0.3);
-    --shadow-card: 0 1px 0 hsl(0 0% 80%), 0 20px 40px -24px hsl(0 0% 0% / 0.2);
-    --shadow-pop: 6px 6px 0 hsl(0 0% 8%);
-    --shadow-pop-yellow: 6px 6px 0 hsl(45 100% 55%);
+    --shadow-soft: 0 30px 60px -30px hsl(0 0% 0% / 0.6);
+    --shadow-card: 0 1px 0 hsl(0 0% 22%), 0 20px 40px -24px hsl(0 0% 0% / 0.5);
+    --shadow-pop: 6px 6px 0 hsl(45 90% 58%);
+    --shadow-pop-yellow: 6px 6px 0 hsl(45 90% 58%);
     --transition-smooth: cubic-bezier(0.22, 1, 0.36, 1);
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 0 0% 8%;
+    --sidebar-foreground: 40 20% 96%;
+    --sidebar-primary: 45 90% 58%;
+    --sidebar-primary-foreground: 0 0% 6%;
+    --sidebar-accent: 0 0% 14%;
+    --sidebar-accent-foreground: 40 20% 96%;
+    --sidebar-border: 0 0% 22%;
+    --sidebar-ring: 45 90% 58%;
   }
 }
 
