@@ -74,9 +74,9 @@ export const Nav = () => {
           })}
         </nav>
         <div className="border-t-2 border-ink p-5 flex items-center justify-around bg-paper">
-          <a href="mailto:jha.ishank74@gmail.com" className="text-ink hover:text-citrus transition-colors p-2 border border-ink hover:bg-ink"><Mail size={16} /></a>
-          <a href="https://www.linkedin.com/in/ishankjha" target="_blank" rel="noreferrer" className="text-ink hover:text-citrus transition-colors p-2 border border-ink hover:bg-ink"><Linkedin size={16} /></a>
-          <a href="https://www.behance.net/ijxe740tsd" target="_blank" rel="noreferrer" aria-label="Behance" className="text-ink hover:text-citrus transition-colors p-2 border border-ink hover:bg-ink"><BehanceIcon width={16} height={16} /></a>
+          <a href="mailto:jha.ishank74@gmail.com" aria-label="Email" className="inline-flex items-center justify-center w-9 h-9 text-ink hover:text-citrus transition-colors border border-ink hover:bg-ink hover:border-citrus"><Mail size={16} strokeWidth={2} /></a>
+          <a href="https://www.linkedin.com/in/ishankjha" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="inline-flex items-center justify-center w-9 h-9 text-ink hover:text-citrus transition-colors border border-ink hover:bg-ink hover:border-citrus"><Linkedin size={16} strokeWidth={2} /></a>
+          <a href="https://www.behance.net/ijxe740tsd" target="_blank" rel="noreferrer" aria-label="Behance" className="inline-flex items-center justify-center w-9 h-9 text-ink hover:text-citrus transition-colors border border-ink hover:bg-ink hover:border-citrus"><BehanceIcon width={14} height={14} /></a>
         </div>
       </aside>
 
