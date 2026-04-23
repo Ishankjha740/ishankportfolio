@@ -24,21 +24,21 @@ export const Nav = () => {
         scrolled ? "bg-paper/85 backdrop-blur-md border-b border-rule" : "bg-transparent"
       }`}
     >
-      <div className="container flex items-center justify-between h-16 md:h-20">
-        <a href="#top" className="flex flex-col leading-tight">
-          <span className="font-serif text-xl md:text-2xl tracking-tight text-ink">
+      <div className="container flex items-center justify-between gap-4 h-16 md:h-20">
+        <a href="#top" className="flex flex-col leading-tight min-w-0 shrink">
+          <span className="font-serif text-xl md:text-2xl tracking-tight text-ink whitespace-nowrap">
             Ishank Jha<span className="text-terracotta">.</span>
           </span>
-          <span className="hidden sm:block text-[10px] uppercase tracking-[0.18em] text-ink-soft mt-0.5">
+          <span className="hidden lg:block text-[10px] uppercase tracking-[0.18em] text-ink-soft mt-0.5 whitespace-nowrap">
             Strategy · Content · Growth systems that scale
           </span>
         </a>
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-6 lg:gap-8">
           {links.map((l) => (
             <a
               key={l.href}
               href={l.href}
-              className="text-sm text-ink-soft hover:text-ink transition-colors duration-300 relative group"
+              className="text-sm text-ink-soft hover:text-ink transition-colors duration-300 relative group whitespace-nowrap"
             >
               {l.label}
               <span className="absolute -bottom-1 left-0 w-0 h-px bg-terracotta transition-all duration-300 group-hover:w-full" />
@@ -47,7 +47,7 @@ export const Nav = () => {
         </nav>
         <a
           href="#contact"
-          className="hidden md:inline-flex items-center gap-2 text-sm font-medium text-ink hover:text-terracotta transition-colors"
+          className="hidden md:inline-flex items-center gap-2 text-sm font-medium text-ink hover:text-terracotta transition-colors whitespace-nowrap"
         >
           Let's talk
           <span aria-hidden>→</span>
