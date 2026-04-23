@@ -15,9 +15,10 @@ export const About = () => {
   return (
     <section id="about" className="py-24 md:py-36 bg-paper-warm relative overflow-hidden">
       {/* Floating numeral */}
-      <div className="absolute -top-10 right-4 md:right-12 font-serif text-[12rem] md:text-[18rem] leading-none text-ink/[0.04] select-none pointer-events-none">
+      <div className="absolute -top-10 right-4 md:right-12 font-serif text-[12rem] md:text-[18rem] leading-none text-cobalt/[0.10] select-none pointer-events-none">
         02
       </div>
+      <div className="absolute top-1/3 -left-24 w-72 h-72 rounded-full bg-citrus/30 blur-3xl pointer-events-none" />
 
       <div className="container relative">
         <div className="grid grid-cols-12 gap-8 md:gap-16">
@@ -29,7 +30,7 @@ export const About = () => {
             <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-[1.05] tracking-tight text-ink">
               A strategist who thinks in <span className="italic">systems</span>,
               <br />
-              builds in <span className="italic text-terracotta">stories</span>.
+              builds in <span className="italic text-gradient-hero">stories</span>.
             </h2>
           </div>
 
@@ -54,17 +55,21 @@ export const About = () => {
             {/* Known for */}
             <div className="mt-12">
               <div className="label-eyebrow mb-4">What I'm known for</div>
-              <div className="grid sm:grid-cols-3 gap-px bg-rule border border-rule">
-                {known.map((k, i) => (
-                  <div key={k.t} className="bg-paper-warm p-6 group hover:bg-paper transition-colors duration-500">
-                    <div className="flex items-center justify-between">
-                      <span className="font-serif text-2xl text-terracotta">0{i + 1}</span>
-                      <span className="h-px w-6 bg-ink/20 group-hover:w-10 group-hover:bg-terracotta transition-all duration-500" />
+              <div className="grid sm:grid-cols-3 gap-px bg-ink border-2 border-ink">
+                {known.map((k, i) => {
+                  const colors = ['bg-citrus', 'bg-terracotta-soft', 'bg-cobalt-soft'];
+                  const accents = ['text-plum', 'text-ink', 'text-plum'];
+                  return (
+                    <div key={k.t} className={`${colors[i]} p-6 group hover:bg-paper transition-colors duration-500`}>
+                      <div className="flex items-center justify-between">
+                        <span className={`font-serif text-2xl ${accents[i]}`}>0{i + 1}</span>
+                        <span className="h-px w-6 bg-ink/40 group-hover:w-10 group-hover:bg-ink transition-all duration-500" />
+                      </div>
+                      <p className="mt-4 text-ink font-medium leading-snug">{k.t}</p>
+                      <p className="mt-2 text-sm text-ink/75 leading-relaxed">{k.d}</p>
                     </div>
-                    <p className="mt-4 text-ink font-medium leading-snug">{k.t}</p>
-                    <p className="mt-2 text-sm text-ink-soft leading-relaxed">{k.d}</p>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           </div>

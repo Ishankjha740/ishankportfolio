@@ -23,12 +23,14 @@ const links = [
 
 export const Contact = () => {
   return (
-    <section id="contact" className="py-24 md:py-36 bg-ink text-paper">
-      <div className="container">
-        <span className="label-eyebrow text-paper/60">Contact</span>
+    <section id="contact" className="py-24 md:py-36 bg-ink text-paper relative overflow-hidden">
+      <div className="absolute -top-32 left-1/4 w-[32rem] h-[32rem] rounded-full bg-terracotta/30 blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-[28rem] h-[28rem] rounded-full bg-cobalt/30 blur-3xl pointer-events-none" />
+      <div className="container relative">
+        <span className="label-eyebrow text-citrus">Contact</span>
         <h2 className="font-serif text-5xl md:text-7xl lg:text-8xl leading-[0.95] tracking-tight mt-8 max-w-5xl text-balance">
           Let's build something that{" "}
-          <span className="italic text-terracotta">actually works.</span>
+          <span className="italic text-gradient-hero">actually works.</span>
         </h2>
 
         <div className="mt-16 grid grid-cols-12 gap-8 md:gap-12">
@@ -62,7 +64,7 @@ export const Contact = () => {
             </p>
             <a
               href="#"
-              className="group inline-flex items-center justify-center gap-3 px-8 py-5 bg-terracotta text-paper text-sm font-medium hover:bg-paper hover:text-ink transition-colors duration-500 self-start"
+              className="group inline-flex items-center justify-center gap-3 px-8 py-5 bg-citrus text-ink text-sm font-medium hover:bg-paper transition-colors duration-500 self-start shadow-pop hover:translate-x-1 hover:translate-y-1 hover:shadow-none"
             >
               <ArrowDownToLine size={16} />
               Download Resume

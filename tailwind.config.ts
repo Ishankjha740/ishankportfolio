@@ -30,6 +30,13 @@ export default {
           DEFAULT: "hsl(var(--terracotta))",
           soft: "hsl(var(--terracotta-soft))",
         },
+        cobalt: {
+          DEFAULT: "hsl(var(--cobalt))",
+          soft: "hsl(var(--cobalt-soft))",
+        },
+        plum: "hsl(var(--plum))",
+        citrus: "hsl(var(--citrus))",
+        mint: "hsl(var(--mint))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",

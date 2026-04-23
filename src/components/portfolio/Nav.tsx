@@ -47,7 +47,7 @@ export const Nav = () => {
         </nav>
         <a
           href="#contact"
-          className="hidden md:inline-flex items-center gap-2 text-sm font-medium text-ink hover:text-terracotta transition-colors whitespace-nowrap"
+          className="hidden md:inline-flex items-center gap-2 text-sm font-medium px-4 py-2 bg-ink text-paper hover:bg-cobalt transition-colors whitespace-nowrap"
         >
           Let's talk
           <span aria-hidden>→</span>

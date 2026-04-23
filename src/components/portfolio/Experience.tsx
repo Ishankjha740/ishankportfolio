@@ -57,42 +57,46 @@ const roles = [
 
 export const Experience = () => {
   return (
-    <section id="experience" className="py-24 md:py-36">
-      <div className="container">
+    <section id="experience" className="py-24 md:py-36 relative overflow-hidden">
+      <div className="absolute top-40 right-0 w-80 h-80 rounded-full bg-mint/15 blur-3xl pointer-events-none" />
+      <div className="container relative">
         <div className="max-w-2xl mb-16">
           <span className="label-eyebrow">Experience</span>
           <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-[1.05] tracking-tight text-ink mt-6">
-            Where the work has lived.
+            Where the work has <span className="italic text-gradient-hero">lived.</span>
           </h2>
         </div>
 
-        <div className="border-t border-ink">
-          {roles.map((r, i) => (
+        <div className="border-t-2 border-ink">
+          {roles.map((r, i) => {
+            const accents = ['text-terracotta', 'text-cobalt', 'text-plum', 'text-mint', 'text-terracotta', 'text-cobalt'];
+            return (
             <article
               key={r.company + r.period}
-              className="group grid grid-cols-12 gap-6 md:gap-10 py-10 md:py-12 border-b border-rule hover:bg-paper-warm/60 transition-colors duration-500 px-2 -mx-2"
+              className="group grid grid-cols-12 gap-6 md:gap-10 py-10 md:py-12 border-b border-rule hover:bg-citrus/20 transition-colors duration-500 px-2 -mx-2"
             >
               <div className="col-span-12 md:col-span-3">
                 <div className="text-xs uppercase tracking-[0.18em] text-ink-soft tabular-nums">{r.period}</div>
-                <div className="mt-2 font-serif text-xl text-terracotta">0{i + 1}</div>
+                <div className={`mt-2 font-serif text-xl ${accents[i]}`}>0{i + 1}</div>
               </div>
 
               <div className="col-span-12 md:col-span-9">
                 <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
-                  <h3 className="font-serif text-2xl md:text-3xl text-ink">{r.title}</h3>
+                  <h3 className="font-serif text-2xl md:text-3xl text-ink group-hover:text-plum transition-colors">{r.title}</h3>
                   <span className="text-ink-soft">— {r.company}</span>
                 </div>
                 <ul className="mt-5 space-y-2.5 max-w-2xl">
                   {r.points.map((p) => (
                     <li key={p} className="text-ink-soft leading-relaxed flex gap-3">
-                      <span className="text-terracotta mt-2 h-px w-4 bg-terracotta shrink-0 self-start translate-y-3" />
+                      <span className={`mt-2 h-1 w-4 ${accents[i].replace('text-','bg-')} shrink-0 self-start translate-y-3`} />
                       <span>{p}</span>
                     </li>
                   ))}
                 </ul>
               </div>
             </article>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

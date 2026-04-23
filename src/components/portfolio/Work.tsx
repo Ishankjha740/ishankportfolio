@@ -43,28 +43,33 @@ const projects = [
 
 export const Work = () => {
   return (
-    <section id="work" className="py-24 md:py-36 bg-paper-warm">
-      <div className="container">
+    <section id="work" className="py-24 md:py-36 bg-paper-warm relative overflow-hidden">
+      <div className="absolute -top-20 left-10 w-80 h-80 rounded-full bg-terracotta/20 blur-3xl pointer-events-none" />
+      <div className="absolute bottom-20 right-0 w-96 h-96 rounded-full bg-cobalt/15 blur-3xl pointer-events-none" />
+      <div className="container relative">
         <div className="flex items-end justify-between mb-16 flex-wrap gap-6">
           <div className="max-w-2xl">
             <span className="label-eyebrow">Selected Work</span>
             <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-[1.05] tracking-tight text-ink mt-6">
-              Case studies in <span className="italic text-terracotta">impact.</span>
+              Case studies in <span className="italic text-gradient-hero">impact.</span>
             </h2>
           </div>
           <span className="label-eyebrow">{projects.length.toString().padStart(2, "0")} projects</span>
         </div>
 
-        <div className="space-y-px bg-rule border-y border-rule">
-          {projects.map((p) => (
+        <div className="space-y-px bg-ink border-y-2 border-ink">
+          {projects.map((p, i) => {
+            const tagColors = ['text-terracotta', 'text-cobalt', 'text-plum', 'text-mint', 'text-terracotta'];
+            return (
             <article
               key={p.n}
-              className="group bg-paper-warm hover:bg-paper transition-colors duration-500 px-1 md:px-4 py-10 md:py-14 cursor-default"
+              className="group bg-paper-warm hover:bg-paper transition-colors duration-500 px-1 md:px-4 py-10 md:py-14 cursor-default relative"
             >
+              <span className={`absolute left-0 top-0 bottom-0 w-1 ${tagColors[i].replace('text-','bg-')} scale-y-0 group-hover:scale-y-100 origin-top transition-transform duration-500`} />
               <div className="grid grid-cols-12 gap-6 md:gap-10 items-start">
                 <div className="col-span-12 md:col-span-3">
-                  <div className="font-serif text-3xl text-ink">{p.n}</div>
-                  <div className="mt-2 label-eyebrow text-terracotta">{p.tag}</div>
+                  <div className="font-serif text-3xl text-ink group-hover:text-plum transition-colors">{p.n}</div>
+                  <div className={`mt-2 label-eyebrow ${tagColors[i]}`}>{p.tag}</div>
                 </div>
 
                 <div className="col-span-12 md:col-span-6">
@@ -91,7 +96,7 @@ export const Work = () => {
                 </div>
               </div>
             </article>
-          ))}
+          );})}
         </div>
       </div>
     </section>
