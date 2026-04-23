@@ -57,7 +57,8 @@ export const Contact = () => {
 
         <div className="mt-12 flex flex-col items-center gap-6">
           <a
-            href="#"
+            href="/Ishank_Jha_Resume.pdf"
+            download="Ishank_Jha_Resume.pdf"
             className="group inline-flex items-center gap-3 px-8 py-4 bg-ink text-citrus text-sm font-black uppercase tracking-widest shadow-pop-yellow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all duration-300"
           >
             <ArrowDownToLine size={16} />
