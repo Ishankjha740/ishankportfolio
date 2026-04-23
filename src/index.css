@@ -4,62 +4,64 @@
 
 @layer base {
   :root {
-    /* Editorial-pop — warm cream base, deep ink, vibrant multi-accent palette */
-    --background: 42 60% 95%;
-    --foreground: 250 35% 10%;
+    /* Bold editorial — light grey paper, deep black ink, electric yellow accent */
+    --background: 0 0% 92%;
+    --foreground: 0 0% 8%;
 
-    --card: 42 60% 97%;
-    --card-foreground: 250 35% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 8%;
 
-    --popover: 42 60% 97%;
-    --popover-foreground: 250 35% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 8%;
 
-    --primary: 250 35% 10%;
-    --primary-foreground: 42 60% 95%;
+    --primary: 0 0% 8%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 36 40% 88%;
-    --secondary-foreground: 250 35% 10%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 8%;
 
-    --muted: 36 25% 88%;
-    --muted-foreground: 250 12% 30%;
+    --muted: 0 0% 88%;
+    --muted-foreground: 0 0% 35%;
 
-    --accent: 14 88% 55%;
-    --accent-foreground: 42 60% 97%;
+    --accent: 45 100% 55%;
+    --accent-foreground: 0 0% 8%;
 
     --destructive: 0 75% 50%;
-    --destructive-foreground: 42 60% 96%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 36 20% 80%;
-    --input: 36 20% 80%;
-    --ring: 14 88% 55%;
+    --border: 0 0% 80%;
+    --input: 0 0% 80%;
+    --ring: 45 100% 55%;
 
     --radius: 0.25rem;
 
-    /* Editorial tokens — bolder, more chromatic */
-    --ink: 250 35% 10%;
-    --ink-soft: 250 12% 30%;
-    --paper: 42 60% 95%;
-    --paper-warm: 38 55% 90%;
-    --rule: 36 20% 78%;
+    /* Editorial tokens — high-contrast monochrome + signature yellow */
+    --ink: 0 0% 8%;
+    --ink-soft: 0 0% 35%;
+    --paper: 0 0% 92%;
+    --paper-warm: 0 0% 96%;
+    --rule: 0 0% 80%;
 
-    /* Vibrant accent palette */
-    --terracotta: 14 88% 55%;          /* hot saffron-orange */
-    --terracotta-soft: 22 80% 82%;
-    --cobalt: 230 85% 52%;             /* electric cobalt */
-    --cobalt-soft: 220 70% 85%;
-    --plum: 290 55% 35%;               /* deep plum */
-    --citrus: 50 95% 58%;              /* zesty yellow */
-    --mint: 160 55% 45%;               /* fresh mint */
+    /* Signature accent (used everywhere) + minimal supports */
+    --citrus: 45 100% 55%;             /* signature yellow */
+    --citrus-soft: 48 100% 75%;
+    --terracotta: 45 100% 55%;          /* alias for legacy refs */
+    --terracotta-soft: 48 100% 80%;
+    --cobalt: 0 0% 8%;                 /* alias for legacy refs */
+    --cobalt-soft: 0 0% 70%;
+    --plum: 0 0% 8%;
+    --mint: 45 100% 55%;
 
-    /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(14 88% 55%) 0%, hsl(330 75% 55%) 50%, hsl(290 55% 35%) 100%);
-    --gradient-citrus: linear-gradient(120deg, hsl(50 95% 58%), hsl(14 88% 55%));
-    --gradient-cobalt: linear-gradient(135deg, hsl(230 85% 52%), hsl(290 55% 35%));
-    --gradient-paper: linear-gradient(180deg, hsl(42 60% 95%) 0%, hsl(38 55% 90%) 100%);
+    /* Gradients (kept simple, mostly solid yellow) */
+    --gradient-hero: linear-gradient(135deg, hsl(45 100% 55%) 0%, hsl(38 100% 50%) 100%);
+    --gradient-citrus: linear-gradient(120deg, hsl(45 100% 60%), hsl(38 100% 50%));
+    --gradient-cobalt: linear-gradient(135deg, hsl(0 0% 12%), hsl(0 0% 0%));
+    --gradient-paper: linear-gradient(180deg, hsl(0 0% 96%) 0%, hsl(0 0% 90%) 100%);
 
-    --shadow-soft: 0 30px 60px -30px hsl(250 35% 10% / 0.25);
-    --shadow-card: 0 1px 0 hsl(36 20% 80%), 0 20px 40px -24px hsl(250 35% 10% / 0.15);
-    --shadow-pop: 8px 8px 0 hsl(250 35% 10%);
+    --shadow-soft: 0 30px 60px -30px hsl(0 0% 0% / 0.3);
+    --shadow-card: 0 1px 0 hsl(0 0% 80%), 0 20px 40px -24px hsl(0 0% 0% / 0.2);
+    --shadow-pop: 6px 6px 0 hsl(0 0% 8%);
+    --shadow-pop-yellow: 6px 6px 0 hsl(45 100% 55%);
     --transition-smooth: cubic-bezier(0.22, 1, 0.36, 1);
 
     --sidebar-background: 0 0% 98%;
@@ -106,7 +108,19 @@
     text-wrap: balance;
   }
   .label-eyebrow {
-    @apply text-[11px] uppercase tracking-[0.22em] font-medium text-muted-foreground;
+    @apply text-[11px] uppercase tracking-[0.22em] font-bold text-ink-soft;
+  }
+  .display-heading {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    line-height: 0.9;
+    text-transform: uppercase;
+  }
+  .boxed-title {
+    @apply inline-block border-2 border-ink px-8 py-4 bg-paper-warm;
+  }
+  .shadow-pop-yellow { box-shadow: var(--shadow-pop-yellow); }
   }
   .hairline {
     height: 1px;
