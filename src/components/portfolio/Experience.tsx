@@ -57,46 +57,40 @@ const roles = [
 
 export const Experience = () => {
   return (
-    <section id="experience" className="py-24 md:py-36 relative overflow-hidden">
-      <div className="absolute top-40 right-0 w-80 h-80 rounded-full bg-mint/15 blur-3xl pointer-events-none" />
-      <div className="container relative">
-        <div className="max-w-2xl mb-16">
-          <span className="label-eyebrow">Experience</span>
-          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-[1.05] tracking-tight text-ink mt-6">
-            Where the work has <span className="italic text-gradient-hero">lived.</span>
-          </h2>
+    <section id="experience" className="py-20 md:py-28 bg-paper-warm relative overflow-hidden">
+      <div className="container max-w-6xl">
+        <div className="text-center mb-14">
+          <div className="inline-block border-2 border-ink px-8 md:px-16 py-5 bg-paper shadow-pop-yellow">
+            <h2 className="display-heading text-4xl md:text-6xl lg:text-7xl text-ink">Resume</h2>
+          </div>
         </div>
 
-        <div className="border-t-2 border-ink">
-          {roles.map((r, i) => {
-            const accents = ['text-terracotta', 'text-cobalt', 'text-plum', 'text-mint', 'text-terracotta', 'text-cobalt'];
-            return (
+        <h3 className="display-heading text-xl text-ink mb-6 flex items-center gap-3">
+          <span className="w-8 h-1 bg-citrus" /> Experience
+        </h3>
+
+        <div className="grid md:grid-cols-2 gap-px bg-ink border-2 border-ink">
+          {roles.map((r, i) => (
             <article
               key={r.company + r.period}
-              className="group grid grid-cols-12 gap-6 md:gap-10 py-10 md:py-12 border-b border-rule hover:bg-citrus/20 transition-colors duration-500 px-2 -mx-2"
+              className="group bg-paper p-6 md:p-7 hover:bg-citrus transition-colors duration-300 cursor-default relative"
             >
-              <div className="col-span-12 md:col-span-3">
-                <div className="text-xs uppercase tracking-[0.18em] text-ink-soft tabular-nums">{r.period}</div>
-                <div className={`mt-2 font-serif text-xl ${accents[i]}`}>0{i + 1}</div>
+              <div className="flex items-center justify-between mb-3">
+                <span className="display-heading text-2xl text-ink">0{i + 1}</span>
+                <span className="text-[10px] uppercase tracking-[0.18em] font-bold text-ink-soft tabular-nums">{r.period}</span>
               </div>
-
-              <div className="col-span-12 md:col-span-9">
-                <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
-                  <h3 className="font-serif text-2xl md:text-3xl text-ink group-hover:text-plum transition-colors">{r.title}</h3>
-                  <span className="text-ink-soft">— {r.company}</span>
-                </div>
-                <ul className="mt-5 space-y-2.5 max-w-2xl">
-                  {r.points.map((p) => (
-                    <li key={p} className="text-ink-soft leading-relaxed flex gap-3">
-                      <span className={`mt-2 h-1 w-4 ${accents[i].replace('text-','bg-')} shrink-0 self-start translate-y-3`} />
-                      <span>{p}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <h4 className="display-heading text-xl text-ink leading-tight">{r.title}</h4>
+              <p className="text-sm font-bold uppercase tracking-wider text-ink-soft mt-1 group-hover:text-ink">— {r.company}</p>
+              <ul className="mt-4 space-y-2 text-sm text-ink-soft group-hover:text-ink/80 leading-relaxed">
+                {r.points.map((p) => (
+                  <li key={p} className="flex gap-2">
+                    <span className="text-ink mt-2 h-px w-3 bg-ink shrink-0 translate-y-2" />
+                    <span>{p}</span>
+                  </li>
+                ))}
+              </ul>
             </article>
-            );
-          })}
+          ))}
         </div>
       </div>
     </section>
