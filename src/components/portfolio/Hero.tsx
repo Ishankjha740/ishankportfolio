@@ -33,10 +33,7 @@ export const Hero = () => {
             <h1 className="font-serif text-[16vw] sm:text-[12vw] lg:text-[9vw] xl:text-[8.5rem] leading-[0.88] tracking-[-0.03em] text-ink fade-up delay-100">
               Ishank
               <br />
-              <span className="italic font-light relative inline-block">
-                Jha
-                <span className="absolute -right-6 top-2 font-sans not-italic text-xs text-terracotta tracking-widest">①</span>
-              </span>
+              <span className="italic font-light">Jha</span>
             </h1>
 
             <div className="mt-10 max-w-xl fade-up delay-300 relative pl-5 border-l-2 border-terracotta">
