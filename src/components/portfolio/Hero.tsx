@@ -1,155 +1,125 @@
 import portrait from "@/assets/ishank-portrait.png";
-import { ArrowDownToLine, ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 
 export const Hero = () => {
   return (
-    <section id="top" className="relative pt-24 md:pt-32 pb-12 md:pb-20 overflow-hidden bg-gradient-paper">
-      {/* Vibrant blobs */}
-      <div className="absolute -top-32 -left-32 w-[28rem] h-[28rem] rounded-full bg-citrus/40 blur-3xl animate-blob pointer-events-none" />
-      <div className="absolute top-40 -right-32 w-[26rem] h-[26rem] rounded-full bg-cobalt/30 blur-3xl animate-blob pointer-events-none" style={{ animationDelay: '4s' }} />
-      <div className="absolute bottom-20 left-1/3 w-[22rem] h-[22rem] rounded-full bg-terracotta/25 blur-3xl animate-blob pointer-events-none" style={{ animationDelay: '8s' }} />
-
-      {/* Background grid lines for editorial structure */}
-      <div className="absolute inset-0 pointer-events-none opacity-[0.05]">
-        <div className="container h-full grid grid-cols-12 gap-6">
-          {Array.from({ length: 12 }).map((_, i) => (
-            <div key={i} className="border-l border-ink h-full" />
-          ))}
-        </div>
+    <section id="top" className="relative min-h-[90vh] pt-20 lg:pt-12 pb-16 overflow-hidden bg-paper">
+      {/* Subtle grid */}
+      <div className="absolute inset-0 pointer-events-none opacity-[0.04]">
+        <div className="h-full w-full" style={{
+          backgroundImage: 'linear-gradient(hsl(var(--ink)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--ink)) 1px, transparent 1px)',
+          backgroundSize: '60px 60px'
+        }} />
       </div>
 
-      <div className="container relative">
-        {/* Top meta strip */}
-        <div className="flex items-center justify-between mb-10 md:mb-16 fade-in">
-          <div className="flex items-center gap-3">
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full rounded-full bg-mint/70 animate-ping" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-mint" />
-            </span>
-            <span className="label-eyebrow text-ink">Available for select projects · 2026</span>
-          </div>
-          <span className="label-eyebrow hidden sm:block text-cobalt">Hyderabad ⟶ Worldwide</span>
-        </div>
+      <div className="grid lg:grid-cols-[1fr_45%] min-h-[90vh] relative">
+        {/* LEFT — copy block */}
+        <div className="flex flex-col justify-center px-6 md:px-16 lg:px-20 py-16 lg:py-20 relative">
+          {/* yellow strip accent */}
+          <span className="hidden lg:block absolute top-0 right-0 w-2 h-32 bg-citrus" />
 
-        <div className="grid grid-cols-12 gap-6 md:gap-10 items-center">
-          {/* Left text */}
-          <div className="col-span-12 lg:col-span-7 order-2 lg:order-1 relative">
-            <p className="label-eyebrow mb-6 fade-up flex items-center gap-3 text-ink">
-              <span className="h-1 w-10 bg-gradient-citrus rounded-full" />
-              Brand &amp; Social Strategist
-            </p>
-            <h1 className="font-serif text-[16vw] sm:text-[12vw] lg:text-[9vw] xl:text-[8.5rem] leading-[0.88] tracking-[-0.03em] text-ink fade-up delay-100">
-              Ishank
-              <br />
-              <span className="italic font-light text-gradient-hero">Jha</span>
+          <div className="fade-up">
+            <p className="text-sm font-bold uppercase tracking-[0.3em] text-ink-soft mb-3">Hi There!</p>
+            <h1 className="display-heading text-[14vw] sm:text-[10vw] lg:text-[6.5rem] xl:text-[8rem] text-ink">
+              I'M{" "}
+              <span className="relative inline-block">
+                <span className="relative z-10 text-ink">ISHANK</span>
+                <span className="absolute left-0 right-0 bottom-1 h-[0.55em] bg-citrus -z-0" aria-hidden />
+              </span>
             </h1>
-
-            <div className="mt-10 max-w-xl fade-up delay-300 relative pl-5 border-l-4 border-citrus">
-              <p className="text-base md:text-lg text-ink-soft leading-relaxed text-balance">
-                I blend creative storytelling with sharp analytics to build
-                <span className="text-ink font-medium bg-citrus/40 px-1"> high-performing digital ecosystems</span>—turning
-                insights into impact, scaling engagement, and making content actually work.
-              </p>
-            </div>
-
-            <div className="mt-10 flex flex-wrap items-center gap-4 fade-up delay-400">
-              <a
-                href="#work"
-                className="group inline-flex items-center gap-3 px-6 py-3.5 bg-ink text-paper text-sm font-medium hover:bg-cobalt transition-all duration-500 shadow-pop hover:translate-x-1 hover:translate-y-1 hover:shadow-none"
-              >
-                View Work
-                <ArrowUpRight size={16} className="transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </a>
-              <a
-                href="#contact"
-                className="group inline-flex items-center gap-3 px-6 py-3.5 border-2 border-ink text-ink text-sm font-medium hover:bg-citrus transition-colors duration-500"
-              >
-                <ArrowDownToLine size={16} />
-                Download Resume
-              </a>
-            </div>
-
-            {/* Stat strip */}
-            <div className="mt-14 grid grid-cols-3 gap-6 max-w-xl fade-up delay-500">
-              {[
-                { n: "6.5L+", l: "Monthly reach scaled", c: "text-terracotta" },
-                { n: "2+ yrs", l: "Strategy & comms", c: "text-cobalt" },
-                { n: "12+", l: "Brands shaped", c: "text-plum" },
-              ].map((s) => (
-                <div key={s.l} className="border-t-2 border-ink pt-3">
-                  <div className={`font-serif text-2xl md:text-3xl ${s.c}`}>{s.n}</div>
-                  <div className="text-xs text-ink-soft mt-1 leading-snug">{s.l}</div>
-                </div>
-              ))}
+            <div className="mt-5 inline-flex items-center bg-citrus border-2 border-ink px-4 py-2">
+              <span className="text-ink font-black uppercase text-xs tracking-[0.25em]">
+                Brand Strategist · Content Architect
+              </span>
             </div>
           </div>
 
-          {/* Portrait */}
-          <div className="col-span-12 lg:col-span-5 order-1 lg:order-2 fade-up delay-200">
-            <div className="relative">
-              {/* Display name backdrop word */}
-              <div className="absolute -top-6 -left-2 right-0 font-serif italic text-[18vw] lg:text-[10vw] leading-none text-cobalt/20 select-none pointer-events-none whitespace-nowrap">
-                strategist
-              </div>
+          <p className="mt-8 max-w-xl text-ink-soft text-base md:text-lg leading-relaxed fade-up delay-200">
+            I blend creative storytelling with sharp analytics to build
+            <span className="text-ink font-semibold"> high-performing digital ecosystems</span>—turning
+            insights into impact, scaling engagement, and making content actually work.
+          </p>
 
-              {/* Color frames — stacked */}
-              <div className="absolute inset-0 bg-citrus translate-x-5 translate-y-5" />
-              <div className="absolute inset-0 border-2 border-ink translate-x-2 translate-y-2" />
-
-              {/* Portrait block */}
-              <div className="relative aspect-[4/5] w-full overflow-hidden bg-gradient-hero border-2 border-ink">
-                {/* corner ticks */}
-                <span className="absolute top-3 left-3 h-3 w-3 border-t-2 border-l-2 border-paper z-10" />
-                <span className="absolute top-3 right-3 h-3 w-3 border-t-2 border-r-2 border-paper z-10" />
-                <span className="absolute bottom-3 left-3 h-3 w-3 border-b-2 border-l-2 border-paper z-10" />
-                <span className="absolute bottom-3 right-3 h-3 w-3 border-b-2 border-r-2 border-paper z-10" />
-
-                <img
-                  src={portrait}
-                  alt="Portrait of Ishank Jha, brand strategist"
-                  width={1024}
-                  height={1280}
-                  className="w-full h-full object-cover object-top scale-105 hover:scale-100 transition-transform duration-[1500ms] mix-blend-luminosity hover:mix-blend-normal"
-                />
-              </div>
-
-              {/* Right side mini badge */}
-              <div className="absolute -right-3 top-8 hidden md:flex flex-col items-center gap-2 bg-cobalt text-paper px-2.5 py-4 writing-mode-vertical shadow-pop">
-                <span className="text-[10px] tracking-[0.3em] uppercase rotate-180" style={{ writingMode: 'vertical-rl' }}>
-                  Est · 2022
-                </span>
-              </div>
-
-              {/* Spinning seal */}
-              <div className="absolute -bottom-6 -left-6 w-24 h-24 rounded-full bg-ink text-paper flex items-center justify-center hidden md:flex animate-spin-slow">
-                <svg viewBox="0 0 100 100" className="w-full h-full">
-                  <defs>
-                    <path id="circle" d="M 50, 50 m -36, 0 a 36,36 0 1,1 72,0 a 36,36 0 1,1 -72,0" />
-                  </defs>
-                  <text className="fill-current text-[10px] tracking-[0.3em] uppercase font-medium">
-                    <textPath href="#circle">Strategy · Story · Scale · </textPath>
-                  </text>
-                </svg>
-              </div>
-            </div>
+          <div className="mt-10 flex flex-wrap items-center gap-4 fade-up delay-300">
+            <a
+              href="#about"
+              className="group inline-flex items-center gap-3 px-7 py-4 bg-citrus border-2 border-ink text-ink text-sm font-black uppercase tracking-wider shadow-pop hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all duration-300"
+            >
+              More About Me
+              <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
+            </a>
+            <a
+              href="#work"
+              className="group inline-flex items-center gap-3 px-7 py-4 border-2 border-ink text-ink text-sm font-black uppercase tracking-wider hover:bg-ink hover:text-citrus transition-colors duration-300"
+            >
+              View Work
+              <ArrowUpRight size={16} />
+            </a>
           </div>
-        </div>
 
-        {/* Marquee */}
-        <div className="mt-20 md:mt-28 -mx-6 overflow-hidden border-y-2 border-ink py-6 bg-gradient-hero text-paper">
-          <div className="flex animate-marquee whitespace-nowrap">
-            {[...Array(2)].map((_, i) => (
-              <div key={i} className="flex items-center gap-10 pr-10 font-serif text-2xl md:text-3xl italic">
-                <span>Strategy</span><span className="text-citrus">✦</span>
-                <span>Storytelling</span><span className="text-citrus">✦</span>
-                <span>Analytics</span><span className="text-citrus">✦</span>
-                <span>Brand Building</span><span className="text-citrus">✦</span>
-                <span>Content Systems</span><span className="text-citrus">✦</span>
-                <span>Growth</span><span className="text-citrus">✦</span>
-                <span>Performance</span><span className="text-citrus">✦</span>
+          {/* Bottom stats */}
+          <div className="mt-14 grid grid-cols-3 gap-px bg-ink border-2 border-ink max-w-xl fade-up delay-500">
+            {[
+              { n: "6.5L+", l: "Reach Scaled" },
+              { n: "2+", l: "Years Practice" },
+              { n: "12+", l: "Brands Shaped" },
+            ].map((s) => (
+              <div key={s.l} className="bg-paper-warm p-5 text-center">
+                <div className="display-heading text-3xl md:text-4xl text-ink">{s.n}</div>
+                <div className="text-[10px] uppercase tracking-[0.2em] text-ink-soft mt-2 font-bold">{s.l}</div>
               </div>
             ))}
           </div>
+        </div>
+
+        {/* RIGHT — Portrait panel */}
+        <div className="relative bg-paper-warm border-l-2 border-ink overflow-hidden min-h-[500px] lg:min-h-full fade-in">
+          {/* yellow corner accents */}
+          <span className="absolute top-0 left-0 w-20 h-2 bg-citrus z-20" />
+          <span className="absolute top-0 left-0 w-2 h-20 bg-citrus z-20" />
+          <span className="absolute bottom-0 right-0 w-20 h-2 bg-citrus z-20" />
+          <span className="absolute bottom-0 right-0 w-2 h-20 bg-citrus z-20" />
+
+          {/* huge background letter */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <span className="display-heading text-[40vw] lg:text-[28rem] text-ink/[0.06] leading-none select-none">IJ</span>
+          </div>
+
+          <img
+            src={portrait}
+            alt="Portrait of Ishank Jha, brand strategist"
+            width={1024}
+            height={1280}
+            className="relative z-10 w-full h-full object-cover object-top grayscale"
+          />
+
+          {/* Floating yellow tag */}
+          <div className="absolute top-8 right-8 z-20 bg-citrus border-2 border-ink px-4 py-2 shadow-pop">
+            <div className="text-[10px] font-black uppercase tracking-[0.25em] text-ink">Available · 2026</div>
+          </div>
+
+          {/* Vertical Est badge */}
+          <div className="absolute bottom-8 left-8 z-20 bg-ink text-citrus px-3 py-4 border-2 border-ink">
+            <span className="text-[10px] tracking-[0.4em] uppercase font-bold" style={{ writingMode: 'vertical-rl' }}>
+              Est · 2022
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* Marquee */}
+      <div className="overflow-hidden border-y-2 border-ink py-5 bg-ink text-citrus">
+        <div className="flex animate-marquee whitespace-nowrap">
+          {[...Array(2)].map((_, i) => (
+            <div key={i} className="flex items-center gap-8 pr-8 display-heading text-2xl md:text-3xl">
+              <span>STRATEGY</span><span className="text-paper">★</span>
+              <span>STORYTELLING</span><span className="text-paper">★</span>
+              <span>ANALYTICS</span><span className="text-paper">★</span>
+              <span>BRAND BUILDING</span><span className="text-paper">★</span>
+              <span>CONTENT SYSTEMS</span><span className="text-paper">★</span>
+              <span>GROWTH</span><span className="text-paper">★</span>
+            </div>
+          ))}
         </div>
       </div>
     </section>

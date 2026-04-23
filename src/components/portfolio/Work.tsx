@@ -43,60 +43,67 @@ const projects = [
 
 export const Work = () => {
   return (
-    <section id="work" className="py-24 md:py-36 bg-paper-warm relative overflow-hidden">
-      <div className="absolute -top-20 left-10 w-80 h-80 rounded-full bg-terracotta/20 blur-3xl pointer-events-none" />
-      <div className="absolute bottom-20 right-0 w-96 h-96 rounded-full bg-cobalt/15 blur-3xl pointer-events-none" />
-      <div className="container relative">
-        <div className="flex items-end justify-between mb-16 flex-wrap gap-6">
-          <div className="max-w-2xl">
-            <span className="label-eyebrow">Selected Work</span>
-            <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-[1.05] tracking-tight text-ink mt-6">
-              Case studies in <span className="italic text-gradient-hero">impact.</span>
-            </h2>
+    <section id="work" className="py-20 md:py-28 bg-paper-warm">
+      <div className="container max-w-6xl">
+        <div className="text-center mb-12">
+          <div className="inline-block border-2 border-ink px-8 md:px-16 py-5 bg-paper shadow-pop-yellow">
+            <h2 className="display-heading text-4xl md:text-6xl lg:text-7xl text-ink">Portfolio</h2>
           </div>
-          <span className="label-eyebrow">{projects.length.toString().padStart(2, "0")} projects</span>
         </div>
 
-        <div className="space-y-px bg-ink border-y-2 border-ink">
-          {projects.map((p, i) => {
-            const tagColors = ['text-terracotta', 'text-cobalt', 'text-plum', 'text-mint', 'text-terracotta'];
-            return (
+        {/* Filter chips (visual only — like the reference) */}
+        <div className="flex flex-wrap items-center justify-center gap-3 mb-10">
+          {["All", "Brand Social", "Systems", "Campaign", "Positioning", "Analytics"].map((c, i) => (
+            <span
+              key={c}
+              className={`px-4 py-2 border-2 border-ink text-xs font-black uppercase tracking-widest cursor-pointer transition-colors ${
+                i === 0 ? "bg-ink text-citrus" : "bg-paper text-ink hover:bg-citrus"
+              }`}
+            >
+              {c}
+            </span>
+          ))}
+        </div>
+
+        <div className="space-y-px bg-ink border-2 border-ink">
+          {projects.map((p) => (
             <article
               key={p.n}
-              className="group bg-paper-warm hover:bg-paper transition-colors duration-500 px-1 md:px-4 py-10 md:py-14 cursor-default relative"
+              className="group bg-paper hover:bg-citrus/40 transition-colors duration-300 px-5 md:px-8 py-8 md:py-10 cursor-default"
             >
-              <span className={`absolute left-0 top-0 bottom-0 w-1 ${tagColors[i].replace('text-','bg-')} scale-y-0 group-hover:scale-y-100 origin-top transition-transform duration-500`} />
-              <div className="grid grid-cols-12 gap-6 md:gap-10 items-start">
-                <div className="col-span-12 md:col-span-3">
-                  <div className="font-serif text-3xl text-ink group-hover:text-plum transition-colors">{p.n}</div>
-                  <div className={`mt-2 label-eyebrow ${tagColors[i]}`}>{p.tag}</div>
+              <div className="grid grid-cols-12 gap-5 md:gap-8 items-start">
+                <div className="col-span-12 md:col-span-2">
+                  <div className="display-heading text-4xl text-ink">{p.n}</div>
+                  <div className="mt-2 inline-block bg-citrus border border-ink px-2 py-1 text-[10px] font-black uppercase tracking-widest text-ink">
+                    {p.tag}
+                  </div>
                 </div>
 
                 <div className="col-span-12 md:col-span-6">
-                  <h3 className="font-serif text-2xl md:text-[2rem] leading-[1.15] text-ink text-balance">
+                  <h3 className="display-heading text-xl md:text-2xl leading-tight text-ink text-balance">
                     {p.title}
                   </h3>
-                  <div className="mt-6 grid sm:grid-cols-2 gap-6 text-sm text-ink-soft">
+                  <div className="mt-4 grid sm:grid-cols-2 gap-4 text-sm text-ink-soft">
                     <div>
-                      <div className="label-eyebrow mb-2">Context</div>
+                      <div className="text-[10px] font-black uppercase tracking-[0.2em] text-ink mb-1">Context</div>
                       <p className="leading-relaxed">{p.context}</p>
                     </div>
                     <div>
-                      <div className="label-eyebrow mb-2">Approach</div>
+                      <div className="text-[10px] font-black uppercase tracking-[0.2em] text-ink mb-1">Approach</div>
                       <p className="leading-relaxed">{p.approach}</p>
                     </div>
                   </div>
                 </div>
 
-                <div className="col-span-12 md:col-span-3 md:border-l md:border-rule md:pl-6">
-                  <div className="label-eyebrow mb-2">Impact</div>
-                  <p className="font-serif text-lg md:text-xl text-ink leading-snug text-balance">
+                <div className="col-span-12 md:col-span-4 md:border-l-2 md:border-ink md:pl-5">
+                  <div className="text-[10px] font-black uppercase tracking-[0.2em] text-ink mb-1">Impact</div>
+                  <p className="display-heading text-base md:text-lg text-ink leading-snug">
                     {p.impact}
                   </p>
                 </div>
               </div>
             </article>
-          );})}
+          ))}
         </div>
       </div>
     </section>

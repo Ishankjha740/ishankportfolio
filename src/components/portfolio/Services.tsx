@@ -35,43 +35,31 @@ const services = [
 
 export const Services = () => {
   return (
-    <section id="services" className="py-24 md:py-36 relative overflow-hidden">
-      <div className="absolute top-20 right-0 w-96 h-96 rounded-full bg-cobalt/10 blur-3xl pointer-events-none" />
-      <div className="container relative">
-        <div className="max-w-2xl mb-16">
-          <span className="label-eyebrow">Services</span>
-          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-[1.05] tracking-tight text-ink mt-6">
-            Strategy → execution → <span className="italic text-gradient-hero">results.</span>
-          </h2>
+    <section id="services" className="py-20 md:py-28 bg-paper">
+      <div className="container max-w-6xl">
+        <div className="text-center mb-14">
+          <div className="inline-block border-2 border-ink px-8 md:px-16 py-5 bg-paper-warm shadow-pop-yellow">
+            <h2 className="display-heading text-4xl md:text-6xl lg:text-7xl text-ink">Services</h2>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-ink border-2 border-ink">
-          {services.map((s, i) => {
-            const hovers = [
-              'hover:bg-citrus',
-              'hover:bg-terracotta hover:text-paper',
-              'hover:bg-cobalt hover:text-paper',
-              'hover:bg-mint hover:text-paper',
-              'hover:bg-plum hover:text-paper',
-              'hover:bg-citrus',
-            ];
-            return (
-              <article
-                key={s.n}
-                className={`group relative bg-paper p-8 md:p-10 transition-colors duration-500 cursor-default ${hovers[i]}`}
-              >
-                <div className="flex items-start justify-between mb-12">
-                  <span className="font-serif text-sm tabular-nums opacity-60">{s.n}</span>
-                  <ArrowUpRight
-                    size={20}
-                    className="opacity-50 transition-all duration-500 group-hover:opacity-100 group-hover:-translate-y-1 group-hover:translate-x-1"
-                  />
-                </div>
-                <h3 className="font-serif text-2xl md:text-[1.65rem] leading-tight">{s.title}</h3>
-                <p className="mt-4 text-[15px] leading-relaxed opacity-75 group-hover:opacity-100">{s.desc}</p>
-              </article>
-            );
-          })}
+          {services.map((s) => (
+            <article
+              key={s.n}
+              className="group relative bg-paper-warm p-7 hover:bg-citrus transition-colors duration-300 cursor-default"
+            >
+              <div className="flex items-start justify-between mb-8">
+                <span className="display-heading text-3xl text-ink">{s.n}</span>
+                <ArrowUpRight
+                  size={20}
+                  className="text-ink opacity-50 transition-all duration-300 group-hover:opacity-100 group-hover:-translate-y-1 group-hover:translate-x-1"
+                />
+              </div>
+              <h3 className="display-heading text-lg leading-tight text-ink">{s.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-ink-soft group-hover:text-ink">{s.desc}</p>
+            </article>
+          ))}
         </div>
       </div>
     </section>

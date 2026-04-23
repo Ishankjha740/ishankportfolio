@@ -23,58 +23,54 @@ const links = [
 
 export const Contact = () => {
   return (
-    <section id="contact" className="py-24 md:py-36 bg-ink text-paper relative overflow-hidden">
-      <div className="absolute -top-32 left-1/4 w-[32rem] h-[32rem] rounded-full bg-terracotta/30 blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-[28rem] h-[28rem] rounded-full bg-cobalt/30 blur-3xl pointer-events-none" />
-      <div className="container relative">
-        <span className="label-eyebrow text-citrus">Contact</span>
-        <h2 className="font-serif text-5xl md:text-7xl lg:text-8xl leading-[0.95] tracking-tight mt-8 max-w-5xl text-balance">
-          Let's build something that{" "}
-          <span className="italic text-gradient-hero">actually works.</span>
-        </h2>
-
-        <div className="mt-16 grid grid-cols-12 gap-8 md:gap-12">
-          <div className="col-span-12 md:col-span-7">
-            <div className="space-y-px bg-paper/10 border border-paper/10">
-              {links.map((l) => (
-                <a
-                  key={l.label}
-                  href={l.href}
-                  target={l.href.startsWith("http") ? "_blank" : undefined}
-                  rel="noreferrer"
-                  className="group flex items-center justify-between gap-4 bg-ink hover:bg-paper hover:text-ink transition-colors duration-500 p-6 md:p-7"
-                >
-                  <div className="flex items-center gap-4">
-                    <l.icon width={18} height={18} className="opacity-60 group-hover:text-terracotta group-hover:opacity-100" />
-                    <div>
-                      <div className="label-eyebrow text-paper/50 group-hover:text-ink-soft">{l.label}</div>
-                      <div className="font-serif text-xl md:text-2xl mt-1">{l.value}</div>
-                    </div>
-                  </div>
-                  <ArrowUpRight size={20} className="opacity-40 group-hover:opacity-100 group-hover:text-terracotta transition-all duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                </a>
-              ))}
-            </div>
+    <section id="contact" className="py-20 md:py-28 bg-paper">
+      <div className="container max-w-6xl">
+        <div className="text-center mb-12">
+          <div className="inline-block border-2 border-ink px-8 md:px-16 py-5 bg-paper-warm shadow-pop-yellow">
+            <h2 className="display-heading text-4xl md:text-6xl lg:text-7xl text-ink">Contact</h2>
           </div>
-
-          <div className="col-span-12 md:col-span-5 flex flex-col justify-between gap-10">
-            <p className="text-paper/70 text-lg leading-relaxed">
-              Open to brand strategy roles, advisory, and freelance partnerships where
-              creative thinking meets clean execution.
-            </p>
-            <a
-              href="#"
-              className="group inline-flex items-center justify-center gap-3 px-8 py-5 bg-citrus text-ink text-sm font-medium hover:bg-paper transition-colors duration-500 self-start shadow-pop hover:translate-x-1 hover:translate-y-1 hover:shadow-none"
-            >
-              <ArrowDownToLine size={16} />
-              Download Resume
-            </a>
-          </div>
+          <p className="mt-6 text-ink-soft text-lg">
+            Feel <span className="bg-citrus px-1 font-bold text-ink">free</span> to contact me!
+          </p>
         </div>
 
-        <div className="mt-24 pt-8 border-t border-paper/15 flex flex-wrap items-center justify-between gap-4 text-xs text-paper/50">
-          <span>© {new Date().getFullYear()} Ishank Jha. All rights reserved.</span>
-          <span>Designed with intent. Built to perform.</span>
+        <div className="grid md:grid-cols-2 gap-px bg-ink border-2 border-ink">
+          {links.map((l) => (
+            <a
+              key={l.label}
+              href={l.href}
+              target={l.href.startsWith("http") ? "_blank" : undefined}
+              rel="noreferrer"
+              className="group flex items-center gap-5 bg-paper-warm hover:bg-citrus transition-colors duration-300 p-6"
+            >
+              <span className="shrink-0 w-12 h-12 border-2 border-ink bg-paper flex items-center justify-center text-ink group-hover:bg-ink group-hover:text-citrus transition-colors">
+                <l.icon width={20} height={20} />
+              </span>
+              <div className="min-w-0">
+                <div className="text-[10px] font-black uppercase tracking-[0.2em] text-ink-soft group-hover:text-ink">{l.label}</div>
+                <div className="display-heading text-base md:text-lg mt-1 text-ink truncate">{l.value}</div>
+              </div>
+              <ArrowUpRight size={18} className="ml-auto text-ink opacity-50 group-hover:opacity-100 transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 shrink-0" />
+            </a>
+          ))}
+        </div>
+
+        <div className="mt-12 flex flex-col items-center gap-6">
+          <a
+            href="#"
+            className="group inline-flex items-center gap-3 px-8 py-4 bg-ink text-citrus text-sm font-black uppercase tracking-widest shadow-pop-yellow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all duration-300"
+          >
+            <ArrowDownToLine size={16} />
+            Download Resume
+          </a>
+          <p className="display-heading text-2xl md:text-3xl text-ink mt-4">
+            Thanks <span className="bg-citrus px-2">For Patience!</span>
+          </p>
+        </div>
+
+        <div className="mt-16 pt-6 border-t-2 border-ink flex flex-wrap items-center justify-between gap-3 text-xs uppercase tracking-wider text-ink-soft font-bold">
+          <span>© {new Date().getFullYear()} Ishank Jha</span>
+          <span>Designed with intent · Built to perform</span>
         </div>
       </div>
     </section>
