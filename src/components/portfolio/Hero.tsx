@@ -107,12 +107,6 @@ export const Hero = () => {
                 />
               </div>
 
-              {/* Floating tag */}
-              <div className="absolute -bottom-5 -left-3 bg-paper px-4 py-2.5 border border-ink shadow-soft">
-                <div className="label-eyebrow">Currently</div>
-                <div className="text-sm text-ink mt-0.5">Brand Manager · StreeVia</div>
-              </div>
-
               {/* Right side mini badge */}
               <div className="absolute -right-3 top-8 hidden md:flex flex-col items-center gap-2 bg-ink text-paper px-2.5 py-4 writing-mode-vertical">
                 <span className="text-[10px] tracking-[0.3em] uppercase rotate-180" style={{ writingMode: 'vertical-rl' }}>
