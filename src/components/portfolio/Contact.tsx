@@ -1,9 +1,11 @@
-import { ArrowDownToLine, ArrowUpRight, Mail, Phone, Linkedin } from "lucide-react";
+import { ArrowDownToLine, ArrowUpRight, Mail, Phone, Linkedin, Palette, Link2 } from "lucide-react";
 
 const links = [
   { icon: Mail, label: "Email", value: "jha.ishank74@gmail.com", href: "mailto:jha.ishank74@gmail.com" },
   { icon: Phone, label: "Phone", value: "+91 99858 76895", href: "tel:+919985876895" },
   { icon: Linkedin, label: "LinkedIn", value: "linkedin.com/in/ishankjha", href: "https://www.linkedin.com/in/ishankjha" },
+  { icon: Palette, label: "Behance", value: "behance.net/ijxe740tsd", href: "https://www.behance.net/ijxe740tsd" },
+  { icon: Link2, label: "More Info", value: "tinyurl.com/ishankjhaportfolio", href: "https://tinyurl.com/ishankjhaportfolio" },
 ];
 
 export const Contact = () => {
