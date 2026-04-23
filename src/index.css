@@ -4,48 +4,62 @@
 
 @layer base {
   :root {
-    /* Editorial neutrals — warm off-white base, deep charcoal ink, muted terracotta accent */
-    --background: 36 30% 96%;
-    --foreground: 20 14% 12%;
+    /* Editorial-pop — warm cream base, deep ink, vibrant multi-accent palette */
+    --background: 42 60% 95%;
+    --foreground: 250 35% 10%;
 
-    --card: 36 30% 98%;
-    --card-foreground: 20 14% 12%;
+    --card: 42 60% 97%;
+    --card-foreground: 250 35% 10%;
 
-    --popover: 36 30% 98%;
-    --popover-foreground: 20 14% 12%;
+    --popover: 42 60% 97%;
+    --popover-foreground: 250 35% 10%;
 
-    --primary: 20 14% 12%;
-    --primary-foreground: 36 30% 96%;
+    --primary: 250 35% 10%;
+    --primary-foreground: 42 60% 95%;
 
-    --secondary: 30 18% 90%;
-    --secondary-foreground: 20 14% 12%;
+    --secondary: 36 40% 88%;
+    --secondary-foreground: 250 35% 10%;
 
-    --muted: 30 14% 88%;
-    --muted-foreground: 20 8% 38%;
+    --muted: 36 25% 88%;
+    --muted-foreground: 250 12% 30%;
 
-    --accent: 16 55% 52%;
-    --accent-foreground: 36 30% 98%;
+    --accent: 14 88% 55%;
+    --accent-foreground: 42 60% 97%;
 
-    --destructive: 0 70% 45%;
-    --destructive-foreground: 36 30% 96%;
+    --destructive: 0 75% 50%;
+    --destructive-foreground: 42 60% 96%;
 
-    --border: 25 14% 84%;
-    --input: 25 14% 84%;
-    --ring: 16 55% 52%;
+    --border: 36 20% 80%;
+    --input: 36 20% 80%;
+    --ring: 14 88% 55%;
 
     --radius: 0.25rem;
 
-    /* Editorial tokens */
-    --ink: 20 14% 12%;
-    --ink-soft: 20 10% 28%;
-    --paper: 36 30% 96%;
-    --paper-warm: 32 28% 92%;
-    --rule: 25 14% 80%;
-    --terracotta: 16 55% 52%;
-    --terracotta-soft: 22 45% 78%;
+    /* Editorial tokens — bolder, more chromatic */
+    --ink: 250 35% 10%;
+    --ink-soft: 250 12% 30%;
+    --paper: 42 60% 95%;
+    --paper-warm: 38 55% 90%;
+    --rule: 36 20% 78%;
 
-    --shadow-soft: 0 30px 60px -30px hsl(20 14% 12% / 0.18);
-    --shadow-card: 0 1px 0 hsl(25 14% 84%), 0 20px 40px -24px hsl(20 14% 12% / 0.12);
+    /* Vibrant accent palette */
+    --terracotta: 14 88% 55%;          /* hot saffron-orange */
+    --terracotta-soft: 22 80% 82%;
+    --cobalt: 230 85% 52%;             /* electric cobalt */
+    --cobalt-soft: 220 70% 85%;
+    --plum: 290 55% 35%;               /* deep plum */
+    --citrus: 50 95% 58%;              /* zesty yellow */
+    --mint: 160 55% 45%;               /* fresh mint */
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(14 88% 55%) 0%, hsl(330 75% 55%) 50%, hsl(290 55% 35%) 100%);
+    --gradient-citrus: linear-gradient(120deg, hsl(50 95% 58%), hsl(14 88% 55%));
+    --gradient-cobalt: linear-gradient(135deg, hsl(230 85% 52%), hsl(290 55% 35%));
+    --gradient-paper: linear-gradient(180deg, hsl(42 60% 95%) 0%, hsl(38 55% 90%) 100%);
+
+    --shadow-soft: 0 30px 60px -30px hsl(250 35% 10% / 0.25);
+    --shadow-card: 0 1px 0 hsl(36 20% 80%), 0 20px 40px -24px hsl(250 35% 10% / 0.15);
+    --shadow-pop: 8px 8px 0 hsl(250 35% 10%);
     --transition-smooth: cubic-bezier(0.22, 1, 0.36, 1);
 
     --sidebar-background: 0 0% 98%;
@@ -75,7 +89,7 @@
   }
 
   ::selection {
-    background: hsl(var(--accent) / 0.25);
+    background: hsl(var(--citrus));
     color: hsl(var(--ink));
   }
 }
@@ -97,6 +111,28 @@
   .hairline {
     height: 1px;
     background: hsl(var(--rule));
+  }
+  .grain {
+    background-image: radial-gradient(hsl(var(--ink) / 0.18) 1px, transparent 1px);
+    background-size: 3px 3px;
+  }
+  .bg-gradient-hero { background: var(--gradient-hero); }
+  .bg-gradient-citrus { background: var(--gradient-citrus); }
+  .bg-gradient-cobalt { background: var(--gradient-cobalt); }
+  .bg-gradient-paper { background: var(--gradient-paper); }
+  .text-gradient-hero {
+    background: var(--gradient-hero);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .shadow-pop { box-shadow: var(--shadow-pop); }
+  .ticker-tape {
+    background-image: repeating-linear-gradient(
+      45deg,
+      hsl(var(--ink)) 0 8px,
+      hsl(var(--citrus)) 8px 16px
+    );
   }
   .fade-up {
     opacity: 0;
@@ -127,3 +163,11 @@
 .animate-marquee {
   animation: marquee 40s linear infinite;
 }
+@keyframes blob {
+  0%, 100% { transform: translate(0,0) scale(1); }
+  33% { transform: translate(30px,-20px) scale(1.1); }
+  66% { transform: translate(-20px,20px) scale(0.95); }
+}
+.animate-blob { animation: blob 14s ease-in-out infinite; }
+@keyframes spin-slow { to { transform: rotate(360deg); } }
+.animate-spin-slow { animation: spin-slow 22s linear infinite; }
