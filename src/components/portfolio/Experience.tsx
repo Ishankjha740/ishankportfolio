@@ -19,7 +19,7 @@ const roles = [
   },
   {
     period: "Dec 2025",
-    company: "Independent",
+    company: "SATHI UP",
     title: "Freelance — Data & Digital Projects",
     points: [
       "Partnered with founders on positioning, content systems and analytics setups.",
