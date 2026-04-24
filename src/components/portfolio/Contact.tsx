@@ -18,7 +18,7 @@ const links = [
   { icon: Phone, label: "Phone", value: "+91 99858 76895", href: "tel:+919985876895" },
   { icon: Linkedin, label: "LinkedIn", value: "linkedin.com/in/ishankjha", href: "https://www.linkedin.com/in/ishankjha" },
   { icon: BehanceIcon, label: "Behance", value: "behance.net/ishankjha", href: "https://www.behance.net/ishankjha" },
-  { icon: Link2, label: "More Info", value: "tinyurl.com/ishankjhaportfolio", href: "https://tinyurl.com/ishankjhaportfolio" },
+  { icon: Link2, label: "More Info", value: "tinyurl.com/ishankjhaportfoliofull", href: "https://tinyurl.com/ishankjhaportfoliofull" },
   { icon: MapPin, label: "Location", value: "Hyderabad, Telangana, India", href: "https://www.google.com/maps/place/Hyderabad,+Telangana,+India" },
 ];
 
@@ -58,8 +58,8 @@ export const Contact = () => {
 
         <div className="mt-10 sm:mt-12 flex flex-col items-center gap-5 sm:gap-6 text-center">
           <a
-            href="/Ishank_Jha_Resume.pdf"
-            download="Ishank_Jha_Resume.pdf"
+            href="/Ishank Jha_resume_updated.pdf"
+            download="Ishank Jha_resume_updated.pdf"
             className="group inline-flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-ink text-citrus text-xs sm:text-sm font-black uppercase tracking-widest shadow-pop-yellow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all duration-300"
           >
             <ArrowDownToLine size={16} />
