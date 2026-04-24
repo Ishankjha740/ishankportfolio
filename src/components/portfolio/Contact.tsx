@@ -1,4 +1,4 @@
-import { ArrowDownToLine, ArrowUpRight, Mail, Phone, Linkedin, Link2 } from "lucide-react";
+import { ArrowDownToLine, ArrowUpRight, Mail, Phone, Linkedin, Link2, MapPin } from "lucide-react";
 import type { SVGProps } from "react";
 
 const BehanceIcon = (props: SVGProps<SVGSVGElement>) => (
@@ -19,6 +19,7 @@ const links = [
   { icon: Linkedin, label: "LinkedIn", value: "linkedin.com/in/ishankjha", href: "https://www.linkedin.com/in/ishankjha" },
   { icon: BehanceIcon, label: "Behance", value: "behance.net/ijxe740tsd", href: "https://www.behance.net/ijxe740tsd" },
   { icon: Link2, label: "More Info", value: "tinyurl.com/ishankjhaportfolio", href: "https://tinyurl.com/ishankjhaportfolio" },
+  { icon: MapPin, label: "Location", value: "Hyderabad, Telangana, India", href: "https://www.google.com/maps/place/Hyderabad,+Telangana,+India" },
 ];
 
 export const Contact = () => {
