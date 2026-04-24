@@ -51,20 +51,6 @@ export const Work = () => {
           </div>
         </div>
 
-        {/* Filter chips (visual only — like the reference) */}
-        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-8 sm:mb-10">
-          {["All", "Brand Social", "Systems", "Campaign", "Positioning", "Analytics"].map((c, i) => (
-            <span
-              key={c}
-              className={`px-3 sm:px-4 py-1.5 sm:py-2 border-2 border-ink text-[10px] sm:text-xs font-black uppercase tracking-widest cursor-pointer transition-colors ${
-                i === 0 ? "bg-ink text-citrus" : "bg-paper text-ink hover:bg-citrus"
-              }`}
-            >
-              {c}
-            </span>
-          ))}
-        </div>
-
         <div className="space-y-px bg-ink border-2 border-ink">
           {projects.map((p) => (
             <article
