@@ -182,7 +182,7 @@ export const Nav = () => {
             <Linkedin size={16} strokeWidth={2} />
           </a>
           <a
-            href="https://www.behance.net/ijxe740tsd"
+            href="https://www.behance.net/ishankjha"
             target="_blank"
             rel="noreferrer"
             aria-label="Behance"
