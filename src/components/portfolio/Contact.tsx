@@ -58,8 +58,8 @@ export const Contact = () => {
 
         <div className="mt-10 sm:mt-12 flex flex-col items-center gap-5 sm:gap-6 text-center">
           <a
-            href="/Ishank Jha_resume_updated.pdf"
-            download="Ishank Jha_resume_updated.pdf"
+            href="/Ishank Jha_resume.pdf"
+            download="Ishank Jha_resume.pdf"
             className="group inline-flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-ink text-citrus text-xs sm:text-sm font-black uppercase tracking-widest shadow-pop-yellow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all duration-300"
           >
             <ArrowDownToLine size={16} />
@@ -72,7 +72,7 @@ export const Contact = () => {
 
         <div className="mt-12 sm:mt-16 pt-5 sm:pt-6 border-t-2 border-ink flex flex-col sm:flex-row sm:flex-wrap items-center sm:justify-between gap-2 sm:gap-3 text-[10px] sm:text-xs uppercase tracking-wider text-ink-soft font-bold text-center">
           <span>© {new Date().getFullYear()} Ishank Jha</span>
-          <span>Designed with intent · Built to perform</span>
+          <span>Brand Strategist · Content Architect</span>
         </div>
       </div>
     </section>
