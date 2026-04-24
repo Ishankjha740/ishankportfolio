@@ -35,11 +35,11 @@ const services = [
 
 export const Services = () => {
   return (
-    <section id="services" className="py-20 md:py-28 bg-paper">
+    <section id="services" className="py-16 md:py-28 bg-paper">
       <div className="container max-w-6xl">
-        <div className="text-center mb-14">
-          <div className="inline-block border-2 border-ink px-8 md:px-16 py-5 bg-paper-warm shadow-pop-yellow">
-            <h2 className="display-heading text-4xl md:text-6xl lg:text-7xl text-ink">Services</h2>
+        <div className="text-center mb-10 md:mb-14">
+          <div className="inline-block border-2 border-ink px-6 sm:px-8 md:px-16 py-4 sm:py-5 bg-paper-warm shadow-pop-yellow">
+            <h2 className="display-heading text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-ink">Services</h2>
           </div>
         </div>
 
@@ -47,17 +47,17 @@ export const Services = () => {
           {services.map((s) => (
             <article
               key={s.n}
-              className="group relative bg-paper-warm p-7 hover:bg-citrus transition-colors duration-300 cursor-default"
+              className="group relative bg-paper-warm p-5 sm:p-7 hover:bg-citrus transition-colors duration-300 cursor-default"
             >
-              <div className="flex items-start justify-between mb-8">
+              <div className="flex items-start justify-between mb-6 sm:mb-8">
                 <span className="display-heading text-3xl text-ink">{s.n}</span>
                 <ArrowUpRight
                   size={20}
                   className="text-ink opacity-50 transition-all duration-300 group-hover:opacity-100 group-hover:-translate-y-1 group-hover:translate-x-1"
                 />
               </div>
-              <h3 className="display-heading text-lg leading-tight text-ink">{s.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-ink-soft group-hover:text-ink">{s.desc}</p>
+              <h3 className="display-heading text-base sm:text-lg leading-tight text-ink">{s.title}</h3>
+              <p className="mt-3 text-xs sm:text-sm leading-relaxed text-ink-soft group-hover:text-ink">{s.desc}</p>
             </article>
           ))}
         </div>
