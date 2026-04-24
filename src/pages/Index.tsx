@@ -10,7 +10,9 @@ import { SectionDivider } from "@/components/portfolio/SectionDivider";
 
 const Index = () => {
   return (
-    <main className="min-h-screen bg-paper lg:pl-[220px]">
+    <main
+      className="min-h-screen bg-paper transition-[padding] duration-300 ease-out lg:pl-[var(--rail-w,220px)]"
+    >
       <Nav />
       <Hero />
       <About />

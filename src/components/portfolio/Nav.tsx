@@ -1,6 +1,20 @@
 import { useEffect, useState } from "react";
 import logo from "@/assets/ij-logo.png";
-import { Mail, Linkedin, ArrowUpRight } from "lucide-react";
+import {
+  Mail,
+  Linkedin,
+  ArrowUpRight,
+  Home,
+  User,
+  FileText,
+  Briefcase,
+  FolderKanban,
+  Sparkles,
+  Send,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import type { SVGProps } from "react";
 
 const BehanceIcon = (props: SVGProps<SVGSVGElement>) => (
@@ -15,19 +29,48 @@ const BehanceIcon = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
-const links = [
-  { href: "#top", label: "Home" },
-  { href: "#about", label: "About Me" },
-  { href: "#experience", label: "Resume" },
-  { href: "#services", label: "Services" },
-  { href: "#work", label: "Portfolio" },
-  { href: "#skills", label: "Skills" },
-  { href: "#contact", label: "Contact" },
+type NavLink = {
+  href: string;
+  label: string;
+  icon: LucideIcon;
+};
+
+const links: NavLink[] = [
+  { href: "#top", label: "Home", icon: Home },
+  { href: "#about", label: "About Me", icon: User },
+  { href: "#experience", label: "Resume", icon: FileText },
+  { href: "#services", label: "Services", icon: Briefcase },
+  { href: "#work", label: "Portfolio", icon: FolderKanban },
+  { href: "#skills", label: "Skills", icon: Sparkles },
+  { href: "#contact", label: "Contact", icon: Send },
 ];
+
+const STORAGE_KEY = "nav:rail-collapsed";
 
 export const Nav = () => {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState<string>("#top");
+  const [collapsed, setCollapsed] = useState<boolean>(() => {
+    if (typeof window === "undefined") return false;
+    try {
+      return window.localStorage.getItem(STORAGE_KEY) === "1";
+    } catch {
+      return false;
+    }
+  });
+
+  // Persist + expose width to the layout via a CSS variable on <html>
+  useEffect(() => {
+    try {
+      window.localStorage.setItem(STORAGE_KEY, collapsed ? "1" : "0");
+    } catch {
+      /* ignore */
+    }
+    const root = document.documentElement;
+    root.style.setProperty("--rail-w", collapsed ? "72px" : "220px");
+    root.dataset.railCollapsed = collapsed ? "true" : "false";
+  }, [collapsed]);
+
   useEffect(() => {
     const onScroll = () => {
       const ids = links.map((l) => l.href.slice(1));
@@ -48,42 +91,128 @@ export const Nav = () => {
   return (
     <>
       {/* Desktop sticky side rail */}
-      <aside className="hidden lg:flex fixed top-0 left-0 bottom-0 w-[220px] z-50 bg-citrus border-r-2 border-ink flex-col">
-        <a href="#top" className="block border-b-2 border-ink bg-ink p-5">
+      <aside
+        className={`hidden lg:flex fixed top-0 left-0 bottom-0 z-50 bg-citrus border-r-2 border-ink flex-col transition-[width] duration-300 ease-out ${
+          collapsed ? "w-[72px]" : "w-[220px]"
+        }`}
+        aria-label="Primary"
+      >
+        {/* Logo / brand block */}
+        <a
+          href="#top"
+          className={`block border-b-2 border-ink bg-ink ${collapsed ? "p-3" : "p-5"}`}
+        >
           <div className="aspect-square w-full overflow-hidden bg-ink border-2 border-citrus flex items-center justify-center">
-            <img src={logo} alt="Ishank Jha — IJ monogram logo" className="w-3/4 h-3/4 object-contain" />
+            <img
+              src={logo}
+              alt="Ishank Jha — IJ monogram logo"
+              className="w-3/4 h-3/4 object-contain"
+            />
           </div>
-          <div className="mt-3 text-paper text-center font-black uppercase text-sm tracking-wider">Ishank Jha</div>
-          <div className="text-paper/60 text-center text-[10px] uppercase tracking-[0.2em] mt-1">Strategist</div>
+          {!collapsed && (
+            <>
+              <div className="mt-3 text-paper text-center font-black uppercase text-sm tracking-wider">
+                Ishank Jha
+              </div>
+              <div className="text-paper/60 text-center text-[10px] uppercase tracking-[0.2em] mt-1">
+                Strategist
+              </div>
+            </>
+          )}
         </a>
+
+        {/* Nav items */}
         <nav className="flex-1 flex flex-col py-6">
           {links.map((l) => {
             const isActive = active === l.href;
+            const Icon = l.icon;
             return (
               <a
                 key={l.href}
                 href={l.href}
-                className={`relative px-6 py-3.5 uppercase text-[13px] font-bold tracking-[0.18em] transition-colors duration-300 border-b border-ink/20 ${
-                  isActive ? "bg-ink text-citrus" : "text-ink hover:bg-ink hover:text-citrus"
+                title={collapsed ? l.label : undefined}
+                aria-label={l.label}
+                className={`relative uppercase text-[13px] font-bold tracking-[0.18em] transition-colors duration-300 border-b border-ink/20 ${
+                  collapsed
+                    ? "flex items-center justify-center px-0 py-4"
+                    : "px-6 py-3.5"
+                } ${
+                  isActive
+                    ? "bg-ink text-citrus"
+                    : "text-ink hover:bg-ink hover:text-citrus"
                 }`}
               >
-                <span className="inline-block mr-3 opacity-50">→</span>
-                {l.label}
+                {collapsed ? (
+                  <Icon size={18} strokeWidth={2.25} />
+                ) : (
+                  <>
+                    <span className="inline-block mr-3 opacity-50">→</span>
+                    {l.label}
+                  </>
+                )}
               </a>
             );
           })}
         </nav>
-        <div className="border-t-2 border-ink p-5 flex items-center justify-around bg-paper">
-          <a href="mailto:jha.ishank74@gmail.com" aria-label="Email" className="inline-flex items-center justify-center w-9 h-9 text-ink hover:text-citrus transition-colors border border-ink hover:bg-ink hover:border-citrus"><Mail size={16} strokeWidth={2} /></a>
-          <a href="https://www.linkedin.com/in/ishankjha" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="inline-flex items-center justify-center w-9 h-9 text-ink hover:text-citrus transition-colors border border-ink hover:bg-ink hover:border-citrus"><Linkedin size={16} strokeWidth={2} /></a>
-          <a href="https://www.behance.net/ijxe740tsd" target="_blank" rel="noreferrer" aria-label="Behance" className="inline-flex items-center justify-center w-9 h-9 text-ink hover:text-citrus transition-colors border border-ink hover:bg-ink hover:border-citrus"><BehanceIcon width={14} height={14} /></a>
+
+        {/* Socials */}
+        <div
+          className={`border-t-2 border-ink bg-paper ${
+            collapsed
+              ? "p-3 flex flex-col items-center gap-2"
+              : "p-5 flex items-center justify-around"
+          }`}
+        >
+          <a
+            href="mailto:jha.ishank74@gmail.com"
+            aria-label="Email"
+            title="Email"
+            className="inline-flex items-center justify-center w-9 h-9 text-ink hover:text-citrus transition-colors border border-ink hover:bg-ink hover:border-citrus"
+          >
+            <Mail size={16} strokeWidth={2} />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/ishankjha"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="LinkedIn"
+            title="LinkedIn"
+            className="inline-flex items-center justify-center w-9 h-9 text-ink hover:text-citrus transition-colors border border-ink hover:bg-ink hover:border-citrus"
+          >
+            <Linkedin size={16} strokeWidth={2} />
+          </a>
+          <a
+            href="https://www.behance.net/ijxe740tsd"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Behance"
+            title="Behance"
+            className="inline-flex items-center justify-center w-9 h-9 text-ink hover:text-citrus transition-colors border border-ink hover:bg-ink hover:border-citrus"
+          >
+            <BehanceIcon width={14} height={14} />
+          </a>
         </div>
+
+        {/* Collapse handle — sits on the outside edge of the rail */}
+        <button
+          type="button"
+          onClick={() => setCollapsed((v) => !v)}
+          aria-label={collapsed ? "Expand navigation" : "Collapse navigation"}
+          aria-expanded={!collapsed}
+          title={collapsed ? "Expand" : "Collapse"}
+          className="absolute top-1/2 -translate-y-1/2 -right-3 w-6 h-12 bg-ink text-citrus border-2 border-ink hover:bg-citrus hover:text-ink transition-colors flex items-center justify-center shadow-pop-yellow"
+        >
+          {collapsed ? <ChevronRight size={14} strokeWidth={2.5} /> : <ChevronLeft size={14} strokeWidth={2.5} />}
+        </button>
       </aside>
 
       {/* Mobile top bar */}
       <header className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-citrus border-b-2 border-ink">
         <div className="flex items-center justify-between h-14 px-5">
-          <a href="#top" className="flex items-center gap-3 font-black uppercase text-ink tracking-wider">
+          <a
+            href="#top"
+            className="flex items-center gap-3 font-black uppercase text-ink tracking-wider"
+          >
             <span className="w-8 h-8 overflow-hidden border-2 border-ink bg-ink flex items-center justify-center">
               <img src={logo} alt="" className="w-5 h-5 object-contain" />
             </span>
