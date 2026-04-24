@@ -14,7 +14,8 @@ import {
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
-import type { SVGProps, ComponentType } from "react";
+import type { LucideIcon } from "lucide-react";
+import type { SVGProps } from "react";
 
 const BehanceIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
@@ -31,7 +32,7 @@ const BehanceIcon = (props: SVGProps<SVGSVGElement>) => (
 type NavLink = {
   href: string;
   label: string;
-  icon: ComponentType<{ size?: number; strokeWidth?: number; className?: string }>;
+  icon: LucideIcon;
 };
 
 const links: NavLink[] = [
