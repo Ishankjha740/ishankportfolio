@@ -3,7 +3,7 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
 
 export const Hero = () => {
   return (
-    <section id="top" className="relative min-h-[90vh] pt-20 lg:pt-12 pb-16 overflow-hidden bg-paper">
+    <section id="top" className="relative min-h-[90vh] pt-16 lg:pt-12 pb-16 overflow-hidden bg-paper">
       {/* Subtle grid */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.04]">
         <div className="h-full w-full" style={{
@@ -14,43 +14,43 @@ export const Hero = () => {
 
       <div className="grid lg:grid-cols-[1fr_45%] min-h-[90vh] relative">
         {/* LEFT — copy block */}
-        <div className="flex flex-col justify-center px-6 md:px-16 lg:px-20 py-16 lg:py-20 relative">
+        <div className="flex flex-col justify-center px-5 sm:px-8 md:px-16 lg:px-20 py-12 sm:py-14 lg:py-20 relative">
           {/* yellow strip accent */}
           <span className="hidden lg:block absolute top-0 right-0 w-2 h-32 bg-citrus" />
 
           <div className="fade-up">
-            <p className="text-sm font-bold uppercase tracking-[0.3em] text-ink-soft mb-3">Hi There!</p>
-            <h1 className="display-heading text-[12vw] sm:text-[9vw] lg:text-[6rem] xl:text-[7.5rem] text-ink leading-[1.05]">
+            <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.3em] text-ink-soft mb-3">Hi There!</p>
+            <h1 className="display-heading text-[14vw] sm:text-[10vw] lg:text-[6rem] xl:text-[7.5rem] text-ink leading-[1.05] break-words">
               I'M{" "}
               <span className="relative inline-block pr-[0.08em]">
                 <span className="relative z-10 text-ink">ISHANK</span>
                 <span className="absolute left-0 right-0 bottom-1 h-[0.55em] bg-citrus -z-0" aria-hidden />
               </span>
             </h1>
-            <div className="mt-5 inline-flex items-center bg-citrus border-2 border-ink px-4 py-2">
-              <span className="text-ink font-black uppercase text-xs tracking-[0.25em]">
+            <div className="mt-5 inline-flex max-w-full items-center bg-citrus border-2 border-ink px-3 sm:px-4 py-2">
+              <span className="text-ink font-black uppercase text-[10px] sm:text-xs tracking-[0.2em] sm:tracking-[0.25em]">
                 Brand Strategist · Content Architect
               </span>
             </div>
           </div>
 
-          <p className="mt-8 max-w-xl text-ink-soft text-base md:text-lg leading-relaxed fade-up delay-200">
+          <p className="mt-6 sm:mt-8 max-w-xl text-ink-soft text-sm sm:text-base md:text-lg leading-relaxed fade-up delay-200">
             I blend creative storytelling with sharp analytics to build
             <span className="text-ink font-semibold"> high-performing digital ecosystems</span>—turning
             insights into impact, scaling engagement, and making content actually work.
           </p>
 
-          <div className="mt-10 flex flex-wrap items-center gap-4 fade-up delay-300">
+          <div className="mt-8 sm:mt-10 flex flex-wrap items-center gap-3 sm:gap-4 fade-up delay-300">
             <a
               href="#about"
-              className="group inline-flex items-center gap-3 px-7 py-4 bg-citrus border-2 border-ink text-ink text-sm font-black uppercase tracking-wider shadow-pop hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all duration-300"
+              className="group inline-flex items-center gap-3 px-5 sm:px-7 py-3 sm:py-4 bg-citrus border-2 border-ink text-ink text-xs sm:text-sm font-black uppercase tracking-wider shadow-pop hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all duration-300"
             >
               More About Me
               <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
             </a>
             <a
               href="#work"
-              className="group inline-flex items-center gap-3 px-7 py-4 border-2 border-ink text-ink text-sm font-black uppercase tracking-wider hover:bg-ink hover:text-citrus transition-colors duration-300"
+              className="group inline-flex items-center gap-3 px-5 sm:px-7 py-3 sm:py-4 border-2 border-ink text-ink text-xs sm:text-sm font-black uppercase tracking-wider hover:bg-ink hover:text-citrus transition-colors duration-300"
             >
               View Work
               <ArrowUpRight size={16} />
@@ -58,22 +58,22 @@ export const Hero = () => {
           </div>
 
           {/* Bottom stats */}
-          <div className="mt-14 grid grid-cols-3 gap-px bg-ink border-2 border-ink max-w-xl fade-up delay-500">
+          <div className="mt-10 sm:mt-14 grid grid-cols-3 gap-px bg-ink border-2 border-ink max-w-xl fade-up delay-500">
             {[
               { n: "6.5L+", l: "Reach Scaled" },
               { n: "2+", l: "Years Practice" },
               { n: "12+", l: "Brands Shaped" },
             ].map((s) => (
-              <div key={s.l} className="bg-paper-warm p-5 text-center">
-                <div className="display-heading text-3xl md:text-4xl text-ink">{s.n}</div>
-                <div className="text-[10px] uppercase tracking-[0.2em] text-ink-soft mt-2 font-bold">{s.l}</div>
+              <div key={s.l} className="bg-paper-warm p-3 sm:p-5 text-center">
+                <div className="display-heading text-xl sm:text-3xl md:text-4xl text-ink">{s.n}</div>
+                <div className="text-[9px] sm:text-[10px] uppercase tracking-[0.18em] sm:tracking-[0.2em] text-ink-soft mt-1 sm:mt-2 font-bold leading-tight">{s.l}</div>
               </div>
             ))}
           </div>
         </div>
 
         {/* RIGHT — Portrait panel */}
-        <div className="relative bg-paper-warm border-l-2 border-ink overflow-hidden min-h-[500px] lg:min-h-full fade-in">
+        <div className="relative bg-paper-warm border-t-2 lg:border-t-0 lg:border-l-2 border-ink overflow-hidden min-h-[420px] sm:min-h-[500px] lg:min-h-full fade-in">
           {/* yellow corner accents */}
           <span className="absolute top-0 left-0 w-20 h-2 bg-citrus z-20" />
           <span className="absolute top-0 left-0 w-2 h-20 bg-citrus z-20" />
@@ -94,12 +94,12 @@ export const Hero = () => {
           />
 
           {/* Floating yellow tag */}
-          <div className="absolute top-8 right-8 z-20 bg-citrus border-2 border-ink px-4 py-2 shadow-pop">
-            <div className="text-[10px] font-black uppercase tracking-[0.25em] text-ink">Available · 2026</div>
+          <div className="absolute top-4 right-4 sm:top-8 sm:right-8 z-20 bg-citrus border-2 border-ink px-3 sm:px-4 py-1.5 sm:py-2 shadow-pop">
+            <div className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] sm:tracking-[0.25em] text-ink">Available · 2026</div>
           </div>
 
           {/* Vertical Est badge */}
-          <div className="absolute bottom-8 left-8 z-20 bg-ink text-citrus px-3 py-4 border-2 border-ink">
+          <div className="absolute bottom-4 left-4 sm:bottom-8 sm:left-8 z-20 bg-ink text-citrus px-2.5 sm:px-3 py-3 sm:py-4 border-2 border-ink">
             <span className="text-[10px] tracking-[0.4em] uppercase font-bold" style={{ writingMode: 'vertical-rl' }}>
               Est · 2022
             </span>
@@ -108,10 +108,10 @@ export const Hero = () => {
       </div>
 
       {/* Marquee */}
-      <div className="overflow-hidden border-y-2 border-ink py-5 bg-ink text-citrus">
+      <div className="overflow-hidden border-y-2 border-ink py-4 sm:py-5 bg-ink text-citrus">
         <div className="flex animate-marquee whitespace-nowrap">
           {[...Array(2)].map((_, i) => (
-            <div key={i} className="flex items-center gap-8 pr-8 display-heading text-2xl md:text-3xl">
+            <div key={i} className="flex items-center gap-6 sm:gap-8 pr-6 sm:pr-8 display-heading text-xl sm:text-2xl md:text-3xl">
               <span>STRATEGY</span><span className="text-paper">★</span>
               <span>STORYTELLING</span><span className="text-paper">★</span>
               <span>ANALYTICS</span><span className="text-paper">★</span>
