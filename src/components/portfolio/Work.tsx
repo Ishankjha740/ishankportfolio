@@ -43,20 +43,20 @@ const projects = [
 
 export const Work = () => {
   return (
-    <section id="work" className="py-20 md:py-28 bg-paper-warm">
+    <section id="work" className="py-16 md:py-28 bg-paper-warm">
       <div className="container max-w-6xl">
-        <div className="text-center mb-12">
-          <div className="inline-block border-2 border-ink px-8 md:px-16 py-5 bg-paper shadow-pop-yellow">
-            <h2 className="display-heading text-4xl md:text-6xl lg:text-7xl text-ink">Portfolio</h2>
+        <div className="text-center mb-10 md:mb-12">
+          <div className="inline-block border-2 border-ink px-6 sm:px-8 md:px-16 py-4 sm:py-5 bg-paper shadow-pop-yellow">
+            <h2 className="display-heading text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-ink">Portfolio</h2>
           </div>
         </div>
 
         {/* Filter chips (visual only — like the reference) */}
-        <div className="flex flex-wrap items-center justify-center gap-3 mb-10">
+        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-8 sm:mb-10">
           {["All", "Brand Social", "Systems", "Campaign", "Positioning", "Analytics"].map((c, i) => (
             <span
               key={c}
-              className={`px-4 py-2 border-2 border-ink text-xs font-black uppercase tracking-widest cursor-pointer transition-colors ${
+              className={`px-3 sm:px-4 py-1.5 sm:py-2 border-2 border-ink text-[10px] sm:text-xs font-black uppercase tracking-widest cursor-pointer transition-colors ${
                 i === 0 ? "bg-ink text-citrus" : "bg-paper text-ink hover:bg-citrus"
               }`}
             >
@@ -69,21 +69,23 @@ export const Work = () => {
           {projects.map((p) => (
             <article
               key={p.n}
-              className="group bg-paper hover:bg-citrus/40 transition-colors duration-300 px-5 md:px-8 py-8 md:py-10 cursor-default"
+              className="group bg-paper hover:bg-citrus/40 transition-colors duration-300 px-4 sm:px-5 md:px-8 py-6 sm:py-8 md:py-10 cursor-default"
             >
-              <div className="grid grid-cols-12 gap-5 md:gap-8 items-start">
+              <div className="grid grid-cols-12 gap-4 sm:gap-5 md:gap-8 items-start">
                 <div className="col-span-12 md:col-span-2">
-                  <div className="display-heading text-4xl text-ink">{p.n}</div>
-                  <div className="mt-2 inline-block bg-citrus border border-ink px-2 py-1 text-[10px] font-black uppercase tracking-widest text-ink">
+                  <div className="flex items-center gap-3 md:block">
+                    <div className="display-heading text-3xl sm:text-4xl text-ink">{p.n}</div>
+                    <div className="md:mt-2 inline-block bg-citrus border border-ink px-2 py-1 text-[10px] font-black uppercase tracking-widest text-ink">
                     {p.tag}
+                    </div>
                   </div>
                 </div>
 
                 <div className="col-span-12 md:col-span-6">
-                  <h3 className="display-heading text-xl md:text-2xl leading-tight text-ink text-balance">
+                  <h3 className="display-heading text-lg sm:text-xl md:text-2xl leading-tight text-ink text-balance">
                     {p.title}
                   </h3>
-                  <div className="mt-4 grid sm:grid-cols-2 gap-4 text-sm text-ink-soft">
+                  <div className="mt-3 sm:mt-4 grid sm:grid-cols-2 gap-3 sm:gap-4 text-xs sm:text-sm text-ink-soft">
                     <div>
                       <div className="text-[10px] font-black uppercase tracking-[0.2em] text-ink mb-1">Context</div>
                       <p className="leading-relaxed">{p.context}</p>
@@ -95,9 +97,9 @@ export const Work = () => {
                   </div>
                 </div>
 
-                <div className="col-span-12 md:col-span-4 md:border-l-2 md:border-ink md:pl-5">
+                <div className="col-span-12 md:col-span-4 border-t-2 md:border-t-0 md:border-l-2 border-ink/40 md:border-ink pt-3 md:pt-0 md:pl-5">
                   <div className="text-[10px] font-black uppercase tracking-[0.2em] text-ink mb-1">Impact</div>
-                  <p className="display-heading text-base md:text-lg text-ink leading-snug">
+                  <p className="display-heading text-sm sm:text-base md:text-lg text-ink leading-snug">
                     {p.impact}
                   </p>
                 </div>

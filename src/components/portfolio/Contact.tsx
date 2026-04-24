@@ -23,13 +23,13 @@ const links = [
 
 export const Contact = () => {
   return (
-    <section id="contact" className="py-20 md:py-28 bg-paper">
+    <section id="contact" className="py-16 md:py-28 bg-paper">
       <div className="container max-w-6xl">
-        <div className="text-center mb-12">
-          <div className="inline-block border-2 border-ink px-8 md:px-16 py-5 bg-paper-warm shadow-pop-yellow">
-            <h2 className="display-heading text-4xl md:text-6xl lg:text-7xl text-ink">Contact</h2>
+        <div className="text-center mb-10 md:mb-12">
+          <div className="inline-block border-2 border-ink px-6 sm:px-8 md:px-16 py-4 sm:py-5 bg-paper-warm shadow-pop-yellow">
+            <h2 className="display-heading text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-ink">Contact</h2>
           </div>
-          <p className="mt-6 text-ink-soft text-lg">
+          <p className="mt-5 sm:mt-6 text-ink-soft text-base sm:text-lg">
             Feel <span className="bg-citrus px-1 font-bold text-ink">free</span> to contact me!
           </p>
         </div>
@@ -41,35 +41,35 @@ export const Contact = () => {
               href={l.href}
               target={l.href.startsWith("http") ? "_blank" : undefined}
               rel="noreferrer"
-              className="group flex items-center gap-5 bg-paper-warm hover:bg-citrus transition-colors duration-300 p-6"
+              className="group flex items-center gap-4 sm:gap-5 bg-paper-warm hover:bg-citrus transition-colors duration-300 p-4 sm:p-6"
             >
-              <span className="shrink-0 w-12 h-12 border-2 border-ink bg-paper flex items-center justify-center text-ink group-hover:bg-ink group-hover:text-citrus transition-colors">
-                <l.icon width={20} height={20} />
+              <span className="shrink-0 w-10 h-10 sm:w-12 sm:h-12 border-2 border-ink bg-paper flex items-center justify-center text-ink group-hover:bg-ink group-hover:text-citrus transition-colors">
+                <l.icon width={18} height={18} />
               </span>
-              <div className="min-w-0">
+              <div className="min-w-0 flex-1">
                 <div className="text-[10px] font-black uppercase tracking-[0.2em] text-ink-soft group-hover:text-ink">{l.label}</div>
-                <div className="display-heading text-base md:text-lg mt-1 text-ink truncate">{l.value}</div>
+                <div className="display-heading text-sm sm:text-base md:text-lg mt-1 text-ink truncate">{l.value}</div>
               </div>
-              <ArrowUpRight size={18} className="ml-auto text-ink opacity-50 group-hover:opacity-100 transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 shrink-0" />
+              <ArrowUpRight size={16} className="ml-auto text-ink opacity-50 group-hover:opacity-100 transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 shrink-0" />
             </a>
           ))}
         </div>
 
-        <div className="mt-12 flex flex-col items-center gap-6">
+        <div className="mt-10 sm:mt-12 flex flex-col items-center gap-5 sm:gap-6 text-center">
           <a
             href="/Ishank_Jha_Resume.pdf"
             download="Ishank_Jha_Resume.pdf"
-            className="group inline-flex items-center gap-3 px-8 py-4 bg-ink text-citrus text-sm font-black uppercase tracking-widest shadow-pop-yellow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all duration-300"
+            className="group inline-flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-ink text-citrus text-xs sm:text-sm font-black uppercase tracking-widest shadow-pop-yellow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all duration-300"
           >
             <ArrowDownToLine size={16} />
             Download Resume
           </a>
-          <p className="display-heading text-2xl md:text-3xl text-ink mt-4">
+          <p className="display-heading text-xl sm:text-2xl md:text-3xl text-ink mt-2 sm:mt-4">
             Thanks <span className="bg-citrus px-2">For Patience!</span>
           </p>
         </div>
 
-        <div className="mt-16 pt-6 border-t-2 border-ink flex flex-wrap items-center justify-between gap-3 text-xs uppercase tracking-wider text-ink-soft font-bold">
+        <div className="mt-12 sm:mt-16 pt-5 sm:pt-6 border-t-2 border-ink flex flex-col sm:flex-row sm:flex-wrap items-center sm:justify-between gap-2 sm:gap-3 text-[10px] sm:text-xs uppercase tracking-wider text-ink-soft font-bold text-center">
           <span>© {new Date().getFullYear()} Ishank Jha</span>
           <span>Designed with intent · Built to perform</span>
         </div>
