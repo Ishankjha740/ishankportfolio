@@ -35,9 +35,8 @@ export const Hero = () => {
           </div>
 
           <p className="mt-6 sm:mt-8 max-w-xl text-ink-soft text-sm sm:text-base md:text-lg leading-relaxed fade-up delay-200">
-            I blend creative storytelling with sharp analytics to build
-            <span className="text-ink font-semibold"> high-performing digital ecosystems</span>—turning
-            insights into impact, scaling engagement, and making content actually work.
+            I sit where creativity meets data and execution meets scale, leading brand strategy, social ecosystems, and creative direction for brands like The Trilight, Inside Out, Sri Aditya Vantage, Style Chai, The Commons by Incor, and GMR Hyderabad Airport; building
+            <span className="text-ink font-semibold"> high-impact digital ecosystems</span> that don't just look good but drive engagement, adoption, and qualified growth.
           </p>
 
           <div className="mt-8 sm:mt-10 flex flex-wrap items-center gap-3 sm:gap-4 fade-up delay-300">
