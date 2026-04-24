@@ -4,8 +4,9 @@ const roles = [
     company: "StreeVia Studios",
     title: "Brand Manager",
     points: [
-      "Architecting the brand voice, content strategy, and growth engine end-to-end.",
-      "Building the systems that turn creative ideas into measurable category presence.",
+      "Leading end-to-end brand strategy, social ecosystems, and creative direction across premium and lifestyle brands.",
+      "Building performance-led content systems aligned with positioning, engagement, and growth metrics.",
+      "Streamlining workflows, managing cross-functional teams, and driving execution at scale.",
     ],
   },
   {
@@ -13,8 +14,9 @@ const roles = [
     company: "UNFPA",
     title: "Social Outreach Volunteer",
     points: [
-      "Translated complex public-health narratives into shareable, platform-native content.",
-      "Drove awareness campaigns optimized for engagement across youth audiences.",
+      "Shaped digital awareness strategy for \u201CJustAsk! Khulke Poocho!\u201D chatbot ecosystem.",
+      "Designed media plans, content systems, and campaigns that drove 1,000+ user growth.",
+      "Translated public-health narratives into high-engagement, platform-native content.",
     ],
   },
   {
@@ -22,8 +24,9 @@ const roles = [
     company: "SATHI UP",
     title: "Freelance — Data & Digital Projects",
     points: [
-      "Partnered with founders on positioning, content systems and analytics setups.",
-      "Delivered audit-to-execution roadmaps that shipped within weeks, not quarters.",
+      "Built end-to-end data workflows, collection, analysis, and insight delivery for decision-making.",
+      "Developed reporting systems and insight decks to track performance and optimise outcomes.",
+      "Refined digital platforms (website + classroom) to improve clarity, structure, and UX.",
     ],
   },
   {
@@ -31,8 +34,10 @@ const roles = [
     company: "Cog Culture",
     title: "Management Trainee",
     points: [
-      "Led multi-brand social strategy across lifestyle, B2B and tech accounts.",
-      "Built reporting frameworks that turned weekly chaos into clear, decisive action.",
+      "Managed multi-platform social ecosystems reaching ~6.5 lakh users/month.",
+      "Led content planning, execution, and analytics across Instagram, LinkedIn, X, and YouTube.",
+      "Drove 25% MoM engagement growth through data-led optimisation and content refinement.",
+      "Directed shoots and aligned creative output with brand voice and performance goals.",
     ],
   },
   {
@@ -40,8 +45,9 @@ const roles = [
     company: "Magnik India",
     title: "Social Media Marketing Intern",
     points: [
-      "Owned content calendars and community ops for a portfolio of D2C brands.",
-      "Tested formats that lifted reach by double digits inside the internship window.",
+      "Built lead-gen creatives and campaign CTAs, driving a 12% increase in qualified leads.",
+      "Managed content calendars and contributed to D2C growth through performance testing.",
+      "Supported email and social campaigns to improve outreach and conversions.",
     ],
   },
   {
@@ -49,8 +55,9 @@ const roles = [
     company: "GMR Hyderabad International Airport",
     title: "Corporate Communications Intern",
     points: [
-      "Helped scale official social to ~6.5 lakh monthly reach through structured storytelling.",
-      "Coordinated brand comms across stakeholders, partners and on-ground campaigns.",
+      "Created social content, edited videos, and supported brand communications across platforms.",
+      "Assisted in campaign execution, stakeholder coordination, and on-ground event coverage.",
+      "Contributed to consistent storytelling across digital and physical brand touchpoints.",
     ],
   },
 ];
