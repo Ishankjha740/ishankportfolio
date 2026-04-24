@@ -17,7 +17,7 @@ const links = [
   { icon: Mail, label: "Email", value: "jha.ishank74@gmail.com", href: "mailto:jha.ishank74@gmail.com" },
   { icon: Phone, label: "Phone", value: "+91 99858 76895", href: "tel:+919985876895" },
   { icon: Linkedin, label: "LinkedIn", value: "linkedin.com/in/ishankjha", href: "https://www.linkedin.com/in/ishankjha" },
-  { icon: BehanceIcon, label: "Behance", value: "behance.net/ijxe740tsd", href: "https://www.behance.net/ijxe740tsd" },
+  { icon: BehanceIcon, label: "Behance", value: "behance.net/ishankjha", href: "https://www.behance.net/ishankjha" },
   { icon: Link2, label: "More Info", value: "tinyurl.com/ishankjhaportfolio", href: "https://tinyurl.com/ishankjhaportfolio" },
   { icon: MapPin, label: "Location", value: "Hyderabad, Telangana, India", href: "https://www.google.com/maps/place/Hyderabad,+Telangana,+India" },
 ];
