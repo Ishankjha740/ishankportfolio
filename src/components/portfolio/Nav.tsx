@@ -54,6 +54,7 @@ const STORAGE_KEY = "nav:rail-collapsed";
 export const Nav = () => {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState<string>("#top");
+  const [scrolled, setScrolled] = useState(false);
   const [collapsed, setCollapsed] = useState<boolean>(() => {
     if (typeof window === "undefined") return false;
     try {
@@ -86,6 +87,7 @@ export const Nav = () => {
         if (rect.top <= 120) current = id;
       }
       setActive("#" + current);
+      setScrolled(window.scrollY > 12);
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -211,7 +213,13 @@ export const Nav = () => {
       </aside>
 
       {/* Mobile top bar */}
-      <header className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-citrus border-b-2 border-ink">
+      <header
+        className={`lg:hidden fixed top-0 left-0 right-0 z-50 border-b-2 border-ink transition-all duration-300 ${
+          scrolled
+            ? "bg-citrus/85 backdrop-blur-md shadow-pop-yellow"
+            : "bg-citrus"
+        }`}
+      >
         <div className="flex items-center justify-between h-14 px-5">
           <a
             href="#top"
@@ -224,20 +232,20 @@ export const Nav = () => {
           </a>
           <button
             onClick={() => setOpen((v) => !v)}
-            className="px-3 py-2 border-2 border-ink bg-ink text-citrus font-bold uppercase text-xs tracking-wider"
+            className="px-3 py-2 border-2 border-ink bg-ink text-citrus font-bold uppercase text-xs tracking-wider transition-transform duration-200 hover:scale-105 active:scale-95"
             aria-label="Toggle menu"
           >
             {open ? "Close" : "Menu"}
           </button>
         </div>
         {open && (
-          <nav className="border-t-2 border-ink bg-citrus">
+          <nav className="border-t-2 border-ink bg-citrus animate-fade-in">
             {links.map((l) => (
               <a
                 key={l.href}
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="flex items-center justify-between px-5 py-3 border-b border-ink/30 uppercase font-bold text-ink text-sm tracking-wider"
+                className="flex items-center justify-between px-5 py-3 border-b border-ink/30 uppercase font-bold text-ink text-sm tracking-wider transition-colors duration-200 hover:bg-ink hover:text-citrus"
               >
                 {l.label}
                 <ArrowUpRight size={16} />
