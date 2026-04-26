@@ -1,3 +1,7 @@
+import { Reveal } from "./Reveal";
+import { useReveal } from "@/hooks/useReveal";
+import { useCountUp } from "@/hooks/useCountUp";
+
 const education = [
   { year: "2025–2026", school: "ISB Hyderabad", program: "Advanced Digital Marketing & Analytics" },
   { year: "2022–2024", school: "Woxsen University", program: "MBA — Analytics & Marketing" },
@@ -11,19 +15,51 @@ const known = [
   { t: "Scalable Systems", d: "Building pipelines that ship quality on repeat." },
 ];
 
+type AboutStat = { n: string; l: string; value: number; format: (v: number) => string };
+
+const aboutStats: AboutStat[] = [
+  { n: "6.5L+", l: "Reach Scaled", value: 6.5, format: (v) => `${v.toFixed(1)}L+` },
+  { n: "12+", l: "Brands Shaped", value: 12, format: (v) => `${Math.round(v)}+` },
+  { n: "2+", l: "Years Practice", value: 2, format: (v) => `${Math.round(v)}+` },
+  { n: "5+", l: "Verticals", value: 5, format: (v) => `${Math.round(v)}+` },
+];
+
+const AboutStatCell = ({ s, i, start }: { s: AboutStat; i: number; start: boolean }) => {
+  const v = useCountUp(s.value, start, 1300);
+  return (
+    <div className={`p-4 sm:p-6 text-center ${i % 3 === 0 ? "bg-citrus" : "bg-ink text-paper"}`}>
+      <div
+        className={`display-heading text-2xl sm:text-3xl md:text-4xl tabular-nums ${
+          i % 3 === 0 ? "text-ink" : "text-citrus"
+        }`}
+      >
+        {s.format(v)}
+      </div>
+      <div
+        className={`text-[9px] sm:text-[10px] uppercase tracking-[0.18em] sm:tracking-[0.2em] mt-1.5 sm:mt-2 font-bold leading-tight ${
+          i % 3 === 0 ? "text-ink" : "text-paper/70"
+        }`}
+      >
+        {s.l}
+      </div>
+    </div>
+  );
+};
+
 export const About = () => {
+  const { ref: statsRef, visible: statsVisible } = useReveal<HTMLDivElement>();
   return (
     <section id="about" className="py-16 md:py-28 bg-paper relative overflow-hidden">
       <div className="container max-w-6xl">
         {/* Boxed title */}
-        <div className="text-center mb-10 md:mb-14">
+        <Reveal className="text-center mb-10 md:mb-14">
           <div className="inline-block border-2 border-ink px-6 sm:px-8 md:px-16 py-4 sm:py-5 bg-paper-warm shadow-pop-yellow">
             <h2 className="display-heading text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-ink">About Me</h2>
           </div>
-        </div>
+        </Reveal>
 
         <div className="grid lg:grid-cols-12 gap-8 md:gap-10 items-start">
-          <div className="lg:col-span-7">
+          <Reveal className="lg:col-span-7" delay={100}>
             <p className="text-xl sm:text-2xl md:text-3xl text-ink leading-snug font-bold">
               I'm <span className="bg-citrus px-2">Ishank Jha</span>, Brand Strategist &amp; Content Architect.
             </p>
@@ -40,21 +76,13 @@ export const About = () => {
                 that moved.
               </p>
             </div>
-          </div>
+          </Reveal>
 
           {/* Stats grid */}
-          <div className="lg:col-span-5">
-            <div className="grid grid-cols-2 gap-px bg-ink border-2 border-ink">
-              {[
-                { n: "6.5L+", l: "Reach Scaled" },
-                { n: "12+", l: "Brands Shaped" },
-                { n: "2+", l: "Years Practice" },
-                { n: "5+", l: "Verticals" },
-              ].map((s, i) => (
-                <div key={s.l} className={`p-4 sm:p-6 text-center ${i % 3 === 0 ? 'bg-citrus' : 'bg-ink text-paper'}`}>
-                  <div className={`display-heading text-2xl sm:text-3xl md:text-4xl ${i % 3 === 0 ? 'text-ink' : 'text-citrus'}`}>{s.n}</div>
-                  <div className={`text-[9px] sm:text-[10px] uppercase tracking-[0.18em] sm:tracking-[0.2em] mt-1.5 sm:mt-2 font-bold leading-tight ${i % 3 === 0 ? 'text-ink' : 'text-paper/70'}`}>{s.l}</div>
-                </div>
+          <Reveal className="lg:col-span-5" delay={200}>
+            <div ref={statsRef} className="grid grid-cols-2 gap-px bg-ink border-2 border-ink">
+              {aboutStats.map((s, i) => (
+                <AboutStatCell key={s.l} s={s} i={i} start={statsVisible} />
               ))}
             </div>
 
@@ -65,37 +93,42 @@ export const About = () => {
               </h3>
               <div className="space-y-px bg-ink border-2 border-ink">
                 {known.map((k, i) => (
-                  <div key={k.t} className="bg-paper-warm p-3 sm:p-4 flex items-start gap-3 sm:gap-4 hover:bg-citrus transition-colors duration-300">
+                  <Reveal
+                    key={k.t}
+                    delay={250 + i * 90}
+                    className="bg-paper-warm p-3 sm:p-4 flex items-start gap-3 sm:gap-4 hover:bg-citrus transition-colors duration-300"
+                  >
                     <span className="display-heading text-xl sm:text-2xl text-ink shrink-0">0{i + 1}</span>
                     <div>
                       <p className="text-ink font-bold uppercase tracking-wider text-xs sm:text-sm">{k.t}</p>
                       <p className="text-ink-soft text-xs sm:text-sm mt-1 leading-relaxed">{k.d}</p>
                     </div>
-                  </div>
+                  </Reveal>
                 ))}
               </div>
             </div>
-          </div>
+          </Reveal>
         </div>
 
         {/* Education timeline */}
-        <div className="mt-14 sm:mt-20">
+        <Reveal className="mt-14 sm:mt-20" delay={150}>
           <h3 className="display-heading text-lg sm:text-xl text-ink mb-5 sm:mb-6 flex items-center gap-3">
             <span className="w-8 h-1 bg-citrus" /> Education
           </h3>
           <div className="border-t-2 border-ink">
-            {education.map((e) => (
-              <div
+            {education.map((e, i) => (
+              <Reveal
                 key={e.school}
+                delay={i * 80}
                 className="group grid grid-cols-12 gap-2 sm:gap-4 py-4 sm:py-5 border-b border-ink/15 items-start md:items-center hover:bg-citrus/30 transition-colors duration-300 px-2"
               >
                 <div className="col-span-12 md:col-span-2 text-[11px] sm:text-xs uppercase tracking-[0.18em] font-bold text-ink-soft tabular-nums">{e.year}</div>
                 <div className="col-span-12 md:col-span-5 display-heading text-lg sm:text-xl text-ink mt-1 md:mt-0">{e.school}</div>
                 <div className="col-span-12 md:col-span-5 text-ink-soft md:text-right text-xs sm:text-sm mt-1 md:mt-0">{e.program}</div>
-              </div>
+              </Reveal>
             ))}
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );
