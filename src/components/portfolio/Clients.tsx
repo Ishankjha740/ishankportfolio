@@ -1,4 +1,12 @@
 import { Instagram, Facebook, Linkedin, Youtube, Twitter } from "lucide-react";
+import logoGMRAirport from "@/assets/clients/GMR_Hyderabad_International_Airport.jpg";
+import logoGMRSchool from "@/assets/clients/GMR_School_of_Aviation.jpg";
+import logoGMRAeroTechnic from "@/assets/clients/gmr_aero_technic_logo.jpg";
+import logoTrilight from "@/assets/clients/The_Trilight.png";
+import logoInsideOut from "@/assets/clients/Inside_Out.png";
+import logoSriAditya from "@/assets/clients/Sri_Aditya_Vantage.png";
+import logoStyleChai from "@/assets/clients/Style_Chai.png";
+import logoCommons from "@/assets/clients/The_Commons_by_Incor.jpg";
 
 type Social = {
   instagram?: string;
@@ -11,14 +19,16 @@ type Social = {
 type Client = {
   name: string;
   initials: string;
+  logo?: string;
+  logoBg?: string;
   socials: Social;
 };
 
-// Replace `initials` block with a real <img src="..." /> logo when assets are ready.
 const clients: Client[] = [
   {
     name: "GMR Hyderabad Airport",
     initials: "GMR",
+    logo: logoGMRAirport,
     socials: {
       instagram: "https://www.instagram.com/rgiahyd/",
       facebook: "https://www.facebook.com/HyderabadAirport",
@@ -30,6 +40,7 @@ const clients: Client[] = [
   {
     name: "GMR School of Aviation",
     initials: "GSA",
+    logo: logoGMRSchool,
     socials: {
       instagram: "https://www.instagram.com/gmrschoolofaviation/",
       facebook: "https://www.facebook.com/gmr-school-of-aviation",
@@ -39,6 +50,7 @@ const clients: Client[] = [
   {
     name: "GMR Aero Technic (MRO)",
     initials: "GAT",
+    logo: logoGMRAeroTechnic,
     socials: {
       linkedin: "https://www.linkedin.com/company/gmr-aero-technic/",
     },
@@ -46,6 +58,7 @@ const clients: Client[] = [
   {
     name: "The Trilight",
     initials: "TTL",
+    logo: logoTrilight,
     socials: {
       instagram: "https://www.instagram.com/thetrilight/",
       facebook: "https://www.facebook.com/thetrilighthyd",
@@ -57,6 +70,7 @@ const clients: Client[] = [
   {
     name: "Inside Out",
     initials: "IO",
+    logo: logoInsideOut,
     socials: {
       instagram: "https://www.instagram.com/insideoutgelato/",
       facebook: "https://www.facebook.com/insideoutgelato",
@@ -65,6 +79,7 @@ const clients: Client[] = [
   {
     name: "Sri Aditya Vantage",
     initials: "SAV",
+    logo: logoSriAditya,
     socials: {
       instagram: "https://www.instagram.com/sriaditya_luxury/",
       facebook: "https://www.facebook.com/sriadityaluxury",
@@ -76,6 +91,7 @@ const clients: Client[] = [
   {
     name: "Style Chai",
     initials: "SC",
+    logo: logoStyleChai,
     socials: {
       instagram: "https://www.instagram.com/stylechai_ch/",
       facebook: "https://www.facebook.com/stylechai",
@@ -86,6 +102,7 @@ const clients: Client[] = [
   {
     name: "The Commons by Incor",
     initials: "TCI",
+    logo: logoCommons,
     socials: {},
   },
 ];
@@ -125,9 +142,18 @@ export const Clients = () => {
             >
               {/* Logo placeholder block — swap with <img src=... /> later */}
               <div className="flex-1 w-full flex items-center justify-center">
-                <div className="display-heading text-3xl sm:text-4xl md:text-5xl text-ink transition-transform duration-300 ease-out group-hover:-translate-y-1">
-                  {c.initials}
-                </div>
+                {c.logo ? (
+                  <img
+                    src={c.logo}
+                    alt={`${c.name} logo`}
+                    loading="lazy"
+                    className="max-h-20 sm:max-h-24 md:max-h-28 w-auto max-w-full object-contain transition-transform duration-300 ease-out group-hover:-translate-y-1"
+                  />
+                ) : (
+                  <div className="display-heading text-3xl sm:text-4xl md:text-5xl text-ink transition-transform duration-300 ease-out group-hover:-translate-y-1">
+                    {c.initials}
+                  </div>
+                )}
               </div>
 
               <div className="mt-4 sm:mt-5 text-center">
