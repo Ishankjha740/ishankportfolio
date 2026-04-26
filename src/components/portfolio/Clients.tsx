@@ -1,5 +1,4 @@
 import { Instagram, Facebook, Linkedin, Youtube, Twitter } from "lucide-react";
-import { Reveal } from "./Reveal";
 import logoGMRAirport from "@/assets/clients/GMR_Hyderabad_International_Airport.jpg";
 import logoGMRSchool from "@/assets/clients/GMR_School_of_Aviation.jpg";
 import logoGMRAeroTechnic from "@/assets/clients/gmr_aero_technic_logo.jpg";
@@ -124,24 +123,22 @@ export const Clients = () => {
   return (
     <section id="clients" className="py-16 md:py-28 bg-paper-warm">
       <div className="container max-w-6xl">
-        <Reveal className="text-center mb-3 md:mb-4">
+        <div className="text-center mb-3 md:mb-4">
           <div className="inline-block border-2 border-ink px-6 sm:px-8 md:px-16 py-4 sm:py-5 bg-paper shadow-pop-yellow">
             <h2 className="display-heading text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-ink">
               Clients Handled
             </h2>
           </div>
-        </Reveal>
-        <Reveal as="p" className="text-center label-eyebrow mb-10 md:mb-14" delay={80}>
+        </div>
+        <p className="text-center label-eyebrow mb-10 md:mb-14">
           Brands I've built and scaled
-        </Reveal>
+        </p>
 
         {(() => {
-          const renderCard = (c: Client, i: number) => (
-            <Reveal
-              as="article"
+          const renderCard = (c: Client) => (
+            <article
               key={c.name}
-              delay={i * 70}
-              className="group relative bg-paper hover:bg-citrus/40 transition-colors duration-300 p-5 sm:p-7 md:p-8 flex flex-col items-center justify-between min-h-[180px] sm:min-h-[210px] card-hover"
+              className="group relative bg-paper hover:bg-citrus/40 transition-colors duration-300 p-5 sm:p-7 md:p-8 flex flex-col items-center justify-between min-h-[180px] sm:min-h-[210px]"
             >
               {/* Logo placeholder block — swap with <img src=... /> later */}
               <div className="flex-1 w-full flex items-center justify-center">
@@ -150,7 +147,7 @@ export const Clients = () => {
                     src={c.logo}
                     alt={`${c.name} logo`}
                     loading="lazy"
-                    className="logo-mono max-h-20 sm:max-h-24 md:max-h-28 w-auto max-w-full object-contain"
+                    className="max-h-20 sm:max-h-24 md:max-h-28 w-auto max-w-full object-contain transition-transform duration-300 ease-out group-hover:-translate-y-1"
                   />
                 ) : (
                   <div className="display-heading text-3xl sm:text-4xl md:text-5xl text-ink transition-transform duration-300 ease-out group-hover:-translate-y-1">
@@ -178,14 +175,14 @@ export const Clients = () => {
                       rel="noopener noreferrer"
                       aria-label={`${c.name} on ${label}`}
                       onClick={(e) => e.stopPropagation()}
-                      className="border border-ink/60 hover:border-ink hover:bg-ink hover:text-paper p-1.5 transition-all duration-200 hover:-translate-y-0.5"
+                      className="border border-ink/60 hover:border-ink hover:bg-ink hover:text-paper p-1.5 transition-colors duration-200"
                     >
                       <Icon size={12} strokeWidth={2.25} />
                     </a>
                   );
                 })}
               </div>
-            </Reveal>
+            </article>
           );
 
           const topRows = clients.slice(0, 6);
@@ -194,11 +191,11 @@ export const Clients = () => {
           return (
             <>
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-px bg-ink border-2 border-ink">
-                {topRows.map((c, i) => renderCard(c, i))}
+                {topRows.map(renderCard)}
               </div>
               {lastRow.length > 0 && (
                 <div className="mt-px grid grid-cols-2 gap-px bg-ink border-2 border-ink border-t-0 sm:max-w-[66.6667%] sm:mx-auto">
-                  {lastRow.map((c, i) => renderCard(c, topRows.length + i))}
+                  {lastRow.map(renderCard)}
                 </div>
               )}
             </>

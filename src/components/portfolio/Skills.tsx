@@ -1,5 +1,3 @@
-import { Reveal } from "./Reveal";
-
 const groups = [
   {
     title: "Core Expertise",
@@ -41,19 +39,15 @@ export const Skills = () => {
   return (
     <section id="skills" className="py-16 md:py-28 bg-ink text-paper">
       <div className="container max-w-6xl">
-        <Reveal className="text-center mb-10 md:mb-14">
+        <div className="text-center mb-10 md:mb-14">
           <div className="inline-block border-2 border-citrus px-6 sm:px-8 md:px-16 py-4 sm:py-5 bg-ink shadow-pop-yellow">
             <h2 className="display-heading text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-citrus">Skills</h2>
           </div>
-        </Reveal>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-citrus border-2 border-citrus">
-          {groups.map((g, gi) => (
-            <Reveal
-              key={g.title}
-              delay={gi * 100}
-              className="bg-ink p-5 sm:p-7 hover:bg-paper hover:text-ink transition-colors duration-300 group card-hover"
-            >
+          {groups.map((g) => (
+            <div key={g.title} className="bg-ink p-5 sm:p-7 hover:bg-paper hover:text-ink transition-colors duration-300 group">
               <div className="flex items-center justify-between mb-5 sm:mb-6 pb-3 border-b-2 border-citrus group-hover:border-ink">
                 <h3 className="display-heading text-base sm:text-lg">{g.title}</h3>
                 <span className="text-citrus group-hover:text-ink text-xs tabular-nums font-bold">/{g.items.length.toString().padStart(2, "0")}</span>
@@ -66,7 +60,7 @@ export const Skills = () => {
                   </li>
                 ))}
               </ul>
-            </Reveal>
+            </div>
           ))}
         </div>
       </div>

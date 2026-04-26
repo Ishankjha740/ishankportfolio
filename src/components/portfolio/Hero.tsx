@@ -1,82 +1,7 @@
 import portrait from "@/assets/ishank-portrait.png";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
-import { useReveal } from "@/hooks/useReveal";
-import { useCountUp } from "@/hooks/useCountUp";
-
-type Stat = { n: string; l: string; value: number; format: (v: number) => string };
-
-const stats: Stat[] = [
-  {
-    n: "6.5L+",
-    l: "Reach Scaled",
-    value: 6.5,
-    format: (v) => `${v.toFixed(1)}L+`,
-  },
-  {
-    n: "2+",
-    l: "Years Practice",
-    value: 2,
-    format: (v) => `${Math.round(v)}+`,
-  },
-  {
-    n: "12+",
-    l: "Brands Shaped",
-    value: 12,
-    format: (v) => `${Math.round(v)}+`,
-  },
-];
-
-const StatCard = ({ stat, start }: { stat: Stat; start: boolean }) => {
-  const v = useCountUp(stat.value, start, 1400);
-  return (
-    <div className="bg-paper-warm p-3 sm:p-5 text-center card-hover">
-      <div className="display-heading text-xl sm:text-3xl md:text-4xl text-ink tabular-nums">
-        {stat.format(v)}
-      </div>
-      <div className="text-[9px] sm:text-[10px] uppercase tracking-[0.18em] sm:tracking-[0.2em] text-ink-soft mt-1 sm:mt-2 font-bold leading-tight">
-        {stat.l}
-      </div>
-    </div>
-  );
-};
 
 export const Hero = () => {
-  const portraitRef = useRef<HTMLDivElement | null>(null);
-  const [parallax, setParallax] = useState(0);
-  const { ref: statsRef, visible: statsVisible } = useReveal<HTMLDivElement>();
-
-  // Subtle vertical parallax for the portrait panel — capped at ±40px so it
-  // never overlaps neighbouring sections.
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduced) return;
-
-    let raf = 0;
-    const update = () => {
-      const el = portraitRef.current;
-      if (!el) return;
-      const rect = el.getBoundingClientRect();
-      const center = rect.top + rect.height / 2;
-      const offset = (window.innerHeight / 2 - center) * 0.06;
-      setParallax(Math.max(-40, Math.min(40, offset)));
-    };
-    const onScroll = () => {
-      if (raf) return;
-      raf = window.requestAnimationFrame(() => {
-        update();
-        raf = 0;
-      });
-    };
-    update();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      if (raf) cancelAnimationFrame(raf);
-    };
-  }, []);
-
   return (
     <section id="top" className="relative min-h-[90vh] pt-16 lg:pt-12 pb-16 overflow-hidden bg-paper">
       {/* Subtle grid */}
@@ -132,21 +57,22 @@ export const Hero = () => {
           </div>
 
           {/* Bottom stats */}
-          <div
-            ref={statsRef}
-            className="mt-10 sm:mt-14 grid grid-cols-3 gap-px bg-ink border-2 border-ink max-w-xl fade-up delay-500"
-          >
-            {stats.map((s) => (
-              <StatCard key={s.l} stat={s} start={statsVisible} />
+          <div className="mt-10 sm:mt-14 grid grid-cols-3 gap-px bg-ink border-2 border-ink max-w-xl fade-up delay-500">
+            {[
+              { n: "6.5L+", l: "Reach Scaled" },
+              { n: "2+", l: "Years Practice" },
+              { n: "12+", l: "Brands Shaped" },
+            ].map((s) => (
+              <div key={s.l} className="bg-paper-warm p-3 sm:p-5 text-center">
+                <div className="display-heading text-xl sm:text-3xl md:text-4xl text-ink">{s.n}</div>
+                <div className="text-[9px] sm:text-[10px] uppercase tracking-[0.18em] sm:tracking-[0.2em] text-ink-soft mt-1 sm:mt-2 font-bold leading-tight">{s.l}</div>
+              </div>
             ))}
           </div>
         </div>
 
         {/* RIGHT — Portrait panel */}
-        <div
-          ref={portraitRef}
-          className="relative bg-paper-warm border-t-2 lg:border-t-0 lg:border-l-2 border-ink overflow-hidden min-h-[420px] sm:min-h-[500px] lg:min-h-full fade-in"
-        >
+        <div className="relative bg-paper-warm border-t-2 lg:border-t-0 lg:border-l-2 border-ink overflow-hidden min-h-[420px] sm:min-h-[500px] lg:min-h-full fade-in">
           {/* yellow corner accents */}
           <span className="absolute top-0 left-0 w-20 h-2 bg-citrus z-20" />
           <span className="absolute top-0 left-0 w-2 h-20 bg-citrus z-20" />
@@ -163,8 +89,7 @@ export const Hero = () => {
             alt="Portrait of Ishank Jha, brand strategist"
             width={1024}
             height={1280}
-            className="relative z-10 w-full h-full object-cover object-top grayscale contrast-110 brightness-90 will-change-transform"
-            style={{ transform: `translate3d(0, ${parallax}px, 0)` }}
+            className="relative z-10 w-full h-full object-cover object-top grayscale contrast-110 brightness-90"
           />
 
           {/* Floating yellow tag */}
@@ -183,9 +108,9 @@ export const Hero = () => {
 
       {/* Marquee */}
       <div className="overflow-hidden border-y-2 border-ink py-4 sm:py-5 bg-ink text-citrus">
-        <div className="flex w-max animate-marquee whitespace-nowrap">
+        <div className="flex animate-marquee whitespace-nowrap">
           {[...Array(2)].map((_, i) => (
-            <div key={i} className="flex shrink-0 items-center gap-6 sm:gap-8 pr-6 sm:pr-8 display-heading text-xl sm:text-2xl md:text-3xl" aria-hidden={i === 1}>
+            <div key={i} className="flex items-center gap-6 sm:gap-8 pr-6 sm:pr-8 display-heading text-xl sm:text-2xl md:text-3xl">
               <span>STRATEGY</span><span className="text-paper">★</span>
               <span>STORYTELLING</span><span className="text-paper">★</span>
               <span>ANALYTICS</span><span className="text-paper">★</span>

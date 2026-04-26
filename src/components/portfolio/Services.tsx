@@ -1,5 +1,4 @@
 import { ArrowUpRight } from "lucide-react";
-import { Reveal } from "./Reveal";
 
 const services = [
   {
@@ -38,19 +37,17 @@ export const Services = () => {
   return (
     <section id="services" className="py-16 md:py-28 bg-paper">
       <div className="container max-w-6xl">
-        <Reveal className="text-center mb-10 md:mb-14">
+        <div className="text-center mb-10 md:mb-14">
           <div className="inline-block border-2 border-ink px-6 sm:px-8 md:px-16 py-4 sm:py-5 bg-paper-warm shadow-pop-yellow">
             <h2 className="display-heading text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-ink">Services</h2>
           </div>
-        </Reveal>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-ink border-2 border-ink">
-          {services.map((s, i) => (
-            <Reveal
-              as="article"
+          {services.map((s) => (
+            <article
               key={s.n}
-              delay={i * 80}
-              className="group relative bg-paper-warm p-5 sm:p-7 hover:bg-citrus transition-colors duration-300 cursor-default card-hover"
+              className="group relative bg-paper-warm p-5 sm:p-7 hover:bg-citrus transition-colors duration-300 cursor-default"
             >
               <div className="flex items-start justify-between mb-6 sm:mb-8">
                 <span className="display-heading text-3xl text-ink">{s.n}</span>
@@ -61,7 +58,7 @@ export const Services = () => {
               </div>
               <h3 className="display-heading text-base sm:text-lg leading-tight text-ink">{s.title}</h3>
               <p className="mt-3 text-xs sm:text-sm leading-relaxed text-ink-soft group-hover:text-ink">{s.desc}</p>
-            </Reveal>
+            </article>
           ))}
         </div>
       </div>

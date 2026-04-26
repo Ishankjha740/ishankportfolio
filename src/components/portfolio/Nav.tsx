@@ -54,7 +54,6 @@ const STORAGE_KEY = "nav:rail-collapsed";
 export const Nav = () => {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState<string>("#top");
-  const [scrolled, setScrolled] = useState(false);
   const [collapsed, setCollapsed] = useState<boolean>(() => {
     if (typeof window === "undefined") return false;
     try {
@@ -87,7 +86,6 @@ export const Nav = () => {
         if (rect.top <= 120) current = id;
       }
       setActive("#" + current);
-      setScrolled(window.scrollY > 12);
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -173,7 +171,7 @@ export const Nav = () => {
             href="mailto:jha.ishank74@gmail.com"
             aria-label="Email"
             title="Email"
-            className="inline-flex items-center justify-center w-10 h-10 shrink-0 text-ink hover:text-citrus transition-all duration-300 border-2 border-ink hover:bg-ink hover:-translate-y-0.5"
+            className="inline-flex items-center justify-center w-10 h-10 shrink-0 text-ink hover:text-citrus transition-colors duration-300 border-2 border-ink hover:bg-ink"
           >
             <Mail size={18} strokeWidth={2} aria-hidden="true" />
           </a>
@@ -183,7 +181,7 @@ export const Nav = () => {
             rel="noreferrer"
             aria-label="LinkedIn"
             title="LinkedIn"
-            className="inline-flex items-center justify-center w-10 h-10 shrink-0 text-ink hover:text-citrus transition-all duration-300 border-2 border-ink hover:bg-ink hover:-translate-y-0.5"
+            className="inline-flex items-center justify-center w-10 h-10 shrink-0 text-ink hover:text-citrus transition-colors duration-300 border-2 border-ink hover:bg-ink"
           >
             <Linkedin size={18} strokeWidth={2} aria-hidden="true" />
           </a>
@@ -193,7 +191,7 @@ export const Nav = () => {
             rel="noreferrer"
             aria-label="Behance"
             title="Behance"
-            className="inline-flex items-center justify-center w-10 h-10 shrink-0 text-ink hover:text-citrus transition-all duration-300 border-2 border-ink hover:bg-ink hover:-translate-y-0.5"
+            className="inline-flex items-center justify-center w-10 h-10 shrink-0 text-ink hover:text-citrus transition-colors duration-300 border-2 border-ink hover:bg-ink"
           >
             <BehanceIcon width={18} height={18} aria-hidden="true" />
           </a>
@@ -213,13 +211,7 @@ export const Nav = () => {
       </aside>
 
       {/* Mobile top bar */}
-      <header
-        className={`lg:hidden fixed top-0 left-0 right-0 z-50 border-b-2 border-ink transition-all duration-300 ${
-          scrolled
-            ? "bg-citrus/85 backdrop-blur-md shadow-pop-yellow"
-            : "bg-citrus"
-        }`}
-      >
+      <header className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-citrus border-b-2 border-ink">
         <div className="flex items-center justify-between h-14 px-5">
           <a
             href="#top"
@@ -232,20 +224,20 @@ export const Nav = () => {
           </a>
           <button
             onClick={() => setOpen((v) => !v)}
-            className="px-3 py-2 border-2 border-ink bg-ink text-citrus font-bold uppercase text-xs tracking-wider transition-transform duration-200 hover:scale-105 active:scale-95"
+            className="px-3 py-2 border-2 border-ink bg-ink text-citrus font-bold uppercase text-xs tracking-wider"
             aria-label="Toggle menu"
           >
             {open ? "Close" : "Menu"}
           </button>
         </div>
         {open && (
-          <nav className="border-t-2 border-ink bg-citrus animate-fade-in">
+          <nav className="border-t-2 border-ink bg-citrus">
             {links.map((l) => (
               <a
                 key={l.href}
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="flex items-center justify-between px-5 py-3 border-b border-ink/30 uppercase font-bold text-ink text-sm tracking-wider transition-colors duration-200 hover:bg-ink hover:text-citrus"
+                className="flex items-center justify-between px-5 py-3 border-b border-ink/30 uppercase font-bold text-ink text-sm tracking-wider"
               >
                 {l.label}
                 <ArrowUpRight size={16} />

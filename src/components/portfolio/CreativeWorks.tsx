@@ -1,7 +1,5 @@
 import { ArrowUpRight, Play } from "lucide-react";
 import { useRef } from "react";
-import { Reveal } from "./Reveal";
-import { useReveal } from "@/hooks/useReveal";
 
 type Ratio = "portrait" | "square";
 type Kind = "image" | "video" | "youtube";
@@ -143,18 +141,18 @@ export const CreativeWorks = () => {
   return (
     <section id="creative-works" className="py-16 md:py-28 bg-paper">
       <div className="container max-w-6xl">
-        <Reveal className="text-center mb-3 md:mb-4">
+        <div className="text-center mb-3 md:mb-4">
           <div className="inline-block border-2 border-ink px-6 sm:px-8 md:px-16 py-4 sm:py-5 bg-paper-warm shadow-pop-yellow">
             <h2 className="display-heading text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-ink">Works</h2>
           </div>
-        </Reveal>
-        <Reveal as="p" className="text-center label-eyebrow mb-10 md:mb-14" delay={80}>
+        </div>
+        <p className="text-center label-eyebrow mb-10 md:mb-14">
           Selected creative across platforms
-        </Reveal>
+        </p>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5 auto-rows-[160px] sm:auto-rows-[190px] md:auto-rows-[220px] grid-flow-dense">
           {works.map((w, i) => (
-            <WorkTile key={w.id} {...w} featured={w.kind === "youtube" && i === 0} index={i} />
+            <WorkTile key={w.id} {...w} featured={w.kind === "youtube" && i === 0} />
           ))}
         </div>
       </div>
@@ -170,12 +168,10 @@ type TileProps = {
   kind: Kind;
   href?: string;
   featured?: boolean;
-  index?: number;
 };
 
-const WorkTile = ({ src, ratio, title, kind, href, featured, index = 0 }: TileProps) => {
+const WorkTile = ({ src, ratio, title, kind, href, featured }: TileProps) => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  const { ref: revealRef, visible } = useReveal<HTMLElement>();
 
   const handleEnter = () => {
     if (kind !== "video" || !videoRef.current) return;
@@ -196,20 +192,12 @@ const WorkTile = ({ src, ratio, title, kind, href, featured, index = 0 }: TilePr
       ? { href, target: "_blank", rel: "noopener noreferrer", "aria-label": title }
       : {};
 
-  // Cap stagger delay so very late tiles don't pause noticeably.
-  const delay = Math.min(index * 50, 600);
-
   return (
     <Wrapper
       {...wrapperProps}
-      ref={revealRef as unknown as React.Ref<HTMLAnchorElement & HTMLDivElement>}
       onMouseEnter={handleEnter}
       onMouseLeave={handleLeave}
-      style={{
-        ["--reveal-delay" as string]: `${delay}ms`,
-        ["--reveal-distance" as string]: `18px`,
-      }}
-      className={`reveal ${visible ? "is-visible" : ""} group relative block overflow-hidden border-2 border-ink bg-paper-warm cursor-pointer card-hover ${
+      className={`group relative block overflow-hidden border-2 border-ink bg-paper-warm transition-transform duration-300 ease-out hover:-translate-y-1 cursor-pointer ${
         featured
           ? "col-span-2 row-span-2 sm:col-span-2 sm:row-span-2 lg:col-span-2 lg:row-span-2"
           : ratioClass[ratio]
