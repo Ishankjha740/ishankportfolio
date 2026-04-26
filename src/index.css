@@ -248,9 +248,16 @@
   100% { box-shadow: 0 0 0 0 hsl(var(--citrus) / 0.0); }
 }
 @keyframes statPop {
-  0%   { opacity: 0; transform: translateY(30px) scale(1); }
-  60%  { opacity: 1; transform: translateY(0) scale(1.04); }
-  100% { opacity: 1; transform: translateY(0) scale(1); }
+  0%   { opacity: 0; transform: scale(0.9); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes statFadeScale {
+  0%   { opacity: 0; transform: scale(0.9); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes wordReveal {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 @keyframes drawLineX {
   from { transform: scaleX(0); }
@@ -261,50 +268,60 @@
 .about-anim {
   opacity: 0;
   animation-fill-mode: forwards;
+  will-change: transform, opacity;
 }
 
 /* Title box — needs an extra wrapper-less effect: scale from center + border flash */
 .about-section .about-title-box {
   opacity: 0;
-  transform: scaleX(0);
-  transform-origin: center;
+  transform: translateY(40px);
+  will-change: transform, opacity;
 }
 .about-section.animate .about-title-box {
-  animation:
-    scaleXReveal 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards,
-    borderFlash 1.2s ease-out 0.6s 1;
+  animation: fadeSlideUp 0.8s ease-out 0.1s forwards;
   opacity: 1;
 }
 
-/* Headline */
-.about-section.animate .about-headline {
-  animation: slideInFromLeft 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
+/* Headline container — visible immediately so word children can animate */
+.about-section .about-headline { opacity: 1; }
+.about-section .about-headline .about-word {
+  display: inline-block;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+.about-section.animate .about-headline .about-word {
+  animation: wordReveal 0.7s ease-out forwards;
 }
 /* Yellow highlight under "Ishank Jha" */
 .about-section .about-highlight {
   display: inline-block;
-  transform: scaleX(0);
-  transform-origin: left center;
-}
-.about-section.animate .about-highlight {
-  animation: scaleXReveal 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.35s forwards;
 }
 
 /* Bio paragraphs */
-.about-section.animate .about-bio-1 { animation: fadeSlideUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards; }
-.about-section.animate .about-bio-2 { animation: fadeSlideUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.55s forwards; }
+.about-section.animate .about-bio-1 { animation: fadeSlideUp 0.8s ease-out 0.2s forwards; }
+.about-section.animate .about-bio-2 { animation: fadeSlideUp 0.8s ease-out 0.3s forwards; }
 
-/* Stats grid cells (yellow cells get a brief pop) */
-.about-section.animate .about-stat { animation: fadeSlideUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
-.about-section.animate .about-stat-pop { animation: statPop 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
-.about-section.animate .about-stat-1 { animation-delay: 0.2s; }
-.about-section.animate .about-stat-2 { animation-delay: 0.35s; }
-.about-section.animate .about-stat-3 { animation-delay: 0.5s; }
-.about-section.animate .about-stat-4 { animation-delay: 0.65s; }
+/* Stats grid cells — scale + fade pop-in, staggered */
+.about-section .about-stat,
+.about-section .about-stat-pop {
+  transition: transform 0.3s ease-out;
+}
+.about-section .about-stat:hover,
+.about-section .about-stat-pop:hover {
+  transform: translateY(-4px);
+}
+.about-section.animate .about-stat,
+.about-section.animate .about-stat-pop {
+  animation: statFadeScale 0.7s ease-out forwards;
+}
+.about-section.animate .about-stat-1 { animation-delay: 0.30s; }
+.about-section.animate .about-stat-2 { animation-delay: 0.40s; }
+.about-section.animate .about-stat-3 { animation-delay: 0.50s; }
+.about-section.animate .about-stat-4 { animation-delay: 0.60s; }
 
 /* "What I Do?" label */
 .about-section.animate .about-whatido {
-  animation: slideInFromLeft 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.95s forwards;
+  animation: slideInFromLeft 0.8s ease-out 0.7s forwards;
 }
 
 /* List items 01/02/03 + drawing divider underneath */
@@ -318,9 +335,21 @@
   transform: scaleX(0);
   transform-origin: left center;
 }
-.about-section.animate .about-list-1 { animation: slideInFromRight 0.8s cubic-bezier(0.22, 1, 0.36, 1) 1.10s forwards; }
-.about-section.animate .about-list-2 { animation: slideInFromRight 0.8s cubic-bezier(0.22, 1, 0.36, 1) 1.25s forwards; }
-.about-section.animate .about-list-3 { animation: slideInFromRight 0.8s cubic-bezier(0.22, 1, 0.36, 1) 1.40s forwards; }
-.about-section.animate .about-list-1::after { animation: drawLineX 0.6s cubic-bezier(0.22, 1, 0.36, 1) 1.30s forwards; }
-.about-section.animate .about-list-2::after { animation: drawLineX 0.6s cubic-bezier(0.22, 1, 0.36, 1) 1.45s forwards; }
-.about-section.animate .about-list-3::after { animation: drawLineX 0.6s cubic-bezier(0.22, 1, 0.36, 1) 1.60s forwards; }
+.about-section.animate .about-list-1 { animation: fadeSlideUp 0.7s ease-out 0.85s forwards; }
+.about-section.animate .about-list-2 { animation: fadeSlideUp 0.7s ease-out 0.97s forwards; }
+.about-section.animate .about-list-3 { animation: fadeSlideUp 0.7s ease-out 1.09s forwards; }
+.about-section.animate .about-list-1::after { animation: drawLineX 0.6s ease-out 1.05s forwards; }
+.about-section.animate .about-list-2::after { animation: drawLineX 0.6s ease-out 1.17s forwards; }
+.about-section.animate .about-list-3::after { animation: drawLineX 0.6s ease-out 1.29s forwards; }
+
+/* Reduced motion — show everything instantly, no animations */
+@media (prefers-reduced-motion: reduce) {
+  .about-section .about-anim,
+  .about-section .about-title-box,
+  .about-section .about-headline .about-word,
+  .about-section .about-list-item::after {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+}
