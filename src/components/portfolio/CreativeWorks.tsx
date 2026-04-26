@@ -129,11 +129,12 @@ function interleave<T>(a: T[], b: T[]): T[] {
 
 const works = [...youtubeWorks, ...interleave(imageWorks, videoWorks)];
 
-// Uniform tile sizing: squares share one column; portraits span two rows so
-// their 4:5 aspect lines up neatly with two stacked square cells.
+// Uniform tile sizing driven entirely by the grid's auto-rows.
+// Squares = 1 row, portraits = 2 rows. No aspect-ratio so tiles always
+// fill their grid cell exactly (prevents overlap with fixed row heights).
 const ratioClass: Record<Ratio, string> = {
-  portrait: "row-span-2 aspect-[4/5]",
-  square: "aspect-square",
+  portrait: "row-span-2",
+  square: "row-span-1",
 };
 
 export const CreativeWorks = () => {
@@ -149,7 +150,7 @@ export const CreativeWorks = () => {
           Selected creative across platforms
         </p>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5 auto-rows-[150px] sm:auto-rows-[180px] md:auto-rows-[210px] grid-flow-dense">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5 auto-rows-[160px] sm:auto-rows-[190px] md:auto-rows-[220px] grid-flow-dense">
           {works.map((w, i) => (
             <WorkTile key={w.id} {...w} featured={w.kind === "youtube" && i === 0} />
           ))}
@@ -198,7 +199,7 @@ const WorkTile = ({ src, ratio, title, kind, href, featured }: TileProps) => {
       onMouseLeave={handleLeave}
       className={`group relative block overflow-hidden border-2 border-ink bg-paper-warm transition-transform duration-300 ease-out hover:-translate-y-1 cursor-pointer ${
         featured
-          ? "col-span-2 row-span-2 aspect-square sm:col-span-3 sm:row-span-2 sm:aspect-[3/2] lg:col-span-2 lg:row-span-2 lg:aspect-square"
+          ? "col-span-2 row-span-2 sm:col-span-2 sm:row-span-2 lg:col-span-2 lg:row-span-2"
           : ratioClass[ratio]
       }`}
     >
