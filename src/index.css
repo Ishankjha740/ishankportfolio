@@ -224,3 +224,103 @@
 .hero-slide-up    { animation: heroSlideUpFade 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
 .hero-scale-x     { animation: heroScaleXReveal 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards; transform-origin: left center; }
 .hero-grow-down   { animation: heroGrowDown 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards; transform-origin: top center; }
+
+/* About — scroll-triggered animations */
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideInFromLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideInFromRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes scaleXReveal {
+  from { opacity: 1; transform: scaleX(0); }
+  to   { opacity: 1; transform: scaleX(1); }
+}
+@keyframes borderFlash {
+  0%   { box-shadow: 0 0 0 0 hsl(var(--citrus) / 0.0); }
+  40%  { box-shadow: 0 0 0 6px hsl(var(--citrus) / 0.55); }
+  100% { box-shadow: 0 0 0 0 hsl(var(--citrus) / 0.0); }
+}
+@keyframes statPop {
+  0%   { opacity: 0; transform: translateY(30px) scale(1); }
+  60%  { opacity: 1; transform: translateY(0) scale(1.04); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes drawLineX {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+/* All About animation targets start hidden */
+.about-anim {
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+
+/* Title box — needs an extra wrapper-less effect: scale from center + border flash */
+.about-section .about-title-box {
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: center;
+}
+.about-section.animate .about-title-box {
+  animation:
+    scaleXReveal 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards,
+    borderFlash 1.2s ease-out 0.6s 1;
+  opacity: 1;
+}
+
+/* Headline */
+.about-section.animate .about-headline {
+  animation: slideInFromLeft 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
+}
+/* Yellow highlight under "Ishank Jha" */
+.about-section .about-highlight {
+  display: inline-block;
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+.about-section.animate .about-highlight {
+  animation: scaleXReveal 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.35s forwards;
+}
+
+/* Bio paragraphs */
+.about-section.animate .about-bio-1 { animation: fadeSlideUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards; }
+.about-section.animate .about-bio-2 { animation: fadeSlideUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.55s forwards; }
+
+/* Stats grid cells (yellow cells get a brief pop) */
+.about-section.animate .about-stat { animation: fadeSlideUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+.about-section.animate .about-stat-pop { animation: statPop 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+.about-section.animate .about-stat-1 { animation-delay: 0.2s; }
+.about-section.animate .about-stat-2 { animation-delay: 0.35s; }
+.about-section.animate .about-stat-3 { animation-delay: 0.5s; }
+.about-section.animate .about-stat-4 { animation-delay: 0.65s; }
+
+/* "What I Do?" label */
+.about-section.animate .about-whatido {
+  animation: slideInFromLeft 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.95s forwards;
+}
+
+/* List items 01/02/03 + drawing divider underneath */
+.about-section .about-list-item { position: relative; }
+.about-section .about-list-item::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 1px;
+  background: hsl(var(--ink));
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+.about-section.animate .about-list-1 { animation: slideInFromRight 0.8s cubic-bezier(0.22, 1, 0.36, 1) 1.10s forwards; }
+.about-section.animate .about-list-2 { animation: slideInFromRight 0.8s cubic-bezier(0.22, 1, 0.36, 1) 1.25s forwards; }
+.about-section.animate .about-list-3 { animation: slideInFromRight 0.8s cubic-bezier(0.22, 1, 0.36, 1) 1.40s forwards; }
+.about-section.animate .about-list-1::after { animation: drawLineX 0.6s cubic-bezier(0.22, 1, 0.36, 1) 1.30s forwards; }
+.about-section.animate .about-list-2::after { animation: drawLineX 0.6s cubic-bezier(0.22, 1, 0.36, 1) 1.45s forwards; }
+.about-section.animate .about-list-3::after { animation: drawLineX 0.6s cubic-bezier(0.22, 1, 0.36, 1) 1.60s forwards; }
