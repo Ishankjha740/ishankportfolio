@@ -20,50 +20,73 @@ const clients: Client[] = [
     name: "GMR Hyderabad Airport",
     initials: "GMR",
     socials: {
-      instagram: "https://www.instagram.com/hyderabadairport/",
-      facebook: "https://www.facebook.com/HyderabadAirport/",
-      twitter: "https://x.com/HydAirport",
-      linkedin: "https://www.linkedin.com/company/gmr-hyderabad-international-airport-limited/",
-      youtube: "https://www.youtube.com/@GMRHyderabadAirport",
+      instagram: "https://www.instagram.com/rgiahyd/",
+      facebook: "https://www.facebook.com/HyderabadAirport",
+      twitter: "https://x.com/RGIAHyd",
+      linkedin: "https://www.linkedin.com/company/rgiahyd/",
+      youtube: "https://www.youtube.com/@RGIAHyderabad",
+    },
+  },
+  {
+    name: "GMR School of Aviation",
+    initials: "GSA",
+    socials: {
+      instagram: "https://www.instagram.com/gmrschoolofaviation/",
+      facebook: "https://www.facebook.com/gmr-school-of-aviation",
+      linkedin: "https://www.linkedin.com/company/rgiahyd/",
+    },
+  },
+  {
+    name: "GMR Aero Technic (MRO)",
+    initials: "GAT",
+    socials: {
+      linkedin: "https://www.linkedin.com/company/gmr-aero-technic/",
     },
   },
   {
     name: "The Trilight",
     initials: "TTL",
     socials: {
-      instagram: "https://www.instagram.com/",
+      instagram: "https://www.instagram.com/thetrilight/",
+      facebook: "https://www.facebook.com/thetrilighthyd",
+      twitter: "https://x.com/thetrilight",
+      linkedin: "https://www.linkedin.com/company/thetrilight/",
+      youtube: "https://www.youtube.com/@TheTrilight",
     },
   },
   {
     name: "Inside Out",
     initials: "IO",
     socials: {
-      instagram: "https://www.instagram.com/",
-      linkedin: "https://www.linkedin.com/",
+      instagram: "https://www.instagram.com/insideoutgelato/",
+      facebook: "https://www.facebook.com/insideoutgelato",
     },
   },
   {
     name: "Sri Aditya Vantage",
     initials: "SAV",
     socials: {
-      instagram: "https://www.instagram.com/",
-      facebook: "https://www.facebook.com/",
+      instagram: "https://www.instagram.com/sriaditya_luxury/",
+      facebook: "https://www.facebook.com/sriadityaluxury",
+      twitter: "https://x.com/sriadityaluxury",
+      linkedin: "https://www.linkedin.com/company/sri-aditya-luxury/",
+      youtube: "https://www.youtube.com/@SriAdityaLuxury",
     },
   },
   {
     name: "Style Chai",
     initials: "SC",
     socials: {
-      instagram: "https://www.instagram.com/",
+      instagram: "https://www.instagram.com/stylechai_ch/",
+      facebook: "https://www.facebook.com/stylechai",
+      linkedin: "https://www.linkedin.com/company/stylechai/",
+      youtube: "https://www.youtube.com/@stylechai_ch",
     },
   },
   {
     name: "The Commons by Incor",
     initials: "TCI",
-    socials: {
-      instagram: "https://www.instagram.com/",
-      linkedin: "https://www.linkedin.com/",
-    },
+    socials: {},
   },
 ];
 
