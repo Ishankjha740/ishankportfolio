@@ -40,9 +40,9 @@ const useCountUp = (target: number, startDelay: number, duration = 1200, decimal
 };
 
 export const Hero = () => {
-  const reach = useCountUp(6.5, 1600, 1400, 1);
-  const years = useCountUp(2, 1600, 1200, 0);
-  const brands = useCountUp(12, 1600, 1400, 0);
+  const reach = useCountUp(6.5, 1600, 2400, 1);
+  const years = useCountUp(2, 1600, 2200, 0);
+  const brands = useCountUp(12, 1600, 2400, 0);
   const counts = [
     `${reach.toFixed(1)}L+`,
     `${Math.round(years)}+`,

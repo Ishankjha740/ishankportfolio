@@ -218,9 +218,9 @@
   opacity: 0;
   animation-fill-mode: forwards;
 }
-.hero-fade-in   { animation: heroFadeIn 0.8s ease forwards; }
-.hero-slide-left  { animation: heroSlideInLeft 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
-.hero-slide-right { animation: heroSlideInRight 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
-.hero-slide-up    { animation: heroSlideUpFade 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
-.hero-scale-x     { animation: heroScaleXReveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards; transform-origin: left center; }
-.hero-grow-down   { animation: heroGrowDown 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards; transform-origin: top center; }
+.hero-fade-in   { animation: heroFadeIn 1.8s ease forwards; }
+.hero-slide-left  { animation: heroSlideInLeft 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+.hero-slide-right { animation: heroSlideInRight 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+.hero-slide-up    { animation: heroSlideUpFade 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+.hero-scale-x     { animation: heroScaleXReveal 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards; transform-origin: left center; }
+.hero-grow-down   { animation: heroGrowDown 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards; transform-origin: top center; }
