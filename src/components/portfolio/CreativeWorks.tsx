@@ -58,24 +58,14 @@ const imageModules = import.meta.glob("@/assets/works/*.png", {
   import: "default",
 }) as Record<string, string>;
 
-// Detect ratio from filename heuristic via known portrait set
-const portraitSet = new Set([
-  "work-1.png",
-  "work-11.png",
-  "work-18.png",
-  "work-20.png",
-  "work-26.png",
-  "work-28.png",
-]);
-
+// Uniform square tiles for images for a clean, predictable grid
 const imageWorks = Object.entries(imageModules)
   .map(([path, src]) => {
     const name = path.split("/").pop() ?? "";
-    const ratio: Ratio = portraitSet.has(name) ? "portrait" : "square";
     return {
       id: name,
       src,
-      ratio,
+      ratio: "square" as Ratio,
       title: "Creative work",
       kind: "image" as Kind,
       href: imageLinks[name],
@@ -93,10 +83,10 @@ const videoFiles: Array<{ file: string; ratio: Ratio }> = [
   { file: "cheers.mp4", ratio: "portrait" },
   { file: "pour.mp4", ratio: "portrait" },
   { file: "cutlery.mp4", ratio: "portrait" },
-  { file: "rgia-skytrax.mp4", ratio: "square" },
+  { file: "rgia-skytrax.mp4", ratio: "portrait" },
   { file: "reel-1.mp4", ratio: "portrait" },
   { file: "reel-2.mp4", ratio: "portrait" },
-  { file: "reel-3.mp4", ratio: "square" },
+  { file: "reel-3.mp4", ratio: "portrait" },
   { file: "fb-1.mp4", ratio: "portrait" },
   { file: "fb-2.mp4", ratio: "portrait" },
 ];
@@ -110,7 +100,7 @@ const videoWorks = videoFiles.map((v) => ({
   href: videoLinks[v.file],
 }));
 
-// YouTube embeds — featured films hosted on YouTube
+// YouTube embeds — featured films hosted on YouTube (rendered as a wide hero tile)
 const youtubeWorks: Array<{ id: string; src: string; ratio: Ratio; title: string; kind: Kind; href?: string }> = [
   {
     id: "yt-Br7Ia-Gl0gs",
@@ -125,12 +115,11 @@ const youtubeWorks: Array<{ id: string; src: string; ratio: Ratio; title: string
 // Interleave videos through the image grid so the layout feels mixed-media
 function interleave<T>(a: T[], b: T[]): T[] {
   const out: T[] = [];
-  const max = Math.max(a.length, b.length);
-  // place a video roughly every 3 images
   let bi = 0;
   for (let i = 0; i < a.length; i++) {
     out.push(a[i]);
-    if ((i + 1) % 3 === 0 && bi < b.length) {
+    // Insert a reel every 4 images for a balanced rhythm
+    if ((i + 1) % 4 === 0 && bi < b.length) {
       out.push(b[bi++]);
     }
   }
@@ -140,8 +129,10 @@ function interleave<T>(a: T[], b: T[]): T[] {
 
 const works = [...youtubeWorks, ...interleave(imageWorks, videoWorks)];
 
+// Uniform tile sizing: squares share one column; portraits span two rows so
+// their 4:5 aspect lines up neatly with two stacked square cells.
 const ratioClass: Record<Ratio, string> = {
-  portrait: "md:row-span-2 aspect-[4/5]",
+  portrait: "row-span-2 aspect-[4/5]",
   square: "aspect-square",
 };
 
@@ -158,9 +149,9 @@ export const CreativeWorks = () => {
           Selected creative across platforms
         </p>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-5 auto-rows-[160px] sm:auto-rows-[200px] md:auto-rows-[240px]">
-          {works.map((w) => (
-            <WorkTile key={w.id} {...w} />
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5 auto-rows-[150px] sm:auto-rows-[180px] md:auto-rows-[210px] grid-flow-dense">
+          {works.map((w, i) => (
+            <WorkTile key={w.id} {...w} featured={w.kind === "youtube" && i === 0} />
           ))}
         </div>
       </div>
@@ -175,9 +166,10 @@ type TileProps = {
   title: string;
   kind: Kind;
   href?: string;
+  featured?: boolean;
 };
 
-const WorkTile = ({ src, ratio, title, kind, href }: TileProps) => {
+const WorkTile = ({ src, ratio, title, kind, href, featured }: TileProps) => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
   const handleEnter = () => {
@@ -204,7 +196,11 @@ const WorkTile = ({ src, ratio, title, kind, href }: TileProps) => {
       {...wrapperProps}
       onMouseEnter={handleEnter}
       onMouseLeave={handleLeave}
-      className={`group relative block overflow-hidden border-2 border-ink bg-paper-warm transition-transform duration-300 ease-out hover:-translate-y-1 cursor-pointer ${ratioClass[ratio]}`}
+      className={`group relative block overflow-hidden border-2 border-ink bg-paper-warm transition-transform duration-300 ease-out hover:-translate-y-1 cursor-pointer ${
+        featured
+          ? "col-span-2 row-span-2 aspect-square sm:col-span-3 sm:row-span-2 sm:aspect-[3/2] lg:col-span-2 lg:row-span-2 lg:aspect-square"
+          : ratioClass[ratio]
+      }`}
     >
       {kind === "image" ? (
         <img
