@@ -74,6 +74,13 @@ export const Contact = () => {
           <span>© {new Date().getFullYear()} Ishank Jha</span>
           <span>Brand Strategist · Content Architect</span>
         </div>
+
+        <div className="mt-8 sm:mt-10 pt-5 sm:pt-6 border-t-2 border-ink text-[10px] sm:text-xs uppercase tracking-wider text-ink-soft font-bold text-center space-y-1.5 sm:space-y-2">
+          <p>All content presented on this website is for informational and portfolio purposes only.</p>
+          <p>All trademarks, logos, and brand names are the property of their respective owners.</p>
+          <p>Work shown may include collaborative projects, and individual contributions may vary.</p>
+          <p>No commercial claims are made over third-party assets.</p>
+        </div>
       </div>
     </section>
   );
