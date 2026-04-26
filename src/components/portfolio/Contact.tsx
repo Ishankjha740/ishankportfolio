@@ -38,12 +38,12 @@ export const Contact = () => {
 
         <div className="grid md:grid-cols-2 gap-px bg-ink border-2 border-ink">
           {links.map((l, i) => (
-            <Reveal key={l.label} delay={i * 70} className="contents">
+            <Reveal key={l.label} delay={i * 70}>
               <a
                 href={l.href}
                 target={l.href.startsWith("http") ? "_blank" : undefined}
                 rel="noreferrer"
-                className="group flex items-center gap-4 sm:gap-5 bg-paper-warm hover:bg-citrus transition-colors duration-300 p-4 sm:p-6 card-hover"
+                className="group flex items-center gap-4 sm:gap-5 bg-paper-warm hover:bg-citrus transition-colors duration-300 p-4 sm:p-6 card-hover h-full"
               >
                 <span className="shrink-0 w-10 h-10 sm:w-12 sm:h-12 border-2 border-ink bg-paper flex items-center justify-center text-ink group-hover:bg-ink group-hover:text-citrus transition-colors">
                   <l.icon width={18} height={18} />
