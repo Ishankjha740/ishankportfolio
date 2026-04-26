@@ -149,9 +149,9 @@ export const CreativeWorks = () => {
           Selected creative across platforms
         </p>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-5 auto-rows-[160px] sm:auto-rows-[200px] md:auto-rows-[240px]">
-          {works.map((w) => (
-            <WorkTile key={w.id} {...w} />
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5 auto-rows-[150px] sm:auto-rows-[180px] md:auto-rows-[210px] grid-flow-dense">
+          {works.map((w, i) => (
+            <WorkTile key={w.id} {...w} featured={w.kind === "youtube" && i === 0} />
           ))}
         </div>
       </div>
