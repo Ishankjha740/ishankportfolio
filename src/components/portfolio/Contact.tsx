@@ -38,24 +38,22 @@ export const Contact = () => {
 
         <div className="grid md:grid-cols-2 gap-px bg-ink border-2 border-ink">
           {links.map((l, i) => (
-            <Reveal
-              as="a"
-              key={l.label}
-              delay={i * 70}
-              {...({
-              href={l.href}
-              target={l.href.startsWith("http") ? "_blank" : undefined}
-              rel="noreferrer"
-              className="group flex items-center gap-4 sm:gap-5 bg-paper-warm hover:bg-citrus transition-colors duration-300 p-4 sm:p-6 card-hover"
-            >
-              <span className="shrink-0 w-10 h-10 sm:w-12 sm:h-12 border-2 border-ink bg-paper flex items-center justify-center text-ink group-hover:bg-ink group-hover:text-citrus transition-colors">
-                <l.icon width={18} height={18} />
-              </span>
-              <div className="min-w-0 flex-1">
-                <div className="text-[10px] font-black uppercase tracking-[0.2em] text-ink-soft group-hover:text-ink">{l.label}</div>
-                <div className="display-heading text-sm sm:text-base md:text-lg mt-1 text-ink truncate">{l.value}</div>
-              </div>
-              <ArrowUpRight size={16} className="ml-auto text-ink opacity-50 group-hover:opacity-100 transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 shrink-0" />
+            <Reveal key={l.label} delay={i * 70} className="contents">
+              <a
+                href={l.href}
+                target={l.href.startsWith("http") ? "_blank" : undefined}
+                rel="noreferrer"
+                className="group flex items-center gap-4 sm:gap-5 bg-paper-warm hover:bg-citrus transition-colors duration-300 p-4 sm:p-6 card-hover"
+              >
+                <span className="shrink-0 w-10 h-10 sm:w-12 sm:h-12 border-2 border-ink bg-paper flex items-center justify-center text-ink group-hover:bg-ink group-hover:text-citrus transition-colors">
+                  <l.icon width={18} height={18} />
+                </span>
+                <div className="min-w-0 flex-1">
+                  <div className="text-[10px] font-black uppercase tracking-[0.2em] text-ink-soft group-hover:text-ink">{l.label}</div>
+                  <div className="display-heading text-sm sm:text-base md:text-lg mt-1 text-ink truncate">{l.value}</div>
+                </div>
+                <ArrowUpRight size={16} className="ml-auto text-ink opacity-50 group-hover:opacity-100 transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 shrink-0" />
+              </a>
             </Reveal>
           ))}
         </div>
