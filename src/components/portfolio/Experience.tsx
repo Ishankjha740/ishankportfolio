@@ -1,3 +1,5 @@
+import { useReveal } from "@/hooks/use-reveal";
+
 const roles = [
   {
     period: "Jan 2026 — Present",
@@ -63,23 +65,29 @@ const roles = [
 ];
 
 export const Experience = () => {
+  const { ref, className } = useReveal<HTMLElement>();
   return (
-    <section id="experience" className="py-16 md:py-28 bg-paper-warm relative overflow-hidden">
+    <section
+      id="experience"
+      ref={ref}
+      className={`py-16 md:py-28 bg-paper-warm relative overflow-hidden ${className}`}
+    >
       <div className="container max-w-6xl">
         <div className="text-center mb-10 md:mb-14">
-          <div className="inline-block border-2 border-ink px-6 sm:px-8 md:px-16 py-4 sm:py-5 bg-paper shadow-pop-yellow">
+          <div className="reveal-up inline-block border-2 border-ink px-6 sm:px-8 md:px-16 py-4 sm:py-5 bg-paper shadow-pop-yellow">
             <h2 className="display-heading text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-ink">Resume</h2>
           </div>
         </div>
 
-        <h3 className="display-heading text-lg sm:text-xl text-ink mb-5 sm:mb-6 flex items-center gap-3">
+        <h3 className="reveal-left stagger-1 display-heading text-lg sm:text-xl text-ink mb-5 sm:mb-6 flex items-center gap-3">
           <span className="w-8 h-1 bg-citrus" /> Experience
         </h3>
 
-        <div className="grid md:grid-cols-2 gap-px bg-ink border-2 border-ink">
+        <div className="stagger-children grid md:grid-cols-2 gap-px bg-ink border-2 border-ink">
           {roles.map((r, i) => (
             <article
               key={r.company + r.period}
+              style={{ ["--i" as string]: i }}
               className="group bg-paper p-5 sm:p-6 md:p-7 hover:bg-citrus transition-colors duration-300 cursor-default relative"
             >
               <div className="flex items-center justify-between gap-3 mb-3">
