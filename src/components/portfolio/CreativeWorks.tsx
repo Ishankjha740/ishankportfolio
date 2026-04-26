@@ -4,6 +4,53 @@ import { useRef } from "react";
 type Ratio = "portrait" | "square";
 type Kind = "image" | "video" | "youtube";
 
+// External redirect links per asset
+// Division 1 maps the first 12 images and the 10 reels (videos)
+// Division 2 maps the remaining 16 images (work-13 .. work-28)
+const imageLinks: Record<string, string> = {
+  // Division 1
+  "work-1.png": "https://www.instagram.com/p/DJo6cKvvr39/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+  "work-2.png": "https://www.instagram.com/p/DG6xVZdCfN6/",
+  "work-3.png": "https://www.instagram.com/p/DEyTM3zusUc/",
+  "work-4.png": "https://www.instagram.com/p/DWltAy9kkDk/",
+  "work-5.png": "https://www.linkedin.com/feed/update/urn:li:activity:7302691177214976000",
+  "work-6.png": "https://www.linkedin.com/feed/update/urn:li:activity:7311967906257371137",
+  "work-7.png": "https://www.instagram.com/p/DWrHMOGkhTx/",
+  "work-8.png": "https://www.instagram.com/p/DGEspZpC9eb/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+  "work-9.png": "https://www.instagram.com/p/DIgZu_OJ9d4/",
+  "work-10.png": "https://www.instagram.com/p/DU0ukjFkkhd/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+  "work-11.png": "https://www.instagram.com/p/DIpfnhnNcN3/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+  "work-12.png": "https://www.instagram.com/p/DHKOGjPhmZh/",
+  // Division 2
+  "work-13.png": "https://www.instagram.com/p/DEmN1QdxaOx/",
+  "work-14.png": "https://www.linkedin.com/feed/update/urn:li:activity:7275824452871888896",
+  "work-15.png": "https://www.linkedin.com/feed/update/urn:li:activity:7277552997327388672",
+  "work-16.png": "https://www.linkedin.com/feed/update/urn:li:activity:7284788842505654273",
+  "work-17.png": "https://www.linkedin.com/feed/update/urn:li:activity:7307722721147195392",
+  "work-18.png": "https://www.linkedin.com/feed/update/urn:li:activity:7308365510700584960",
+  "work-19.png": "https://www.instagram.com/p/DWDTOLikkb9/",
+  "work-20.png": "https://www.instagram.com/p/DBIdk9htXkD/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+  "work-21.png": "https://www.instagram.com/p/DDj7HxQNLYD/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+  "work-22.png": "https://www.instagram.com/p/C7WpePPSHso/",
+  "work-23.png": "https://www.instagram.com/p/DCc9G6JP6FX/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+  "work-24.png": "https://www.linkedin.com/feed/update/urn:li:activity:7271034943072284672",
+  "work-25.png": "https://www.instagram.com/p/DWtlIFok3dd/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+};
+
+const videoLinks: Record<string, string> = {
+  // Reel 1..5, 7, 8, 9, 11, 12 (Division 1)
+  "video.mp4": "https://www.instagram.com/reel/C6p_61otJpp/",
+  "cheers.mp4": "https://www.instagram.com/p/DWbuIAsAUTU/",
+  "pour.mp4": "https://www.instagram.com/p/DWWbfANEnv2/",
+  "cutlery.mp4": "https://www.instagram.com/p/DWZVaxwjZO5/",
+  "rgia-skytrax.mp4": "https://youtu.be/E27koNVGnUo?si=0SUrhb68otnXs3WK",
+  "reel-1.mp4": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTQ5MDk4OTc5MTA2Nzc1?story_media_id=3855940173892735552_60513541209&igsh=NG9jdTVyYTNvMG1q",
+  "reel-2.mp4": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTQ5MDk4OTc5MTA2Nzc1?story_media_id=3848020089849267759_60513541209&igsh=NG9jdTVyYTNvMG1q",
+  "reel-3.mp4": "https://www.linkedin.com/posts/gmr-aero-technic_happywomensday-womeninaviation-leadership-activity-7303746718007791616-1XVY?utm_source=share&utm_medium=member_desktop&rcm=ACoAACYY-3wBAyRHCfA7hiY6h9B0Pjb4fHbRLcY",
+  "fb-1.mp4": "https://www.instagram.com/p/DHKOI35y06c/",
+  "fb-2.mp4": "https://www.instagram.com/p/DIbVOtWS8Td/",
+};
+
 // Auto-import every image in src/assets/works as a hashed URL
 const imageModules = import.meta.glob("@/assets/works/*.png", {
   eager: true,
@@ -25,7 +72,14 @@ const imageWorks = Object.entries(imageModules)
   .map(([path, src]) => {
     const name = path.split("/").pop() ?? "";
     const ratio: Ratio = portraitSet.has(name) ? "portrait" : "square";
-    return { id: name, src, ratio, title: "Creative work", kind: "image" as Kind };
+    return {
+      id: name,
+      src,
+      ratio,
+      title: "Creative work",
+      kind: "image" as Kind,
+      href: imageLinks[name],
+    };
   })
   .sort((a, b) => {
     const an = parseInt(a.id.replace(/\D/g, ""), 10);
@@ -53,16 +107,18 @@ const videoWorks = videoFiles.map((v) => ({
   ratio: v.ratio,
   title: "Creative video",
   kind: "video" as Kind,
+  href: videoLinks[v.file],
 }));
 
 // YouTube embeds — featured films hosted on YouTube
-const youtubeWorks: Array<{ id: string; src: string; ratio: Ratio; title: string; kind: Kind }> = [
+const youtubeWorks: Array<{ id: string; src: string; ratio: Ratio; title: string; kind: Kind; href?: string }> = [
   {
     id: "yt-Br7Ia-Gl0gs",
     src: "https://www.youtube.com/embed/Br7Ia-Gl0gs?autoplay=1&mute=1&loop=1&playlist=Br7Ia-Gl0gs&controls=1&modestbranding=1&rel=0",
     ratio: "square",
     title: "Featured film",
     kind: "youtube",
+    href: "https://youtu.be/Br7Ia-Gl0gs",
   },
 ];
 
@@ -118,9 +174,10 @@ type TileProps = {
   ratio: Ratio;
   title: string;
   kind: Kind;
+  href?: string;
 };
 
-const WorkTile = ({ src, ratio, title, kind }: TileProps) => {
+const WorkTile = ({ src, ratio, title, kind, href }: TileProps) => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
   const handleEnter = () => {
@@ -136,11 +193,18 @@ const WorkTile = ({ src, ratio, title, kind }: TileProps) => {
     videoRef.current.currentTime = 0;
   };
 
+  const Wrapper: React.ElementType = href && kind !== "youtube" ? "a" : "div";
+  const wrapperProps =
+    href && kind !== "youtube"
+      ? { href, target: "_blank", rel: "noopener noreferrer", "aria-label": title }
+      : {};
+
   return (
-    <div
+    <Wrapper
+      {...wrapperProps}
       onMouseEnter={handleEnter}
       onMouseLeave={handleLeave}
-      className={`group relative overflow-hidden border-2 border-ink bg-paper-warm transition-transform duration-300 ease-out hover:-translate-y-1 ${ratioClass[ratio]}`}
+      className={`group relative block overflow-hidden border-2 border-ink bg-paper-warm transition-transform duration-300 ease-out hover:-translate-y-1 cursor-pointer ${ratioClass[ratio]}`}
     >
       {kind === "image" ? (
         <img
@@ -188,6 +252,6 @@ const WorkTile = ({ src, ratio, title, kind }: TileProps) => {
           <ArrowUpRight size={14} className="text-ink" strokeWidth={2.5} />
         </div>
       )}
-    </div>
+    </Wrapper>
   );
 };
