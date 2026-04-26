@@ -1,3 +1,5 @@
+import { Reveal } from "./Reveal";
+
 const projects = [
   {
     n: "01",
@@ -45,16 +47,18 @@ export const Work = () => {
   return (
     <section id="work" className="py-16 md:py-28 bg-paper-warm">
       <div className="container max-w-6xl">
-        <div className="text-center mb-10 md:mb-12">
+        <Reveal className="text-center mb-10 md:mb-12">
           <div className="inline-block border-2 border-ink px-6 sm:px-8 md:px-16 py-4 sm:py-5 bg-paper shadow-pop-yellow">
             <h2 className="display-heading text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-ink">Portfolio</h2>
           </div>
-        </div>
+        </Reveal>
 
         <div className="space-y-px bg-ink border-2 border-ink">
-          {projects.map((p) => (
-            <article
+          {projects.map((p, i) => (
+            <Reveal
+              as="article"
               key={p.n}
+              delay={i * 100}
               className="group bg-paper hover:bg-citrus/40 transition-colors duration-300 px-4 sm:px-5 md:px-8 py-6 sm:py-8 md:py-10 cursor-default"
             >
               <div className="grid grid-cols-12 gap-4 sm:gap-5 md:gap-8 items-start">
@@ -90,7 +94,7 @@ export const Work = () => {
                   </p>
                 </div>
               </div>
-            </article>
+            </Reveal>
           ))}
         </div>
       </div>
