@@ -10,6 +10,8 @@ import {
   Briefcase,
   FolderKanban,
   Sparkles,
+  Image as ImageIcon,
+  Users,
   Send,
   ChevronLeft,
   ChevronRight,
@@ -41,6 +43,8 @@ const links: NavLink[] = [
   { href: "#experience", label: "Resume", icon: FileText },
   { href: "#services", label: "Services", icon: Briefcase },
   { href: "#work", label: "Portfolio", icon: FolderKanban },
+  { href: "#creative-works", label: "Works", icon: ImageIcon },
+  { href: "#clients", label: "Clients", icon: Users },
   { href: "#skills", label: "Skills", icon: Sparkles },
   { href: "#contact", label: "Contact", icon: Send },
 ];
