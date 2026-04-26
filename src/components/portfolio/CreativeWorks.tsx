@@ -202,7 +202,7 @@ const WorkTile = ({ src, ratio, title, kind, href, featured, index = 0 }: TilePr
   return (
     <Wrapper
       {...wrapperProps}
-      ref={revealRef as React.Ref<HTMLElement>}
+      ref={revealRef as unknown as React.Ref<HTMLAnchorElement & HTMLDivElement>}
       onMouseEnter={handleEnter}
       onMouseLeave={handleLeave}
       style={{
