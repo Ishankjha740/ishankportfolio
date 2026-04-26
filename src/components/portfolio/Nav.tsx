@@ -163,17 +163,17 @@ export const Nav = () => {
         <div
           className={`border-t-2 border-ink bg-paper ${
             collapsed
-              ? "p-3 flex flex-col items-center gap-2"
-              : "p-5 flex items-center justify-around"
+              ? "p-3 flex flex-col items-center gap-3"
+              : "p-5 flex items-center justify-center gap-3"
           }`}
         >
           <a
             href="mailto:jha.ishank74@gmail.com"
             aria-label="Email"
             title="Email"
-            className="inline-flex items-center justify-center w-9 h-9 text-ink hover:text-citrus transition-colors border border-ink hover:bg-ink hover:border-citrus"
+            className="inline-flex items-center justify-center w-10 h-10 shrink-0 text-ink hover:text-citrus transition-colors duration-300 border-2 border-ink hover:bg-ink"
           >
-            <Mail size={16} strokeWidth={2} />
+            <Mail size={18} strokeWidth={2} aria-hidden="true" />
           </a>
           <a
             href="https://www.linkedin.com/in/ishankjha"
@@ -181,9 +181,9 @@ export const Nav = () => {
             rel="noreferrer"
             aria-label="LinkedIn"
             title="LinkedIn"
-            className="inline-flex items-center justify-center w-9 h-9 text-ink hover:text-citrus transition-colors border border-ink hover:bg-ink hover:border-citrus"
+            className="inline-flex items-center justify-center w-10 h-10 shrink-0 text-ink hover:text-citrus transition-colors duration-300 border-2 border-ink hover:bg-ink"
           >
-            <Linkedin size={16} strokeWidth={2} />
+            <Linkedin size={18} strokeWidth={2} aria-hidden="true" />
           </a>
           <a
             href="https://www.behance.net/ishankjha"
@@ -191,9 +191,9 @@ export const Nav = () => {
             rel="noreferrer"
             aria-label="Behance"
             title="Behance"
-            className="inline-flex items-center justify-center w-9 h-9 text-ink hover:text-citrus transition-colors border border-ink hover:bg-ink hover:border-citrus"
+            className="inline-flex items-center justify-center w-10 h-10 shrink-0 text-ink hover:text-citrus transition-colors duration-300 border-2 border-ink hover:bg-ink"
           >
-            <BehanceIcon width={14} height={14} />
+            <BehanceIcon width={18} height={18} aria-hidden="true" />
           </a>
         </div>
 
