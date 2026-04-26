@@ -26,7 +26,7 @@ type Client = {
 
 const clients: Client[] = [
   {
-    name: "GMR Hyderabad Airport",
+    name: "GMR Hyderabad International Airport",
     initials: "GMR",
     logo: logoGMRAirport,
     socials: {
@@ -134,8 +134,8 @@ export const Clients = () => {
           Brands I've built and scaled
         </p>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-px bg-ink border-2 border-ink">
-          {clients.map((c) => (
+        {(() => {
+          const renderCard = (c: Client) => (
             <article
               key={c.name}
               className="group relative bg-paper hover:bg-citrus/40 transition-colors duration-300 p-5 sm:p-7 md:p-8 flex flex-col items-center justify-between min-h-[180px] sm:min-h-[210px]"
@@ -183,8 +183,24 @@ export const Clients = () => {
                 })}
               </div>
             </article>
-          ))}
-        </div>
+          );
+
+          const topRows = clients.slice(0, 6);
+          const lastRow = clients.slice(6);
+
+          return (
+            <>
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-px bg-ink border-2 border-ink">
+                {topRows.map(renderCard)}
+              </div>
+              {lastRow.length > 0 && (
+                <div className="mt-px grid grid-cols-2 gap-px bg-ink border-2 border-ink border-t-0 sm:max-w-[66.6667%] sm:mx-auto">
+                  {lastRow.map(renderCard)}
+                </div>
+              )}
+            </>
+          );
+        })()}
       </div>
     </section>
   );
