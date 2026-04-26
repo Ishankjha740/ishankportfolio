@@ -2,7 +2,7 @@ import { ArrowUpRight, Play } from "lucide-react";
 import { useRef } from "react";
 
 type Ratio = "portrait" | "square";
-type Kind = "image" | "video";
+type Kind = "image" | "video" | "youtube";
 
 // Auto-import every image in src/assets/works as a hashed URL
 const imageModules = import.meta.glob("@/assets/works/*.png", {
@@ -55,6 +55,17 @@ const videoWorks = videoFiles.map((v) => ({
   kind: "video" as Kind,
 }));
 
+// YouTube embeds — featured films hosted on YouTube
+const youtubeWorks: Array<{ id: string; src: string; ratio: Ratio; title: string; kind: Kind }> = [
+  {
+    id: "yt-Br7Ia-Gl0gs",
+    src: "https://www.youtube.com/embed/Br7Ia-Gl0gs?autoplay=1&mute=1&loop=1&playlist=Br7Ia-Gl0gs&controls=1&modestbranding=1&rel=0",
+    ratio: "square",
+    title: "Featured film",
+    kind: "youtube",
+  },
+];
+
 // Interleave videos through the image grid so the layout feels mixed-media
 function interleave<T>(a: T[], b: T[]): T[] {
   const out: T[] = [];
@@ -71,7 +82,7 @@ function interleave<T>(a: T[], b: T[]): T[] {
   return out;
 }
 
-const works = interleave(imageWorks, videoWorks);
+const works = [...youtubeWorks, ...interleave(imageWorks, videoWorks)];
 
 const ratioClass: Record<Ratio, string> = {
   portrait: "md:row-span-2 aspect-[4/5]",
@@ -138,7 +149,7 @@ const WorkTile = ({ src, ratio, title, kind }: TileProps) => {
           loading="lazy"
           className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.06]"
         />
-      ) : (
+      ) : kind === "video" ? (
         <video
           ref={videoRef}
           src={src}
@@ -148,20 +159,35 @@ const WorkTile = ({ src, ratio, title, kind }: TileProps) => {
           preload="metadata"
           className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
         />
+      ) : (
+        <iframe
+          src={src}
+          title={title}
+          loading="lazy"
+          allow="autoplay; encrypted-media; picture-in-picture"
+          allowFullScreen
+          className="absolute inset-0 h-full w-full"
+        />
       )}
       {/* hover veil */}
-      <div className="absolute inset-0 bg-ink/0 group-hover:bg-ink/30 transition-colors duration-300" />
+      {kind !== "youtube" && (
+        <div className="absolute inset-0 bg-ink/0 group-hover:bg-ink/30 transition-colors duration-300" />
+      )}
       {/* video badge */}
-      {kind === "video" && (
+      {(kind === "video" || kind === "youtube") && (
         <div className="absolute top-2 left-2 sm:top-3 sm:left-3 flex items-center gap-1 border-2 border-ink bg-paper px-1.5 py-1 group-hover:opacity-0 transition-opacity duration-300">
           <Play size={10} className="text-ink" strokeWidth={2.5} fill="currentColor" />
-          <span className="text-[9px] font-black uppercase tracking-widest text-ink">Reel</span>
+          <span className="text-[9px] font-black uppercase tracking-widest text-ink">
+            {kind === "youtube" ? "Film" : "Reel"}
+          </span>
         </div>
       )}
       {/* arrow accent */}
-      <div className="absolute top-2 right-2 sm:top-3 sm:right-3 border-2 border-ink bg-citrus p-1 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5">
-        <ArrowUpRight size={14} className="text-ink" strokeWidth={2.5} />
-      </div>
+      {kind !== "youtube" && (
+        <div className="absolute top-2 right-2 sm:top-3 sm:right-3 border-2 border-ink bg-citrus p-1 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5">
+          <ArrowUpRight size={14} className="text-ink" strokeWidth={2.5} />
+        </div>
+      )}
     </div>
   );
 };
