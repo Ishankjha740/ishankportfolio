@@ -166,9 +166,10 @@ type TileProps = {
   title: string;
   kind: Kind;
   href?: string;
+  featured?: boolean;
 };
 
-const WorkTile = ({ src, ratio, title, kind, href }: TileProps) => {
+const WorkTile = ({ src, ratio, title, kind, href, featured }: TileProps) => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
   const handleEnter = () => {
@@ -195,7 +196,11 @@ const WorkTile = ({ src, ratio, title, kind, href }: TileProps) => {
       {...wrapperProps}
       onMouseEnter={handleEnter}
       onMouseLeave={handleLeave}
-      className={`group relative block overflow-hidden border-2 border-ink bg-paper-warm transition-transform duration-300 ease-out hover:-translate-y-1 cursor-pointer ${ratioClass[ratio]}`}
+      className={`group relative block overflow-hidden border-2 border-ink bg-paper-warm transition-transform duration-300 ease-out hover:-translate-y-1 cursor-pointer ${
+        featured
+          ? "col-span-2 row-span-2 aspect-square sm:col-span-3 sm:row-span-2 sm:aspect-[3/2] lg:col-span-2 lg:row-span-2 lg:aspect-square"
+          : ratioClass[ratio]
+      }`}
     >
       {kind === "image" ? (
         <img
