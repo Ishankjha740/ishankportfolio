@@ -20,6 +20,11 @@ export const About = () => {
   useEffect(() => {
     const node = sectionRef.current;
     if (!node) return;
+    // Respect reduced-motion preferences
+    if (typeof window !== "undefined" && window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) {
+      setAnimate(true);
+      return;
+    }
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
@@ -30,7 +35,7 @@ export const About = () => {
           }
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.25 }
     );
     observer.observe(node);
     return () => observer.disconnect();
@@ -53,7 +58,29 @@ export const About = () => {
         <div className="grid lg:grid-cols-12 gap-8 md:gap-10 items-start">
           <div className="lg:col-span-7">
             <p className="about-anim about-headline text-xl sm:text-2xl md:text-3xl text-ink leading-snug font-bold">
-              I'm <span className="about-highlight bg-citrus px-2">Ishank Jha</span>, Brand Strategist &amp; Content Architect.
+              {(() => {
+                const before = ["I'm"];
+                const after = [",", "Brand", "Strategist", "&", "Content", "Architect."];
+                let idx = 0;
+                return (
+                  <>
+                    {before.map((w) => (
+                      <span key={`b-${idx}`} className="about-word" style={{ animationDelay: `${0.15 + idx++ * 0.04}s` }}>
+                        {w}{" "}
+                      </span>
+                    ))}
+                    <span className="about-highlight bg-citrus px-2">
+                      <span className="about-word" style={{ animationDelay: `${0.15 + idx++ * 0.04}s` }}>Ishank </span>
+                      <span className="about-word" style={{ animationDelay: `${0.15 + idx++ * 0.04}s` }}>Jha</span>
+                    </span>
+                    {after.map((w, i) => (
+                      <span key={`a-${i}`} className="about-word" style={{ animationDelay: `${0.15 + idx++ * 0.04}s` }}>
+                        {i === 0 ? w : ` ${w}`}
+                      </span>
+                    ))}
+                  </>
+                );
+              })()}
             </p>
             <div className="mt-5 sm:mt-6 space-y-4 sm:space-y-5 text-ink-soft text-sm sm:text-base md:text-lg leading-relaxed">
               <p className="about-anim about-bio-1">
