@@ -187,3 +187,40 @@
 .animate-blob { animation: blob 14s ease-in-out infinite; }
 @keyframes spin-slow { to { transform: rotate(360deg); } }
 .animate-spin-slow { animation: spin-slow 22s linear infinite; }
+
+/* Hero load-in animations */
+@keyframes heroFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes heroSlideInLeft {
+  from { opacity: 0; transform: translateX(-24px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes heroSlideInRight {
+  from { opacity: 0; transform: translateX(24px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes heroSlideUpFade {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes heroScaleXReveal {
+  from { opacity: 0; transform: scaleX(0); }
+  to { opacity: 1; transform: scaleX(1); }
+}
+@keyframes heroGrowDown {
+  from { opacity: 0; transform: scaleY(0); }
+  to { opacity: 1; transform: scaleY(1); }
+}
+
+.hero-anim {
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+.hero-fade-in   { animation: heroFadeIn 0.8s ease forwards; }
+.hero-slide-left  { animation: heroSlideInLeft 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+.hero-slide-right { animation: heroSlideInRight 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+.hero-slide-up    { animation: heroSlideUpFade 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+.hero-scale-x     { animation: heroScaleXReveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards; transform-origin: left center; }
+.hero-grow-down   { animation: heroGrowDown 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards; transform-origin: top center; }
