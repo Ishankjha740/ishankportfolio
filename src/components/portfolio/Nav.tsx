@@ -173,7 +173,7 @@ export const Nav = () => {
             href="mailto:jha.ishank74@gmail.com"
             aria-label="Email"
             title="Email"
-            className="inline-flex items-center justify-center w-10 h-10 shrink-0 text-ink hover:text-citrus transition-colors duration-300 border-2 border-ink hover:bg-ink"
+            className="inline-flex items-center justify-center w-10 h-10 shrink-0 text-ink hover:text-citrus transition-all duration-300 border-2 border-ink hover:bg-ink hover:-translate-y-0.5"
           >
             <Mail size={18} strokeWidth={2} aria-hidden="true" />
           </a>
@@ -183,7 +183,7 @@ export const Nav = () => {
             rel="noreferrer"
             aria-label="LinkedIn"
             title="LinkedIn"
-            className="inline-flex items-center justify-center w-10 h-10 shrink-0 text-ink hover:text-citrus transition-colors duration-300 border-2 border-ink hover:bg-ink"
+            className="inline-flex items-center justify-center w-10 h-10 shrink-0 text-ink hover:text-citrus transition-all duration-300 border-2 border-ink hover:bg-ink hover:-translate-y-0.5"
           >
             <Linkedin size={18} strokeWidth={2} aria-hidden="true" />
           </a>
@@ -193,7 +193,7 @@ export const Nav = () => {
             rel="noreferrer"
             aria-label="Behance"
             title="Behance"
-            className="inline-flex items-center justify-center w-10 h-10 shrink-0 text-ink hover:text-citrus transition-colors duration-300 border-2 border-ink hover:bg-ink"
+            className="inline-flex items-center justify-center w-10 h-10 shrink-0 text-ink hover:text-citrus transition-all duration-300 border-2 border-ink hover:bg-ink hover:-translate-y-0.5"
           >
             <BehanceIcon width={18} height={18} aria-hidden="true" />
           </a>
