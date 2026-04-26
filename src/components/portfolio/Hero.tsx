@@ -183,9 +183,9 @@ export const Hero = () => {
 
       {/* Marquee */}
       <div className="overflow-hidden border-y-2 border-ink py-4 sm:py-5 bg-ink text-citrus">
-        <div className="flex animate-marquee whitespace-nowrap">
+        <div className="flex w-max animate-marquee whitespace-nowrap">
           {[...Array(2)].map((_, i) => (
-            <div key={i} className="flex items-center gap-6 sm:gap-8 pr-6 sm:pr-8 display-heading text-xl sm:text-2xl md:text-3xl">
+            <div key={i} className="flex shrink-0 items-center gap-6 sm:gap-8 pr-6 sm:pr-8 display-heading text-xl sm:text-2xl md:text-3xl" aria-hidden={i === 1}>
               <span>STRATEGY</span><span className="text-paper">★</span>
               <span>STORYTELLING</span><span className="text-paper">★</span>
               <span>ANALYTICS</span><span className="text-paper">★</span>
