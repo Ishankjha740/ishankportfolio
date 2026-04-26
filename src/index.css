@@ -225,10 +225,20 @@
 .hero-scale-x     { animation: heroScaleXReveal 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards; transform-origin: left center; }
 .hero-grow-down   { animation: heroGrowDown 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards; transform-origin: top center; }
 
-/* About — scroll-triggered animations */
+/* ============================================================
+   Unified scroll-reveal system
+   - Apply class `.reveal` (+ optional variant) to any element.
+   - The closest `.reveal-root.animate` ancestor triggers it.
+   - All animations are 1s, ease-out, run once.
+   - Supports prefers-reduced-motion.
+   ============================================================ */
 @keyframes fadeSlideUp {
   from { opacity: 0; transform: translateY(30px); }
   to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes revealFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 @keyframes slideInFromLeft {
   from { opacity: 0; transform: translateX(-40px); }
@@ -264,6 +274,42 @@
   to   { transform: scaleX(1); }
 }
 
+/* -------- Generic reveal primitives -------- */
+.reveal-root .reveal,
+.reveal-root .reveal-up,
+.reveal-root .reveal-left,
+.reveal-root .reveal-right,
+.reveal-root .reveal-scale,
+.reveal-root .reveal-fade {
+  opacity: 0;
+  animation-fill-mode: forwards;
+  will-change: transform, opacity;
+}
+.reveal-root.animate .reveal,
+.reveal-root.animate .reveal-up   { animation: fadeSlideUp 1s ease-out forwards; }
+.reveal-root.animate .reveal-fade { animation: revealFadeIn 1s ease-out forwards; }
+.reveal-root.animate .reveal-left { animation: slideInFromLeft 1s ease-out forwards; }
+.reveal-root.animate .reveal-right{ animation: slideInFromRight 1s ease-out forwards; }
+.reveal-root.animate .reveal-scale{ animation: statFadeScale 1s ease-out forwards; }
+
+/* Stagger helpers — apply alongside a reveal-* class */
+.reveal-root.animate .stagger-1 { animation-delay: 0.10s; }
+.reveal-root.animate .stagger-2 { animation-delay: 0.20s; }
+.reveal-root.animate .stagger-3 { animation-delay: 0.30s; }
+.reveal-root.animate .stagger-4 { animation-delay: 0.40s; }
+.reveal-root.animate .stagger-5 { animation-delay: 0.50s; }
+.reveal-root.animate .stagger-6 { animation-delay: 0.60s; }
+.reveal-root.animate .stagger-7 { animation-delay: 0.70s; }
+.reveal-root.animate .stagger-8 { animation-delay: 0.80s; }
+
+/* Auto-stagger lists: any direct child gets a 0.08s incremental delay */
+.reveal-root.animate .stagger-children > * {
+  opacity: 0;
+  animation: fadeSlideUp 1s ease-out forwards;
+  animation-delay: calc(var(--i, 0) * 0.08s + 0.1s);
+  will-change: transform, opacity;
+}
+
 /* All About animation targets start hidden */
 .about-anim {
   opacity: 0;
@@ -278,7 +324,7 @@
   will-change: transform, opacity;
 }
 .about-section.animate .about-title-box {
-  animation: fadeSlideUp 0.8s ease-out 0.1s forwards;
+  animation: fadeSlideUp 1s ease-out 0.1s forwards;
   opacity: 1;
 }
 
@@ -290,7 +336,7 @@
   will-change: transform, opacity;
 }
 .about-section.animate .about-headline .about-word {
-  animation: wordReveal 0.7s ease-out forwards;
+  animation: wordReveal 1s ease-out forwards;
 }
 /* Yellow highlight under "Ishank Jha" */
 .about-section .about-highlight {
@@ -298,8 +344,8 @@
 }
 
 /* Bio paragraphs */
-.about-section.animate .about-bio-1 { animation: fadeSlideUp 0.8s ease-out 0.2s forwards; }
-.about-section.animate .about-bio-2 { animation: fadeSlideUp 0.8s ease-out 0.3s forwards; }
+.about-section.animate .about-bio-1 { animation: fadeSlideUp 1s ease-out 0.2s forwards; }
+.about-section.animate .about-bio-2 { animation: fadeSlideUp 1s ease-out 0.3s forwards; }
 
 /* Stats grid cells — scale + fade pop-in, staggered */
 .about-section .about-stat,
@@ -312,7 +358,7 @@
 }
 .about-section.animate .about-stat,
 .about-section.animate .about-stat-pop {
-  animation: statFadeScale 0.7s ease-out forwards;
+  animation: statFadeScale 1s ease-out forwards;
 }
 .about-section.animate .about-stat-1 { animation-delay: 0.30s; }
 .about-section.animate .about-stat-2 { animation-delay: 0.40s; }
@@ -321,7 +367,7 @@
 
 /* "What I Do?" label */
 .about-section.animate .about-whatido {
-  animation: slideInFromLeft 0.8s ease-out 0.7s forwards;
+  animation: slideInFromLeft 1s ease-out 0.7s forwards;
 }
 
 /* List items 01/02/03 + drawing divider underneath */
@@ -335,19 +381,26 @@
   transform: scaleX(0);
   transform-origin: left center;
 }
-.about-section.animate .about-list-1 { animation: fadeSlideUp 0.7s ease-out 0.85s forwards; }
-.about-section.animate .about-list-2 { animation: fadeSlideUp 0.7s ease-out 0.97s forwards; }
-.about-section.animate .about-list-3 { animation: fadeSlideUp 0.7s ease-out 1.09s forwards; }
-.about-section.animate .about-list-1::after { animation: drawLineX 0.6s ease-out 1.05s forwards; }
-.about-section.animate .about-list-2::after { animation: drawLineX 0.6s ease-out 1.17s forwards; }
-.about-section.animate .about-list-3::after { animation: drawLineX 0.6s ease-out 1.29s forwards; }
+.about-section.animate .about-list-1 { animation: fadeSlideUp 1s ease-out 0.85s forwards; }
+.about-section.animate .about-list-2 { animation: fadeSlideUp 1s ease-out 0.97s forwards; }
+.about-section.animate .about-list-3 { animation: fadeSlideUp 1s ease-out 1.09s forwards; }
+.about-section.animate .about-list-1::after { animation: drawLineX 1s ease-out 1.05s forwards; }
+.about-section.animate .about-list-2::after { animation: drawLineX 1s ease-out 1.17s forwards; }
+.about-section.animate .about-list-3::after { animation: drawLineX 1s ease-out 1.29s forwards; }
 
 /* Reduced motion — show everything instantly, no animations */
 @media (prefers-reduced-motion: reduce) {
   .about-section .about-anim,
   .about-section .about-title-box,
   .about-section .about-headline .about-word,
-  .about-section .about-list-item::after {
+  .about-section .about-list-item::after,
+  .reveal-root .reveal,
+  .reveal-root .reveal-up,
+  .reveal-root .reveal-left,
+  .reveal-root .reveal-right,
+  .reveal-root .reveal-scale,
+  .reveal-root .reveal-fade,
+  .reveal-root .stagger-children > * {
     opacity: 1 !important;
     transform: none !important;
     animation: none !important;
