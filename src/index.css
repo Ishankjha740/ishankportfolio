@@ -187,3 +187,92 @@
 .animate-blob { animation: blob 14s ease-in-out infinite; }
 @keyframes spin-slow { to { transform: rotate(360deg); } }
 .animate-spin-slow { animation: spin-slow 22s linear infinite; }
+
+/* ============================================================
+   Scroll-reveal + premium motion utilities
+   ============================================================ */
+@layer utilities {
+  /* Base state for any <Reveal> wrapper or .reveal element */
+  .reveal {
+    opacity: 0;
+    transform: translate3d(0, var(--reveal-distance, 16px), 0);
+    transition:
+      opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms),
+      transform 0.8s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms);
+    will-change: opacity, transform;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+  /* Animated underline for nav-style links */
+  .nav-underline {
+    position: relative;
+  }
+  .nav-underline::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    height: 2px;
+    width: 100%;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right center;
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .nav-underline:hover::after,
+  .nav-underline:focus-visible::after {
+    transform: scaleX(1);
+    transform-origin: left center;
+  }
+
+  /* Subtle hover lift for interactive surfaces (cards, icons) */
+  .lift-hover {
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .lift-hover:hover {
+    transform: translateY(-3px);
+  }
+
+  /* Premium card hover — slight scale + soft shadow */
+  .card-hover {
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
+  }
+  .card-hover:hover {
+    transform: translateY(-4px) scale(1.015);
+  }
+
+  /* Grayscale → color treatment for client logos */
+  .logo-mono {
+    filter: grayscale(1) contrast(0.95);
+    opacity: 0.85;
+    transition: filter 0.5s ease, opacity 0.5s ease, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .group:hover .logo-mono,
+  .logo-mono:hover {
+    filter: grayscale(0) contrast(1);
+    opacity: 1;
+    transform: scale(1.06) translateY(-2px);
+  }
+}
+
+/* Respect reduced motion preference globally */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
