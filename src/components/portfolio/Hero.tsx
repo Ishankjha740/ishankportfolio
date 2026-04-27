@@ -51,14 +51,6 @@ export const Hero = () => {
 
   return (
     <section id="top" className="relative min-h-[90vh] pt-16 lg:pt-12 pb-16 overflow-hidden bg-paper">
-      {/* Subtle grid */}
-      <div className="absolute inset-0 pointer-events-none opacity-20 hero-anim hero-fade-in" style={{ animationDelay: "0.1s" }}>
-        <div className="h-full w-full" style={{
-          backgroundImage: 'linear-gradient(hsl(var(--ink)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--ink)) 1px, transparent 1px)',
-          backgroundSize: '60px 60px'
-        }} />
-      </div>
-
       <div className="grid lg:grid-cols-[1fr_45%] min-h-[90vh] relative">
         {/* LEFT — copy block */}
         <div className="flex flex-col justify-center px-5 sm:px-8 md:px-16 lg:px-20 py-12 sm:py-14 lg:py-20 relative">
