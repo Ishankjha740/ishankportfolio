@@ -52,7 +52,7 @@ export const Hero = () => {
   return (
     <section id="top" className="relative min-h-[90vh] pt-16 lg:pt-12 pb-16 overflow-hidden bg-paper">
       {/* Subtle grid */}
-      <div className="absolute inset-0 pointer-events-none opacity-[0.04] hero-anim hero-fade-in" style={{ animationDelay: "0.1s" }}>
+      <div className="absolute inset-0 pointer-events-none opacity-20 hero-anim hero-fade-in" style={{ animationDelay: "0.1s" }}>
         <div className="h-full w-full" style={{
           backgroundImage: 'linear-gradient(hsl(var(--ink)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--ink)) 1px, transparent 1px)',
           backgroundSize: '60px 60px'
