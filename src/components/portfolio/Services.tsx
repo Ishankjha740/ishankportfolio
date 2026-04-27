@@ -1,5 +1,4 @@
 import { ArrowUpRight } from "lucide-react";
-import { useReveal } from "@/hooks/use-reveal";
 
 const services = [
   {
@@ -35,21 +34,19 @@ const services = [
 ];
 
 export const Services = () => {
-  const { ref, className } = useReveal<HTMLElement>();
   return (
-    <section id="services" ref={ref} className={`py-16 md:py-28 bg-paper ${className}`}>
+    <section id="services" className="py-16 md:py-28 bg-paper">
       <div className="container max-w-6xl">
         <div className="text-center mb-10 md:mb-14">
-          <div className="reveal-up inline-block border-2 border-ink px-6 sm:px-8 md:px-16 py-4 sm:py-5 bg-paper-warm shadow-pop-yellow">
+          <div className="inline-block border-2 border-ink px-6 sm:px-8 md:px-16 py-4 sm:py-5 bg-paper-warm shadow-pop-yellow">
             <h2 className="display-heading text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-ink">Services</h2>
           </div>
         </div>
 
-        <div className="stagger-children grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-ink border-2 border-ink">
-          {services.map((s, i) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-ink border-2 border-ink">
+          {services.map((s) => (
             <article
               key={s.n}
-              style={{ ["--i" as string]: i }}
               className="group relative bg-paper-warm p-5 sm:p-7 hover:bg-citrus transition-colors duration-300 cursor-default"
             >
               <div className="flex items-start justify-between mb-6 sm:mb-8">

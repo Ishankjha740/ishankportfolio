@@ -7,7 +7,6 @@ import logoInsideOut from "@/assets/clients/Inside_Out.png";
 import logoSriAditya from "@/assets/clients/Sri_Aditya_Vantage.png";
 import logoStyleChai from "@/assets/clients/Style_Chai.png";
 import logoCommons from "@/assets/clients/The_Commons_by_Incor.jpg";
-import { useReveal } from "@/hooks/use-reveal";
 
 type Social = {
   instagram?: string;
@@ -121,26 +120,24 @@ const socialMeta: Array<{
 ];
 
 export const Clients = () => {
-  const { ref, className } = useReveal<HTMLElement>();
   return (
-    <section id="clients" ref={ref} className={`py-16 md:py-28 bg-paper-warm ${className}`}>
+    <section id="clients" className="py-16 md:py-28 bg-paper-warm">
       <div className="container max-w-6xl">
         <div className="text-center mb-3 md:mb-4">
-          <div className="reveal-up inline-block border-2 border-ink px-6 sm:px-8 md:px-16 py-4 sm:py-5 bg-paper shadow-pop-yellow">
+          <div className="inline-block border-2 border-ink px-6 sm:px-8 md:px-16 py-4 sm:py-5 bg-paper shadow-pop-yellow">
             <h2 className="display-heading text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-ink">
               Clients Handled
             </h2>
           </div>
         </div>
-        <p className="reveal-fade stagger-1 text-center label-eyebrow mb-10 md:mb-14">
+        <p className="text-center label-eyebrow mb-10 md:mb-14">
           Brands I've built and scaled
         </p>
 
         {(() => {
-          const renderCard = (c: Client, i: number) => (
+          const renderCard = (c: Client) => (
             <article
               key={c.name}
-              style={{ ["--i" as string]: i }}
               className="group relative bg-paper hover:bg-citrus/40 transition-colors duration-300 p-5 sm:p-7 md:p-8 flex flex-col items-center justify-between min-h-[180px] sm:min-h-[210px]"
             >
               {/* Logo placeholder block — swap with <img src=... /> later */}
@@ -193,12 +190,12 @@ export const Clients = () => {
 
           return (
             <>
-              <div className="stagger-children grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-px bg-ink border-2 border-ink">
-                {topRows.map((c, i) => renderCard(c, i))}
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-px bg-ink border-2 border-ink">
+                {topRows.map(renderCard)}
               </div>
               {lastRow.length > 0 && (
-                <div className="stagger-children mt-px grid grid-cols-2 gap-px bg-ink border-2 border-ink border-t-0 sm:max-w-[66.6667%] sm:mx-auto">
-                  {lastRow.map((c, i) => renderCard(c, i))}
+                <div className="mt-px grid grid-cols-2 gap-px bg-ink border-2 border-ink border-t-0 sm:max-w-[66.6667%] sm:mx-auto">
+                  {lastRow.map(renderCard)}
                 </div>
               )}
             </>
