@@ -1,5 +1,6 @@
 import { ArrowDownToLine, ArrowUpRight, Mail, Phone, Linkedin, Link2, MapPin } from "lucide-react";
 import type { SVGProps } from "react";
+import { useReveal } from "@/hooks/use-reveal";
 
 const BehanceIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
@@ -23,23 +24,25 @@ const links = [
 ];
 
 export const Contact = () => {
+  const { ref, className } = useReveal<HTMLElement>();
   return (
-    <section id="contact" className="py-16 md:py-28 bg-paper">
+    <section id="contact" ref={ref} className={`py-16 md:py-28 bg-paper ${className}`}>
       <div className="container max-w-6xl">
         <div className="text-center mb-10 md:mb-12">
-          <div className="inline-block border-2 border-ink px-6 sm:px-8 md:px-16 py-4 sm:py-5 bg-paper-warm shadow-pop-yellow">
+          <div className="reveal-up inline-block border-2 border-ink px-6 sm:px-8 md:px-16 py-4 sm:py-5 bg-paper-warm shadow-pop-yellow">
             <h2 className="display-heading text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-ink">Contact</h2>
           </div>
-          <p className="mt-5 sm:mt-6 text-ink-soft text-base sm:text-lg">
+          <p className="reveal-fade stagger-1 mt-5 sm:mt-6 text-ink-soft text-base sm:text-lg">
             Feel <span className="bg-citrus px-1 font-bold text-ink">free</span> to contact me!
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-px bg-ink border-2 border-ink">
-          {links.map((l) => (
+        <div className="stagger-children grid md:grid-cols-2 gap-px bg-ink border-2 border-ink">
+          {links.map((l, i) => (
             <a
               key={l.label}
               href={l.href}
+              style={{ ["--i" as string]: i }}
               target={l.href.startsWith("http") ? "_blank" : undefined}
               rel="noreferrer"
               className="group flex items-center gap-4 sm:gap-5 bg-paper-warm hover:bg-citrus transition-colors duration-300 p-4 sm:p-6"
@@ -56,7 +59,7 @@ export const Contact = () => {
           ))}
         </div>
 
-        <div className="mt-10 sm:mt-12 flex flex-col items-center gap-5 sm:gap-6 text-center">
+        <div className="reveal-up stagger-6 mt-10 sm:mt-12 flex flex-col items-center gap-5 sm:gap-6 text-center">
           <a
             href="/Ishank Jha_resume_updated.pdf"
             download="Ishank Jha_resume_updated.pdf"
