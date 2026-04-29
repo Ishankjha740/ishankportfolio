@@ -1,15 +1,39 @@
 version: 2
 updates:
   - package-ecosystem: "npm"
-    directory: /
+    directory: "/"
     schedule:
       interval: "weekly"
-    ignore:
-      - dependency-type: "devDependencies"
+      day: "monday"
+      time: "03:00"
     commit-message:
-      prefix: "fix(deps)"
-    grouping:
-      strategy: "auto"  
-    automerged:
-      patch: true
-      minor: true
+      prefix: "chore(deps):"
+      include: "scope"
+    pull-request-branch-name:
+      separator: "/"
+    rebase-strategy: "auto"
+    reviewers:
+      - "Ishankjha740"
+    labels:
+      - "dependencies"
+      - "automated"
+    allow:
+      - dependency-type: "all"
+    groups:
+      production:
+        dependency-types:
+          - "production"
+        update-types:
+          - "minor"
+          - "patch"
+      development:
+        dependency-types:
+          - "development"
+        update-types:
+          - "minor"
+          - "patch"
+      major-updates:
+        dependency-types:
+          - "all"
+        update-types:
+          - "major"
