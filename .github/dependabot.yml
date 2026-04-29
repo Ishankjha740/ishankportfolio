@@ -1,0 +1,15 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: /
+    schedule:
+      interval: "weekly"
+    ignore:
+      - dependency-type: "devDependencies"
+    commit-message:
+      prefix: "fix(deps)"
+    grouping:
+      strategy: "auto"  
+    automerged:
+      patch: true
+      minor: true
