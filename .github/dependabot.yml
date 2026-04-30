@@ -19,9 +19,6 @@ updates:
       include: "scope"
 
     groups:
-      security-updates:
-        applies-to: security-updates
-
       minor-and-patch:
         patterns:
           - "*"
@@ -29,5 +26,8 @@ updates:
           - "minor"
           - "patch"
 
-    allow:
-      - dependency-type: "all"
+      major-updates:
+        patterns:
+          - "*"
+        update-types:
+          - "major"
