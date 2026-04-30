@@ -1,39 +1,33 @@
 version: 2
+
 updates:
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
-      interval: "weekly"
-      day: "monday"
-      time: "03:00"
-    commit-message:
-      prefix: "chore(deps):"
-      include: "scope"
-    pull-request-branch-name:
-      separator: "/"
-    rebase-strategy: "auto"
-    reviewers:
-      - "Ishankjha740"
+      interval: "daily"
+
+    open-pull-requests-limit: 10
+
+    versioning-strategy: increase
+
     labels:
       - "dependencies"
-      - "automated"
+      - "security"
+
+    commit-message:
+      prefix: "fix"
+      include: "scope"
+
+    groups:
+      security-updates:
+        applies-to: security-updates
+
+      minor-and-patch:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
+
     allow:
       - dependency-type: "all"
-    groups:
-      production:
-        dependency-types:
-          - "production"
-        update-types:
-          - "minor"
-          - "patch"
-      development:
-        dependency-types:
-          - "development"
-        update-types:
-          - "minor"
-          - "patch"
-      major-updates:
-        dependency-types:
-          - "all"
-        update-types:
-          - "major"
