@@ -9,7 +9,7 @@ type Kind = "image" | "video" | "youtube";
 // Division 2 maps the remaining 16 images (work-13 .. work-28)
 const imageLinks: Record<string, string> = {
   // Division 1
-  "work-1.png": "https://www.instagram.com/p/DWbZzLDEsVB/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+  "work-1.png": "https://www.instagram.com/p/DU0ukjFkkhd/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
   "work-2.png": "https://www.instagram.com/p/DJo6cKvvr39/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
   "work-3.png": "https://www.instagram.com/p/DIpfnhnNcN3/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
   "work-4.png": "https://www.instagram.com/p/DHKOGjPhmZh/",
