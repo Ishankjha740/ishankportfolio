@@ -33,7 +33,7 @@ const imageLinks: Record<string, string> = {
   "work-21.png": "https://www.instagram.com/p/DDj7HxQNLYD/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
   "work-22.png": "https://www.instagram.com/p/C7WpePPSHso/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
   "work-23.png": "https://www.instagram.com/p/DGEspZpC9eb/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-  "work-24.png": "https://www.instagram.com/p/DIupHjnIOe8/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==,
+  "work-24.png": "https://www.instagram.com/p/DIupHjnIOe8/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
   "work-25.png": "https://www.instagram.com/p/DCc9G6JP6FX/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
   "work-26.png": "https://www.instagram.com/p/DIgZu_OJ9d4/?utm_source=ig_web_copy_link&igsh=NTc4MTIwNjQ2YQ==",
 };
