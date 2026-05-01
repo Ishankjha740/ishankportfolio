@@ -2,11 +2,14 @@ version: 2
 
 updates:
   - package-ecosystem: "npm"
-    directory: "/"
+    directory: "/frontend"
     schedule:
       interval: "daily"
+      time: "11:00"
+       allow:
+         - dependency-type: "direct"
 
-    open-pull-requests-limit: 10
+    open-pull-requests-limit: 5
 
     versioning-strategy: increase
 
