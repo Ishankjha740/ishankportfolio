@@ -1,36 +1,87 @@
 version: 2
 
 updates:
+  # 🔹 NPM (Frontend)
   - package-ecosystem: "npm"
     directory: "/frontend"
     schedule:
       interval: "daily"
-      time: "11:00"
-       allow:
-         - dependency-type: "direct"
+      time: "04:00"
 
+    # Keep queue tight
     open-pull-requests-limit: 5
 
-    versioning-strategy: increase
+    # Auto rebase → faster merges
+    rebase-strategy: "auto"
+
+    # Only meaningful updates
+    allow:
+      - dependency-type: "direct"
+
+    # Clean commit messages
+    commit-message:
+      prefix: "deps"
+      include: "scope"
 
     labels:
       - "dependencies"
-      - "security"
 
-    commit-message:
-      prefix: "fix"
-      include: "scope"
-
+    # 🔥 Smart grouping (THIS is where speed comes from)
     groups:
-      minor-and-patch:
+      minor-patch:
         patterns:
           - "*"
         update-types:
           - "minor"
           - "patch"
 
-      major-updates:
+      major:
         patterns:
           - "*"
         update-types:
           - "major"
+
+---
+
+  # 🔹 GitHub Actions (CI/CD)
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+
+    open-pull-requests-limit: 3
+    rebase-strategy: "auto"
+
+    commit-message:
+      prefix: "ci"
+
+    labels:
+      - "ci"
+      - "dependencies"
+
+    groups:
+      gha-updates:
+        patterns:
+          - "*"
+
+---
+
+  # 🔹 Optional: Backend (if you have one)
+  - package-ecosystem: "npm"
+    directory: "/backend"
+    schedule:
+      interval: "daily"
+
+    open-pull-requests-limit: 5
+    rebase-strategy: "auto"
+
+    commit-message:
+      prefix: "deps"
+
+    labels:
+      - "dependencies"
+
+    groups:
+      backend-deps:
+        patterns:
+          - "*"
