@@ -15,7 +15,7 @@ We appreciate your responsible disclosure of security vulnerabilities. Please do
 
 ### How to Report
 
-If you discover a security vulnerability, please email us at: [security@ishankjha.com](mailto:security@ishankjha.com)
+If you discover a security vulnerability, please email us at: [info.git@ishankportfolio.space](mailto:info.git@ishankportfolio.space)
 
 **Include the following details:**
 - Description of the vulnerability
@@ -25,7 +25,7 @@ If you discover a security vulnerability, please email us at: [security@ishankjh
 
 ### What to Expect
 
-- **Acknowledgment**: We will acknowledge your report within 48 hours
+- **Acknowledgement**: We will acknowledge your report within 48 hours
 - **Investigation**: We will investigate the issue and keep you informed of progress
 - **Timeline**: Critical vulnerabilities will be addressed within 7 days; other issues within 30 days
 - **Resolution**: Once fixed, we will notify you before public disclosure
