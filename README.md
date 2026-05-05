@@ -1,4 +1,4 @@
-# Welcome to your Lovable project
+# Welcome to my Portfolio project
 
 This website is the **professional portfolio of Ishank Jha**, a Brand Strategist and Content Architect based in Hyderabad, India.
 
