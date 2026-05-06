@@ -126,7 +126,7 @@ export const Nav = () => {
         </a>
 
         {/* Nav items */}
-        <nav className="flex-1 flex flex-col py-6">
+        <nav className="flex-1 flex flex-col py-3">
           {links.map((l) => {
             const isActive = active === l.href;
             const Icon = l.icon;
@@ -136,10 +136,10 @@ export const Nav = () => {
                 href={l.href}
                 title={collapsed ? l.label : undefined}
                 aria-label={l.label}
-                className={`relative uppercase text-[13px] font-bold tracking-[0.18em] transition-colors duration-300 border-b border-ink/20 ${
+                className={`relative uppercase text-[11px] font-bold tracking-[0.16em] transition-colors duration-300 border-b border-ink/20 ${
                   collapsed
                     ? "flex items-center justify-center px-0 py-4"
-                    : "px-6 py-3.5"
+                    : "px-5 py-2.5"
                 } ${
                   isActive
                     ? "bg-ink text-citrus"
@@ -163,8 +163,8 @@ export const Nav = () => {
         <div
           className={`border-t-2 border-ink bg-paper ${
             collapsed
-              ? "p-3 flex flex-col items-center gap-3"
-              : "p-5 flex items-center justify-center gap-3"
+              ? "p-2.5 flex flex-col items-center gap-2"
+              : "p-3 flex items-center justify-center gap-2"
           }`}
         >
           <a
