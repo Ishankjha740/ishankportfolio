@@ -215,11 +215,7 @@ const WorkTile = ({ src, ratio, title, kind, href, featured }: TileProps) => {
       {...wrapperProps}
       onMouseEnter={handleEnter}
       onMouseLeave={handleLeave}
-      className={`group relative block overflow-hidden border-2 border-ink bg-paper-warm transition-transform duration-300 ease-out hover:-translate-y-1 cursor-pointer ${
-        featured
-          ? "col-span-2 row-span-2 sm:col-span-2 sm:row-span-2 lg:col-span-2 lg:row-span-2"
-          : ratioClass[ratio]
-      }`}
+      className="group relative block overflow-hidden border-2 border-ink bg-paper-warm transition-transform duration-300 ease-out hover:-translate-y-1 cursor-pointer w-full h-full"
     >
       {kind === "image" ? (
         <img
