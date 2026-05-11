@@ -160,7 +160,17 @@ export const CreativeWorks = () => {
 
         <Stagger gap={0.05} className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5 auto-rows-[160px] sm:auto-rows-[190px] md:auto-rows-[220px] grid-flow-dense">
           {works.map((w, i) => (
-            <WorkTile key={w.id} {...w} featured={w.kind === "youtube" && i === 0} />
+            <RevealItem
+              key={w.id}
+              variant="scale"
+              className={
+                (w.kind === "youtube" && i === 0)
+                  ? "col-span-2 row-span-2 sm:col-span-2 sm:row-span-2 lg:col-span-2 lg:row-span-2"
+                  : (w.ratio === "portrait" ? "row-span-2" : "row-span-1")
+              }
+            >
+              <WorkTile {...w} featured={w.kind === "youtube" && i === 0} />
+            </RevealItem>
           ))}
         </Stagger>
       </div>
