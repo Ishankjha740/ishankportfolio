@@ -1,3 +1,7 @@
+import { SectionStage } from "@/components/motion/SectionStage";
+import { Reveal, Stagger, RevealItem } from "@/components/motion/Reveal";
+import { SplitLines } from "@/components/motion/SplitLines";
+
 const projects = [
   {
     n: "01",
@@ -43,18 +47,21 @@ const projects = [
 
 export const Work = () => {
   return (
-    <section id="work" className="py-16 md:py-28 bg-paper-warm">
+    <SectionStage id="work" className="py-16 md:py-28 bg-paper-warm" intensity="high">
       <div className="container max-w-6xl">
         <div className="text-center mb-10 md:mb-12">
-          <div className="inline-block border-2 border-ink px-6 sm:px-8 md:px-16 py-4 sm:py-5 bg-paper shadow-pop-yellow">
-            <h2 className="display-heading text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-ink">Portfolio</h2>
-          </div>
+          <Reveal variant="scale" className="inline-block">
+            <div className="inline-block border-2 border-ink px-6 sm:px-8 md:px-16 py-4 sm:py-5 bg-paper shadow-pop-yellow">
+              <SplitLines as="h2" text="Portfolio" by="word" className="display-heading text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-ink" />
+            </div>
+          </Reveal>
         </div>
 
-        <div className="space-y-px bg-ink border-2 border-ink">
+        <Stagger gap={0.12} className="space-y-px bg-ink border-2 border-ink">
           {projects.map((p) => (
-            <article
+            <RevealItem
               key={p.n}
+              variant="up"
               className="group bg-paper hover:bg-citrus/40 transition-colors duration-300 px-4 sm:px-5 md:px-8 py-6 sm:py-8 md:py-10 cursor-default"
             >
               <div className="grid grid-cols-12 gap-4 sm:gap-5 md:gap-8 items-start">
@@ -90,10 +97,10 @@ export const Work = () => {
                   </p>
                 </div>
               </div>
-            </article>
+            </RevealItem>
           ))}
-        </div>
+        </Stagger>
       </div>
-    </section>
+    </SectionStage>
   );
 };

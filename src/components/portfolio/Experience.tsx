@@ -1,3 +1,7 @@
+import { SectionStage } from "@/components/motion/SectionStage";
+import { Reveal, Stagger, RevealItem } from "@/components/motion/Reveal";
+import { SplitLines } from "@/components/motion/SplitLines";
+
 const roles = [
   {
     period: "Jan 2026 — Present",
@@ -64,22 +68,27 @@ const roles = [
 
 export const Experience = () => {
   return (
-    <section id="experience" className="py-16 md:py-28 bg-paper-warm relative overflow-hidden">
+    <SectionStage id="experience" className="py-16 md:py-28 bg-paper-warm relative overflow-hidden">
       <div className="container max-w-6xl">
         <div className="text-center mb-10 md:mb-14">
-          <div className="inline-block border-2 border-ink px-6 sm:px-8 md:px-16 py-4 sm:py-5 bg-paper shadow-pop-yellow">
-            <h2 className="display-heading text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-ink">Resume</h2>
-          </div>
+          <Reveal variant="scale" className="inline-block">
+            <div className="inline-block border-2 border-ink px-6 sm:px-8 md:px-16 py-4 sm:py-5 bg-paper shadow-pop-yellow">
+              <SplitLines as="h2" text="Resume" by="word" className="display-heading text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-ink" />
+            </div>
+          </Reveal>
         </div>
 
-        <h3 className="display-heading text-lg sm:text-xl text-ink mb-5 sm:mb-6 flex items-center gap-3">
-          <span className="w-8 h-1 bg-citrus" /> Experience
-        </h3>
+        <Reveal variant="subtle">
+          <h3 className="display-heading text-lg sm:text-xl text-ink mb-5 sm:mb-6 flex items-center gap-3">
+            <span className="w-8 h-1 bg-citrus" /> Experience
+          </h3>
+        </Reveal>
 
-        <div className="grid md:grid-cols-2 gap-px bg-ink border-2 border-ink">
+        <Stagger gap={0.1} className="grid md:grid-cols-2 gap-px bg-ink border-2 border-ink">
           {roles.map((r, i) => (
-            <article
+            <RevealItem
               key={r.company + r.period}
+              variant="up"
               className="group bg-paper p-5 sm:p-6 md:p-7 hover:bg-citrus transition-colors duration-300 cursor-default relative"
             >
               <div className="flex items-center justify-between gap-3 mb-3">
@@ -96,10 +105,10 @@ export const Experience = () => {
                   </li>
                 ))}
               </ul>
-            </article>
+            </RevealItem>
           ))}
-        </div>
+        </Stagger>
       </div>
-    </section>
+    </SectionStage>
   );
 };
