@@ -33,15 +33,13 @@ export const Reveal = ({
   ...rest
 }: RevealProps) => {
   const reduce = useReducedMotion();
-  if (reduce) return <div {...(rest as React.HTMLAttributes<HTMLDivElement>)}>{children}</div>;
-
   const v = variantMap[variant];
   return (
     <motion.div
-      initial="hidden"
-      whileInView="visible"
+      initial={reduce ? false : "hidden"}
+      whileInView={reduce ? undefined : "visible"}
       viewport={viewportLazy}
-      variants={v}
+      variants={reduce ? undefined : v}
       transition={{ duration: dur.md, ease: ease.out, delay }}
       {...rest}
     >
@@ -58,14 +56,12 @@ type StaggerProps = HTMLMotionProps<"div"> & {
 /** Container that staggers any direct <RevealItem /> children. */
 export const Stagger = ({ delay = 0, gap = 0.08, children, ...rest }: StaggerProps) => {
   const reduce = useReducedMotion();
-  if (reduce) return <div {...(rest as React.HTMLAttributes<HTMLDivElement>)}>{children}</div>;
-
   return (
     <motion.div
-      initial="hidden"
-      whileInView="visible"
+      initial={reduce ? false : "hidden"}
+      whileInView={reduce ? undefined : "visible"}
       viewport={viewportLazy}
-      variants={containerStagger(delay, gap)}
+      variants={reduce ? undefined : containerStagger(delay, gap)}
       {...rest}
     >
       {children}
@@ -78,10 +74,8 @@ type ItemProps = HTMLMotionProps<"div"> & { variant?: Variant };
 /** Child of <Stagger /> — inherits parent stagger timing. */
 export const RevealItem = ({ variant = "up", children, ...rest }: ItemProps) => {
   const reduce = useReducedMotion();
-  if (reduce) return <div {...(rest as React.HTMLAttributes<HTMLDivElement>)}>{children}</div>;
-
   return (
-    <motion.div variants={variantMap[variant]} {...rest}>
+    <motion.div variants={reduce ? undefined : variantMap[variant]} {...rest}>
       {children}
     </motion.div>
   );
