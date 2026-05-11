@@ -1,5 +1,8 @@
 import { ArrowUpRight, Play } from "lucide-react";
 import { useRef } from "react";
+import { SectionStage } from "@/components/motion/SectionStage";
+import { Reveal, Stagger, RevealItem } from "@/components/motion/Reveal";
+import { SplitLines } from "@/components/motion/SplitLines";
 
 type Ratio = "portrait" | "square";
 type Kind = "image" | "video" | "youtube";
@@ -140,24 +143,28 @@ const ratioClass: Record<Ratio, string> = {
 
 export const CreativeWorks = () => {
   return (
-    <section id="creative-works" className="py-16 md:py-28 bg-paper">
+    <SectionStage id="creative-works" className="py-16 md:py-28 bg-paper" intensity="high">
       <div className="container max-w-6xl">
         <div className="text-center mb-3 md:mb-4">
-          <div className="inline-block border-2 border-ink px-6 sm:px-8 md:px-16 py-4 sm:py-5 bg-paper-warm shadow-pop-yellow">
-            <h2 className="display-heading text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-ink">Works</h2>
-          </div>
+          <Reveal variant="scale" className="inline-block">
+            <div className="inline-block border-2 border-ink px-6 sm:px-8 md:px-16 py-4 sm:py-5 bg-paper-warm shadow-pop-yellow">
+              <SplitLines as="h2" text="Works" by="word" className="display-heading text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-ink" />
+            </div>
+          </Reveal>
         </div>
-        <p className="text-center label-eyebrow mb-10 md:mb-14">
-          Selected creative across platforms
-        </p>
+        <Reveal variant="subtle" delay={0.1}>
+          <p className="text-center label-eyebrow mb-10 md:mb-14">
+            Selected creative across platforms
+          </p>
+        </Reveal>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5 auto-rows-[160px] sm:auto-rows-[190px] md:auto-rows-[220px] grid-flow-dense">
+        <Stagger gap={0.05} className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5 auto-rows-[160px] sm:auto-rows-[190px] md:auto-rows-[220px] grid-flow-dense">
           {works.map((w, i) => (
             <WorkTile key={w.id} {...w} featured={w.kind === "youtube" && i === 0} />
           ))}
-        </div>
+        </Stagger>
       </div>
-    </section>
+    </SectionStage>
   );
 };
 

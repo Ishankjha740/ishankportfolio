@@ -1,4 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
+import { SectionStage } from "@/components/motion/SectionStage";
+import { Reveal, Stagger, RevealItem } from "@/components/motion/Reveal";
+import { SplitLines } from "@/components/motion/SplitLines";
 
 const services = [
   {
@@ -35,18 +38,21 @@ const services = [
 
 export const Services = () => {
   return (
-    <section id="services" className="py-16 md:py-28 bg-paper">
+    <SectionStage id="services" className="py-16 md:py-28 bg-paper">
       <div className="container max-w-6xl">
         <div className="text-center mb-10 md:mb-14">
-          <div className="inline-block border-2 border-ink px-6 sm:px-8 md:px-16 py-4 sm:py-5 bg-paper-warm shadow-pop-yellow">
-            <h2 className="display-heading text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-ink">Services</h2>
-          </div>
+          <Reveal variant="scale" className="inline-block">
+            <div className="inline-block border-2 border-ink px-6 sm:px-8 md:px-16 py-4 sm:py-5 bg-paper-warm shadow-pop-yellow">
+              <SplitLines as="h2" text="Services" by="word" className="display-heading text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-ink" />
+            </div>
+          </Reveal>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-ink border-2 border-ink">
+        <Stagger gap={0.08} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-ink border-2 border-ink">
           {services.map((s) => (
-            <article
+            <RevealItem
               key={s.n}
+              variant="scale"
               className="group relative bg-paper-warm p-5 sm:p-7 hover:bg-citrus transition-colors duration-300 cursor-default"
             >
               <div className="flex items-start justify-between mb-6 sm:mb-8">
@@ -58,10 +64,10 @@ export const Services = () => {
               </div>
               <h3 className="display-heading text-base sm:text-lg leading-tight text-ink">{s.title}</h3>
               <p className="mt-3 text-xs sm:text-sm leading-relaxed text-ink-soft group-hover:text-ink">{s.desc}</p>
-            </article>
+            </RevealItem>
           ))}
-        </div>
+        </Stagger>
       </div>
-    </section>
+    </SectionStage>
   );
 };
