@@ -119,15 +119,13 @@ export const Hero = () => {
             <span className="display-heading text-[40vw] lg:text-[28rem] text-ink/[0.06] leading-none select-none">IJ</span>
           </div>
 
-          <div className="relative z-10 w-full h-full">
-            <img
-              src={portrait}
-              alt="Portrait of Ishank Jha, brand strategist"
-              width={1024}
-              height={1280}
-              className="w-full h-full object-cover object-top grayscale contrast-110 brightness-90"
-            />
-          </div>
+          <img
+            src={portrait}
+            alt="Portrait of Ishank Jha, brand strategist"
+            width={1024}
+            height={1280}
+            className="relative z-10 w-full h-full object-cover object-top grayscale contrast-110 brightness-90"
+          />
 
           {/* Floating yellow tag */}
           <div className="absolute top-4 right-4 sm:top-8 sm:right-8 z-20 bg-citrus border-2 border-ink px-3 sm:px-4 py-1.5 sm:py-2 shadow-pop hero-anim hero-fade-in" style={{ animationDelay: "1.4s" }}>

@@ -188,23 +188,6 @@
 @keyframes spin-slow { to { transform: rotate(360deg); } }
 .animate-spin-slow { animation: spin-slow 22s linear infinite; }
 
-/* Cinematic CTA glow pulse — used on Contact download button */
-@keyframes ctaGlow {
-  0%, 100% { box-shadow: 6px 6px 0 hsl(var(--citrus)), 0 0 0 0 hsl(var(--citrus) / 0.0); }
-  50%      { box-shadow: 6px 6px 0 hsl(var(--citrus)), 0 0 28px 2px hsl(var(--citrus) / 0.45); }
-}
-.cta-glow { animation: ctaGlow 3.4s ease-in-out infinite; }
-
-/* Respect reduced motion globally */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.001ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.001ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-
 /* Hero load-in animations */
 @keyframes heroFadeIn {
   from { opacity: 0; }

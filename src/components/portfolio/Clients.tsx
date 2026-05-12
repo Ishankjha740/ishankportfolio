@@ -7,9 +7,6 @@ import logoInsideOut from "@/assets/clients/Inside_Out.png";
 import logoSriAditya from "@/assets/clients/Sri_Aditya_Vantage.png";
 import logoStyleChai from "@/assets/clients/Style_Chai.png";
 import logoCommons from "@/assets/clients/The_Commons_by_Incor.jpg";
-import { SectionStage } from "@/components/motion/SectionStage";
-import { Reveal, Stagger, RevealItem } from "@/components/motion/Reveal";
-import { SplitLines } from "@/components/motion/SplitLines";
 
 type Social = {
   instagram?: string;
@@ -124,26 +121,23 @@ const socialMeta: Array<{
 
 export const Clients = () => {
   return (
-    <SectionStage id="clients" className="py-16 md:py-28 bg-paper-warm">
+    <section id="clients" className="py-16 md:py-28 bg-paper-warm">
       <div className="container max-w-6xl">
         <div className="text-center mb-3 md:mb-4">
-          <Reveal variant="scale" className="inline-block">
-            <div className="inline-block border-2 border-ink px-6 sm:px-8 md:px-16 py-4 sm:py-5 bg-paper shadow-pop-yellow">
-              <SplitLines as="h2" text="Clients Handled" by="word" className="display-heading text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-ink" />
-            </div>
-          </Reveal>
+          <div className="inline-block border-2 border-ink px-6 sm:px-8 md:px-16 py-4 sm:py-5 bg-paper shadow-pop-yellow">
+            <h2 className="display-heading text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-ink">
+              Clients Handled
+            </h2>
+          </div>
         </div>
-        <Reveal variant="subtle" delay={0.1}>
-          <p className="text-center label-eyebrow mb-10 md:mb-14">
-            Brands I've built and scaled
-          </p>
-        </Reveal>
+        <p className="text-center label-eyebrow mb-10 md:mb-14">
+          Brands I've built and scaled
+        </p>
 
         {(() => {
           const renderCard = (c: Client) => (
-            <RevealItem
+            <article
               key={c.name}
-              variant="up"
               className="group relative bg-paper hover:bg-citrus/40 transition-colors duration-300 p-5 sm:p-7 md:p-8 flex flex-col items-center justify-between min-h-[180px] sm:min-h-[210px]"
             >
               {/* Logo placeholder block — swap with <img src=... /> later */}
@@ -188,7 +182,7 @@ export const Clients = () => {
                   );
                 })}
               </div>
-            </RevealItem>
+            </article>
           );
 
           const topRows = clients.slice(0, 6);
@@ -196,18 +190,18 @@ export const Clients = () => {
 
           return (
             <>
-              <Stagger gap={0.07} className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-px bg-ink border-2 border-ink">
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-px bg-ink border-2 border-ink">
                 {topRows.map(renderCard)}
-              </Stagger>
+              </div>
               {lastRow.length > 0 && (
-                <Stagger gap={0.07} className="mt-px grid grid-cols-2 gap-px bg-ink border-2 border-ink border-t-0 sm:max-w-[66.6667%] sm:mx-auto">
+                <div className="mt-px grid grid-cols-2 gap-px bg-ink border-2 border-ink border-t-0 sm:max-w-[66.6667%] sm:mx-auto">
                   {lastRow.map(renderCard)}
-                </Stagger>
+                </div>
               )}
             </>
           );
         })()}
       </div>
-    </SectionStage>
+    </section>
   );
 };
