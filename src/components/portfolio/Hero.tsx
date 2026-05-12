@@ -1,7 +1,6 @@
 import portrait from "@/assets/ishank-portrait.png";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { useEffect, useState } from "react";
-import { Parallax } from "@/components/motion/Parallax";
 
 type Stat = { n: string; l: string; target: number; suffix: string; prefix: string };
 
@@ -116,11 +115,11 @@ export const Hero = () => {
           <span className="absolute bottom-0 right-0 w-2 h-20 bg-citrus z-20 hero-anim hero-fade-in" style={{ animationDelay: "1.2s" }} />
 
           {/* huge background letter */}
-          <Parallax offset={60} className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
             <span className="display-heading text-[40vw] lg:text-[28rem] text-ink/[0.06] leading-none select-none">IJ</span>
-          </Parallax>
+          </div>
 
-          <Parallax offset={40} scale className="relative z-10 w-full h-full">
+          <div className="relative z-10 w-full h-full">
             <img
               src={portrait}
               alt="Portrait of Ishank Jha, brand strategist"
@@ -128,7 +127,7 @@ export const Hero = () => {
               height={1280}
               className="w-full h-full object-cover object-top grayscale contrast-110 brightness-90"
             />
-          </Parallax>
+          </div>
 
           {/* Floating yellow tag */}
           <div className="absolute top-4 right-4 sm:top-8 sm:right-8 z-20 bg-citrus border-2 border-ink px-3 sm:px-4 py-1.5 sm:py-2 shadow-pop hero-anim hero-fade-in" style={{ animationDelay: "1.4s" }}>
