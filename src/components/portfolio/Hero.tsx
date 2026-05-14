@@ -124,6 +124,8 @@ export const Hero = () => {
             alt="Portrait of Ishank Jha, brand strategist"
             width={1024}
             height={1280}
+            fetchPriority="high"
+            decoding="async"
             className="relative z-10 w-full h-full object-cover object-top grayscale contrast-110 brightness-90"
           />
 
