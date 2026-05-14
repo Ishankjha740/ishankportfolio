@@ -63,11 +63,12 @@ const imageModules = import.meta.glob("@/assets/works/*.png", {
 const imageWorks = Object.entries(imageModules)
   .map(([path, src]) => {
     const name = path.split("/").pop() ?? "";
+    const num = parseInt(name.replace(/\D/g, ""), 10) || 0;
     return {
       id: name,
       src,
       ratio: "square" as Ratio,
-      title: "Creative work",
+      title: `Social media campaign creative #${num} by Ishank Jha — brand storytelling and content design`,
       kind: "image" as Kind,
       href: imageLinks[name],
     };
@@ -92,11 +93,24 @@ const videoFiles: Array<{ file: string; ratio: Ratio }> = [
   { file: "fb-2.mp4", ratio: "portrait" },
 ];
 
+const videoLabels: Record<string, string> = {
+  "video.mp4": "Brand campaign reel — short-form social video",
+  "cheers.mp4": "Hospitality brand reel — Cheers campaign",
+  "pour.mp4": "Beverage product reel — Pour campaign",
+  "cutlery.mp4": "Restaurant launch reel — tabletop and cutlery",
+  "rgia-skytrax.mp4": "GMR Hyderabad Airport — Skytrax announcement film",
+  "reel-1.mp4": "Instagram brand story highlight — campaign reel 1",
+  "reel-2.mp4": "Instagram brand story highlight — campaign reel 2",
+  "reel-3.mp4": "GMR Aero Technic — Women's Day leadership reel",
+  "fb-1.mp4": "Food and beverage brand reel — campaign 1",
+  "fb-2.mp4": "Food and beverage brand reel — campaign 2",
+};
+
 const videoWorks = videoFiles.map((v) => ({
   id: v.file,
   src: `/works-video/${v.file}`,
   ratio: v.ratio,
-  title: "Creative video",
+  title: videoLabels[v.file] ?? `Creative video by Ishank Jha — ${v.file}`,
   kind: "video" as Kind,
   href: videoLinks[v.file],
 }));
@@ -107,7 +121,7 @@ const youtubeWorks: Array<{ id: string; src: string; ratio: Ratio; title: string
     id: "yt-Br7Ia-Gl0gs",
     src: "https://www.youtube.com/embed/Br7Ia-Gl0gs?autoplay=1&mute=1&loop=1&playlist=Br7Ia-Gl0gs&controls=1&modestbranding=1&rel=0",
     ratio: "square",
-    title: "Featured film",
+    title: "Featured brand film by Ishank Jha — long-form storytelling on YouTube",
     kind: "youtube",
     href: "https://youtu.be/Br7Ia-Gl0gs",
   },
