@@ -21,7 +21,7 @@
     --secondary-foreground: 40 20% 96%;
 
     --muted: 0 0% 14%;
-    --muted-foreground: 40 10% 80%;
+    --muted-foreground: 40 12% 88%;
 
     --accent: 45 90% 58%;
     --accent-foreground: 0 0% 6%;
@@ -38,7 +38,7 @@
     /* Editorial tokens — INVERTED for dark mode.
        "ink" now = light text; "paper" = dark surface. All components flip automatically. */
     --ink: 40 20% 96%;            /* near-white "ink" (text & borders on dark) */
-    --ink-soft: 40 10% 80%;
+    --ink-soft: 40 12% 88%;
     --paper: 0 0% 6%;             /* near-black "paper" (base surface) */
     --paper-warm: 0 0% 10%;       /* slightly raised surface */
     --rule: 0 0% 22%;
