@@ -59,7 +59,7 @@ export const Hero = () => {
 
           <div className="fade-up">
             <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.3em] text-ink-soft mb-3 hero-anim hero-slide-left" style={{ animationDelay: "0.3s" }}>Hi There!</p>
-            <h1 className="display-heading text-[14vw] sm:text-[10vw] lg:text-[6rem] xl:text-[7.5rem] text-ink leading-[1.05] break-words">
+            <h1 className="display-heading text-[11.5vw] sm:text-[10vw] lg:text-[6rem] xl:text-[7.5rem] text-ink leading-[1.05] break-words">
               <span className="sr-only">Ishank Jha — Brand Strategist &amp; Content Architect. </span>
               <span className="inline-block hero-anim hero-slide-up" style={{ animationDelay: "0.5s" }}>I'M</span>{" "}
               <span className="relative inline-block pr-[0.08em]">
