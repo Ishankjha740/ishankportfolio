@@ -1,6 +1,7 @@
 import portrait from "@/assets/ishank-portrait.png";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { useEffect, useState } from "react";
+import { useSiteText } from "@/hooks/useSiteText";
 
 type Stat = { n: string; l: string; target: number; suffix: string; prefix: string };
 
@@ -40,6 +41,12 @@ const useCountUp = (target: number, startDelay: number, duration = 1200, decimal
 };
 
 export const Hero = () => {
+  const descriptor = useSiteText("hero.descriptor", "Brand Strategist · Content Architect");
+  const intro = useSiteText(
+    "hero.intro",
+    "I sit where creativity meets data and execution meets scale, leading brand strategy, social ecosystems, and creative direction for brands like The Trilight, Inside Out, Sri Aditya Vantage, Style Chai, The Commons by Incor, and GMR Hyderabad Airport; building high-impact digital ecosystems that don't just look good but drive engagement, adoption, and qualified growth."
+  );
+  const availableTag = useSiteText("hero.available_tag", "Available · 2026");
   const reach = useCountUp(6.5, 1600, 2400, 1);
   const years = useCountUp(2, 1600, 2200, 0);
   const brands = useCountUp(12, 1600, 2400, 0);
@@ -69,14 +76,13 @@ export const Hero = () => {
             </h1>
             <div className="mt-5 inline-flex max-w-full items-center bg-citrus border-2 border-ink px-3 sm:px-4 py-2 hero-anim hero-slide-left" style={{ animationDelay: "1.0s" }}>
               <span className="text-ink font-black uppercase text-[10px] sm:text-xs tracking-[0.2em] sm:tracking-[0.25em]">
-                Brand Strategist · Content Architect
+                {descriptor}
               </span>
             </div>
           </div>
 
           <p className="mt-6 sm:mt-8 max-w-xl text-ink-soft text-sm sm:text-base md:text-lg leading-relaxed hero-anim hero-fade-in" style={{ animationDelay: "1.1s" }}>
-            I sit where creativity meets data and execution meets scale, leading brand strategy, social ecosystems, and creative direction for brands like The Trilight, Inside Out, Sri Aditya Vantage, Style Chai, The Commons by Incor, and GMR Hyderabad Airport; building
-            <span className="text-ink font-semibold"> high-impact digital ecosystems</span> that don't just look good but drive engagement, adoption, and qualified growth.
+            {intro}
           </p>
 
           <div className="mt-8 sm:mt-10 flex flex-wrap items-center gap-3 sm:gap-4 hero-anim hero-slide-up" style={{ animationDelay: "1.3s" }}>
@@ -132,7 +138,7 @@ export const Hero = () => {
 
           {/* Floating yellow tag */}
           <div className="absolute top-4 right-4 sm:top-8 sm:right-8 z-20 bg-citrus border-2 border-ink px-3 sm:px-4 py-1.5 sm:py-2 shadow-pop hero-anim hero-fade-in" style={{ animationDelay: "1.4s" }}>
-            <div className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] sm:tracking-[0.25em] text-ink">Available · 2026</div>
+            <div className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] sm:tracking-[0.25em] text-ink">{availableTag}</div>
           </div>
 
           {/* Vertical Est badge */}

@@ -1,5 +1,6 @@
 import { ArrowDownToLine, ArrowUpRight, Mail, Phone, Linkedin, Link2, MapPin } from "lucide-react";
 import type { SVGProps } from "react";
+import { useSiteText } from "@/hooks/useSiteText";
 
 const BehanceIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
@@ -13,16 +14,25 @@ const BehanceIcon = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
-const links = [
-  { icon: Mail, label: "Email", value: "jha.ishank74@gmail.com", href: "mailto:jha.ishank74@gmail.com" },
-  { icon: Phone, label: "Phone", value: "+91 99858 76895", href: "tel:+919985876895" },
-  { icon: Linkedin, label: "LinkedIn", value: "linkedin.com/in/ishankjha", href: "https://www.linkedin.com/in/ishankjha" },
-  { icon: BehanceIcon, label: "Behance", value: "behance.net/ishankjha", href: "https://www.behance.net/ishankjha" },
-  { icon: Link2, label: "More Info", value: "https://bit.ly/ishankjhaportfolio", href: "https://bit.ly/ishankjhaportfolio" },
-  { icon: MapPin, label: "Location", value: "Hyderabad, Telangana, India", href: "https://www.google.com/maps/place/Hyderabad,+Telangana,+India" },
-];
-
 export const Contact = () => {
+  const email = useSiteText("contact.email", "jha.ishank74@gmail.com");
+  const phone = useSiteText("contact.phone", "+91 99858 76895");
+  const linkedin = useSiteText("contact.linkedin", "https://www.linkedin.com/in/ishankjha");
+  const behance = useSiteText("contact.behance", "https://www.behance.net/ishankjha");
+  const location = useSiteText("contact.location", "Hyderabad, Telangana, India");
+  const resumeUrl = useSiteText("contact.resume_url", "/Ishank Jha_resume_updated.pdf");
+
+  const stripProto = (u: string) => u.replace(/^https?:\/\//, "");
+
+  const links = [
+    { icon: Mail, label: "Email", value: email, href: `mailto:${email}` },
+    { icon: Phone, label: "Phone", value: phone, href: `tel:${phone.replace(/\s+/g, "")}` },
+    { icon: Linkedin, label: "LinkedIn", value: stripProto(linkedin), href: linkedin },
+    { icon: BehanceIcon, label: "Behance", value: stripProto(behance), href: behance },
+    { icon: Link2, label: "More Info", value: "https://bit.ly/ishankjhaportfolio", href: "https://bit.ly/ishankjhaportfolio" },
+    { icon: MapPin, label: "Location", value: location, href: `https://www.google.com/maps/place/${encodeURIComponent(location)}` },
+  ];
+
   return (
     <section id="contact" className="py-16 md:py-28 bg-paper">
       <div className="container max-w-6xl">
@@ -58,8 +68,8 @@ export const Contact = () => {
 
         <div className="mt-10 sm:mt-12 flex flex-col items-center gap-5 sm:gap-6 text-center">
           <a
-            href="/Ishank Jha_resume_updated.pdf"
-            download="Ishank Jha_resume_updated.pdf"
+            href={resumeUrl}
+            download
             className="group inline-flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-ink text-citrus text-xs sm:text-sm font-black uppercase tracking-widest shadow-pop-yellow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all duration-300"
           >
             <ArrowDownToLine size={16} />

@@ -1,4 +1,7 @@
-const projects = [
+import { useEffect, useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
+
+const fallbackProjects = [
   {
     n: "01",
     tag: "Brand Social",
@@ -42,6 +45,18 @@ const projects = [
 ];
 
 export const Work = () => {
+  const [projects, setProjects] = useState(fallbackProjects);
+
+  useEffect(() => {
+    supabase
+      .from("case_studies")
+      .select("n,tag,title,context,approach,impact")
+      .order("sort_order")
+      .then(({ data }) => {
+        if (data && data.length > 0) setProjects(data);
+      });
+  }, []);
+
   return (
     <section id="work" className="py-16 md:py-28 bg-paper-warm">
       <div className="container max-w-6xl">
