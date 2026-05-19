@@ -1,4 +1,7 @@
-const roles = [
+import { useEffect, useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
+
+const fallbackRoles = [
   {
     period: "Jan 2026 — Present",
     company: "StreeVia Studios",
@@ -63,6 +66,18 @@ const roles = [
 ];
 
 export const Experience = () => {
+  const [roles, setRoles] = useState(fallbackRoles);
+
+  useEffect(() => {
+    supabase
+      .from("experience_roles")
+      .select("period,company,title,points")
+      .order("sort_order")
+      .then(({ data }) => {
+        if (data && data.length > 0) setRoles(data);
+      });
+  }, []);
+
   return (
     <section id="experience" className="py-16 md:py-28 bg-paper-warm relative overflow-hidden">
       <div className="container max-w-6xl">
