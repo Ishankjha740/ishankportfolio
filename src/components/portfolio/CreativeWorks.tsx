@@ -1,5 +1,6 @@
 import { ArrowUpRight, Play } from "lucide-react";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
 
 type Ratio = "portrait" | "square";
 type Kind = "image" | "video" | "youtube";
@@ -142,7 +143,7 @@ function interleave<T>(a: T[], b: T[]): T[] {
   return out;
 }
 
-const works = [...youtubeWorks, ...interleave(imageWorks, videoWorks)];
+const builtInWorks = [...youtubeWorks, ...interleave(imageWorks, videoWorks)];
 
 // Uniform tile sizing driven entirely by the grid's auto-rows.
 // Squares = 1 row, portraits = 2 rows. No aspect-ratio so tiles always
@@ -153,6 +154,33 @@ const ratioClass: Record<Ratio, string> = {
 };
 
 export const CreativeWorks = () => {
+  const [dbWorks, setDbWorks] = useState<
+    Array<{ id: string; src: string; ratio: Ratio; title: string; kind: Kind; href?: string; featured?: boolean }>
+  >([]);
+
+  useEffect(() => {
+    supabase
+      .from("creative_works")
+      .select("*")
+      .order("sort_order")
+      .then(({ data }) => {
+        if (!data) return;
+        setDbWorks(
+          data.map((d) => ({
+            id: `db-${d.id}`,
+            src: d.src,
+            ratio: d.ratio as Ratio,
+            title: d.title,
+            kind: d.kind as Kind,
+            href: d.href ?? undefined,
+            featured: d.featured,
+          }))
+        );
+      });
+  }, []);
+
+  const works = [...builtInWorks, ...dbWorks];
+
   return (
     <section id="creative-works" className="py-16 md:py-28 bg-paper">
       <div className="container max-w-6xl">
