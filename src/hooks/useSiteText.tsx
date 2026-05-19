@@ -4,21 +4,19 @@ import { supabase } from "@/integrations/supabase/client";
 let cache: Record<string, string> | null = null;
 let inflight: Promise<Record<string, string>> | null = null;
 
-const fetchAll = async () => {
+const fetchAll = async (): Promise<Record<string, string>> => {
   if (cache) return cache;
   if (inflight) return inflight;
-  inflight = supabase
-    .from("site_text")
-    .select("key,value")
-    .then(({ data }) => {
-      const map: Record<string, string> = {};
-      (data ?? []).forEach((r) => {
-        map[r.key] = r.value;
-      });
-      cache = map;
-      inflight = null;
-      return map;
+  inflight = (async () => {
+    const { data } = await supabase.from("site_text").select("key,value");
+    const map: Record<string, string> = {};
+    (data ?? []).forEach((r) => {
+      map[r.key] = r.value;
     });
+    cache = map;
+    inflight = null;
+    return map;
+  })();
   return inflight;
 };
 
