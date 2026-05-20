@@ -7,7 +7,7 @@ import { toast } from "@/hooks/use-toast";
 const AdminLogin = () => {
   const { session, isAdmin, loading } = useAdminAuth();
   const navigate = useNavigate();
-  const [mode, setMode] = useState<"login" | "signup">("login");
+  const mode = "login" as const;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [busy, setBusy] = useState(false);
@@ -24,22 +24,9 @@ const AdminLogin = () => {
     e.preventDefault();
     setBusy(true);
     try {
-      if (mode === "login") {
-        const { error } = await supabase.auth.signInWithPassword({ email, password });
-        if (error) throw error;
-        toast({ title: "Signed in" });
-      } else {
-        const { error } = await supabase.auth.signUp({
-          email,
-          password,
-          options: { emailRedirectTo: `${window.location.origin}/admin` },
-        });
-        if (error) throw error;
-        toast({
-          title: "Account created",
-          description: "The first signup becomes admin automatically.",
-        });
-      }
+      const { error } = await supabase.auth.signInWithPassword({ email, password });
+      if (error) throw error;
+      toast({ title: "Signed in" });
       navigate("/admin", { replace: true });
     } catch (err) {
       const message = err instanceof Error ? err.message : "Authentication failed";
@@ -56,12 +43,10 @@ const AdminLogin = () => {
           ← Back to site
         </Link>
         <h1 className="display-heading text-3xl sm:text-4xl text-ink mt-4">
-          Admin {mode === "login" ? "Login" : "Signup"}
+          Admin Login
         </h1>
         <p className="text-xs text-ink-soft mt-2 leading-relaxed">
-          {mode === "login"
-            ? "Sign in to manage your portfolio content."
-            : "First signup becomes admin. Anyone after that gets a regular user role."}
+          Sign in to manage your portfolio content.
         </p>
 
         <form onSubmit={handleSubmit} className="mt-6 space-y-4">
@@ -93,16 +78,9 @@ const AdminLogin = () => {
             disabled={busy}
             className="w-full bg-ink text-citrus py-3 text-xs font-black uppercase tracking-widest shadow-pop-yellow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all disabled:opacity-60"
           >
-            {busy ? "Please wait…" : mode === "login" ? "Sign In" : "Create Account"}
+            {busy ? "Please wait…" : "Sign In"}
           </button>
         </form>
-
-        <button
-          onClick={() => setMode(mode === "login" ? "signup" : "login")}
-          className="mt-4 text-xs text-ink-soft hover:text-ink underline"
-        >
-          {mode === "login" ? "Need to create the admin account?" : "Already have an account? Sign in"}
-        </button>
       </div>
     </main>
   );
