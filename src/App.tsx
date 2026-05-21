@@ -7,6 +7,10 @@ import Index from "./pages/Index.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import AdminLogin from "./pages/admin/Login.tsx";
 import AdminDashboard from "./pages/admin/Dashboard.tsx";
+import Security from "./pages/legal/Security.tsx";
+import CodeOfConduct from "./pages/legal/CodeOfConduct.tsx";
+import License from "./pages/legal/License.tsx";
+import Sitemap from "./pages/legal/Sitemap.tsx";
 
 const queryClient = new QueryClient();
 
@@ -20,6 +24,10 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/security" element={<Security />} />
+          <Route path="/code-of-conduct" element={<CodeOfConduct />} />
+          <Route path="/license" element={<License />} />
+          <Route path="/sitemap" element={<Sitemap />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
