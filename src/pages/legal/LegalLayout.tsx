@@ -1,20 +1,34 @@
-import { useEffect, type ReactNode } from "react";
+import { type ReactNode } from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { ArrowLeft } from "lucide-react";
 
 interface LegalLayoutProps {
   title: string;
   eyebrow?: string;
   description?: string;
+  path?: string;
   children: ReactNode;
 }
 
-export const LegalLayout = ({ title, eyebrow, description, children }: LegalLayoutProps) => {
-  useEffect(() => {
-    document.title = `${title} | Ishank Jha`;
-  }, [title]);
-
+export const LegalLayout = ({ title, eyebrow, description, path, children }: LegalLayoutProps) => {
+  const pageTitle = `${title} | Ishank Jha`;
+  const desc =
+    description ?? `${title} — Ishank Jha's portfolio.`;
+  const url = `https://ishankportfolio.lovable.app${path ?? ""}`;
   return (
+    <>
+      <Helmet>
+        <title>{pageTitle}</title>
+        <meta name="description" content={desc} />
+        <link rel="canonical" href={url} />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={desc} />
+        <meta property="og:url" content={url} />
+        <meta property="og:type" content="article" />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={desc} />
+      </Helmet>
     <main className="min-h-screen bg-paper">
       <div className="container max-w-3xl py-12 sm:py-16 md:py-24">
         <Link
@@ -45,6 +59,7 @@ export const LegalLayout = ({ title, eyebrow, description, children }: LegalLayo
         </footer>
       </div>
     </main>
+    </>
   );
 };
 

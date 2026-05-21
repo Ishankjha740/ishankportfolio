@@ -4,6 +4,7 @@ const License = () => (
   <LegalLayout
     eyebrow="Legal"
     title="License"
+    path="/license"
     description="The source code for this site is released under the MIT License."
   >
     <h2>MIT License</h2>

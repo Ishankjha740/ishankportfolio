@@ -4,6 +4,7 @@ const CodeOfConduct = () => (
   <LegalLayout
     eyebrow="Community"
     title="Code of Conduct"
+    path="/code-of-conduct"
     description="A simple commitment to a respectful, inclusive, and harassment-free space for everyone."
   >
     <h2>Our Pledge</h2>
