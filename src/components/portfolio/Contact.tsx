@@ -1,5 +1,6 @@
 import { ArrowDownToLine, ArrowUpRight, Mail, Phone, Linkedin, Link2, MapPin } from "lucide-react";
 import type { SVGProps } from "react";
+import { Link } from "react-router-dom";
 import { useSiteText } from "@/hooks/useSiteText";
 
 const BehanceIcon = (props: SVGProps<SVGSVGElement>) => (
@@ -91,6 +92,29 @@ export const Contact = () => {
           <p>Work shown may include collaborative projects, and individual contributions may vary.</p>
           <p>No commercial claims are made over third-party assets.</p>
         </div>
+
+        <nav
+          aria-label="Secondary footer"
+          className="mt-6 sm:mt-8 pt-5 sm:pt-6 border-t border-ink/20"
+        >
+          <ul className="flex flex-wrap items-center justify-center gap-x-5 sm:gap-x-8 gap-y-2 sm:gap-y-3 text-[10px] sm:text-xs uppercase tracking-[0.2em] font-bold">
+            {[
+              { to: "/security", label: "Security" },
+              { to: "/code-of-conduct", label: "Code of Conduct" },
+              { to: "/license", label: "License" },
+              { to: "/sitemap", label: "Sitemap" },
+            ].map((l) => (
+              <li key={l.to}>
+                <Link
+                  to={l.to}
+                  className="relative inline-block text-ink-soft transition-colors duration-300 hover:text-ink after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-ink after:transition-all after:duration-300 hover:after:w-full focus-visible:outline-none focus-visible:text-ink focus-visible:after:w-full"
+                >
+                  {l.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </div>
     </section>
   );
