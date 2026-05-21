@@ -4,6 +4,7 @@ const Security = () => (
   <LegalLayout
     eyebrow="Policy"
     title="Security"
+    path="/security"
     description="How I protect this site and how to responsibly report a vulnerability."
   >
     <p>

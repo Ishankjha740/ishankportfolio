@@ -36,6 +36,7 @@ const Sitemap = () => (
   <LegalLayout
     eyebrow="Index"
     title="Sitemap"
+    path="/sitemap"
     description="A complete map of every page and resource on this site."
   >
     <div className="grid sm:grid-cols-2 gap-8 sm:gap-10 not-prose">
