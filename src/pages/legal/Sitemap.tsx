@@ -41,7 +41,7 @@ const Sitemap = () => (
     <div className="grid sm:grid-cols-2 gap-8 sm:gap-10 not-prose">
       {sections.map((section) => (
         <div key={section.title}>
-          <h3>{section.title}</h3>
+          <h2 className="display-heading text-2xl sm:text-3xl text-ink mb-3">{section.title}</h2>
           <ul className="mt-3 space-y-2">
             {section.links.map((l) => (
               <li key={l.to}>
