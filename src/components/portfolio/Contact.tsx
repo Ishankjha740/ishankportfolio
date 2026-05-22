@@ -1,4 +1,4 @@
-import { ArrowDownToLine, ArrowUpRight, Mail, Phone, Linkedin, Link2, MapPin } from "lucide-react";
+import { ArrowDownToLine, ArrowUpRight, Mail, Phone, Link2, MapPin } from "lucide-react";
 import type { SVGProps } from "react";
 import { Link } from "react-router-dom";
 import { useSiteText } from "@/hooks/useSiteText";

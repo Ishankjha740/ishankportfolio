@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import logo from "@/assets/ij-logo.png";
 import {
   Mail,
-  Linkedin,
   ArrowUpRight,
   Home,
   User,

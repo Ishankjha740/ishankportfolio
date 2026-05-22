@@ -1,4 +1,4 @@
-import { Instagram, Facebook, Linkedin, Youtube, Twitter } from "lucide-react";
+import type { SVGProps } from "react";
 import logoGMRAirport from "@/assets/clients/GMR_Hyderabad_International_Airport.jpg";
 import logoGMRSchool from "@/assets/clients/GMR_School_of_Aviation.jpg";
 import logoGMRAeroTechnic from "@/assets/clients/gmr_aero_technic_logo.jpg";
