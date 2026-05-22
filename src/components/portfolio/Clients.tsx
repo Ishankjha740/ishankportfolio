@@ -1,4 +1,4 @@
-import { Instagram, Facebook, Linkedin, Youtube, Twitter } from "lucide-react";
+import type { SVGProps } from "react";
 import logoGMRAirport from "@/assets/clients/GMR_Hyderabad_International_Airport.jpg";
 import logoGMRSchool from "@/assets/clients/GMR_School_of_Aviation.jpg";
 import logoGMRAeroTechnic from "@/assets/clients/gmr_aero_technic_logo.jpg";
@@ -107,16 +107,32 @@ const clients: Client[] = [
   },
 ];
 
+const InstagramIcon = (props: SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+);
+const FacebookIcon = (props: SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+);
+const XIcon = (props: SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><path d="M4 4l11.733 16h4.267l-11.733-16z"/><path d="M4 20l6.768-6.768m2.46-2.46L20 4"/></svg>
+);
+const LinkedinIcon = (props: SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+);
+const YoutubeIcon = (props: SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg>
+);
+
 const socialMeta: Array<{
   key: keyof Social;
-  Icon: typeof Instagram;
+  Icon: React.ComponentType<SVGProps<SVGSVGElement>>;
   label: string;
 }> = [
-  { key: "instagram", Icon: Instagram, label: "Instagram" },
-  { key: "facebook", Icon: Facebook, label: "Facebook" },
-  { key: "twitter", Icon: Twitter, label: "X" },
-  { key: "linkedin", Icon: Linkedin, label: "LinkedIn" },
-  { key: "youtube", Icon: Youtube, label: "YouTube" },
+  { key: "instagram", Icon: InstagramIcon, label: "Instagram" },
+  { key: "facebook", Icon: FacebookIcon, label: "Facebook" },
+  { key: "twitter", Icon: XIcon, label: "X" },
+  { key: "linkedin", Icon: LinkedinIcon, label: "LinkedIn" },
+  { key: "youtube", Icon: YoutubeIcon, label: "YouTube" },
 ];
 
 export const Clients = () => {
@@ -168,7 +184,7 @@ export const Clients = () => {
                   const href = c.socials[key];
                   if (!href) return null;
                   return (
-                    <a
+                      <a
                       key={key}
                       href={href}
                       target="_blank"
@@ -177,7 +193,7 @@ export const Clients = () => {
                       onClick={(e) => e.stopPropagation()}
                       className="border border-ink/60 hover:border-ink hover:bg-ink hover:text-paper p-1.5 transition-colors duration-200"
                     >
-                      <Icon size={12} strokeWidth={2.25} />
+                      <Icon width={12} height={12} />
                     </a>
                   );
                 })}
