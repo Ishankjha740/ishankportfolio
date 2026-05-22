@@ -184,7 +184,7 @@ export const Clients = () => {
                   const href = c.socials[key];
                   if (!href) return null;
                   return (
-                    <a
+                      <a
                       key={key}
                       href={href}
                       target="_blank"
@@ -193,7 +193,7 @@ export const Clients = () => {
                       onClick={(e) => e.stopPropagation()}
                       className="border border-ink/60 hover:border-ink hover:bg-ink hover:text-paper p-1.5 transition-colors duration-200"
                     >
-                      <Icon size={12} strokeWidth={2.25} />
+                      <Icon width={12} height={12} />
                     </a>
                   );
                 })}
