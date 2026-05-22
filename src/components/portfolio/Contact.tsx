@@ -15,6 +15,14 @@ const BehanceIcon = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
+const LinkedinIcon = (props: SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+    <rect width="4" height="12" x="2" y="9" />
+    <circle cx="4" cy="4" r="2" />
+  </svg>
+);
+
 export const Contact = () => {
   const email = useSiteText("contact.email", "jha.ishank74@gmail.com");
   const phone = useSiteText("contact.phone", "+91 99858 76895");
@@ -28,7 +36,7 @@ export const Contact = () => {
   const links = [
     { icon: Mail, label: "Email", value: email, href: `mailto:${email}` },
     { icon: Phone, label: "Phone", value: phone, href: `tel:${phone.replace(/\s+/g, "")}` },
-    { icon: Linkedin, label: "LinkedIn", value: stripProto(linkedin), href: linkedin },
+    { icon: LinkedinIcon, label: "LinkedIn", value: stripProto(linkedin), href: linkedin },
     { icon: BehanceIcon, label: "Behance", value: stripProto(behance), href: behance },
     { icon: Link2, label: "More Info", value: "https://bit.ly/ishankjhaportfolio", href: "https://bit.ly/ishankjhaportfolio" },
     { icon: MapPin, label: "Location", value: location, href: `https://www.google.com/maps/place/${encodeURIComponent(location)}` },
