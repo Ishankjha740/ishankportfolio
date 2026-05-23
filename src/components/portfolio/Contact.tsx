@@ -2,6 +2,7 @@ import { ArrowDownToLine, ArrowUpRight, Mail, Phone, Link2, MapPin } from "lucid
 import type { SVGProps } from "react";
 import { Link } from "react-router-dom";
 import { useSiteText } from "@/hooks/useSiteText";
+import { ContactForm } from "./ContactForm";
 
 const BehanceIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
@@ -73,6 +74,20 @@ export const Contact = () => {
               <ArrowUpRight size={16} className="ml-auto text-ink opacity-50 group-hover:opacity-100 transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 shrink-0" />
             </a>
           ))}
+        </div>
+
+        <div className="mt-14 sm:mt-20">
+          <div className="text-center mb-8 sm:mb-10">
+            <div className="inline-block border-2 border-ink px-5 sm:px-8 py-3 sm:py-4 bg-paper-warm shadow-pop-yellow">
+              <h3 className="display-heading text-2xl sm:text-3xl md:text-5xl text-ink">
+                Let's <span className="bg-citrus px-2">Connect</span>
+              </h3>
+            </div>
+            <p className="mt-4 sm:mt-5 text-ink-soft text-sm sm:text-base max-w-xl mx-auto">
+              Got a role, project, or collaboration in mind? Drop the details below.
+            </p>
+          </div>
+          <ContactForm />
         </div>
 
         <div className="mt-10 sm:mt-12 flex flex-col items-center gap-5 sm:gap-6 text-center">
