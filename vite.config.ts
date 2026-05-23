@@ -3,6 +3,8 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
 
+import { cloudflare } from "@cloudflare/vite-plugin";
+
 const isDev = process.env.NODE_ENV === "development";
 
 export default defineConfig({
@@ -14,10 +16,7 @@ export default defineConfig({
     },
   },
 
-  plugins: [
-    react(),
-    ...(isDev ? [componentTagger()] : []),
-  ],
+  plugins: [react(), ...(isDev ? [componentTagger()] : []), cloudflare()],
 
   resolve: {
     alias: {
