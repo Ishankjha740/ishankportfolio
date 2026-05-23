@@ -53,6 +53,51 @@ export type Database = {
         }
         Relationships: []
       }
+      contacts: {
+        Row: {
+          company_name: string | null
+          created_at: string
+          discovery_source: string | null
+          email: string
+          full_name: string
+          id: string
+          opportunity_type: string | null
+          phone: string | null
+          platforms: string[]
+          project_details: string | null
+          timeline: string | null
+          website: string | null
+        }
+        Insert: {
+          company_name?: string | null
+          created_at?: string
+          discovery_source?: string | null
+          email: string
+          full_name: string
+          id?: string
+          opportunity_type?: string | null
+          phone?: string | null
+          platforms?: string[]
+          project_details?: string | null
+          timeline?: string | null
+          website?: string | null
+        }
+        Update: {
+          company_name?: string | null
+          created_at?: string
+          discovery_source?: string | null
+          email?: string
+          full_name?: string
+          id?: string
+          opportunity_type?: string | null
+          phone?: string | null
+          platforms?: string[]
+          project_details?: string | null
+          timeline?: string | null
+          website?: string | null
+        }
+        Relationships: []
+      }
       creative_works: {
         Row: {
           created_at: string
