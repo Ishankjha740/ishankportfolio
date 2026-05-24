@@ -4,6 +4,7 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 const isDev = process.env.NODE_ENV === "development";
+const plugins = isDev ? [react(), componentTagger()] : [react()];
 
 export default defineConfig({
   server: {
@@ -14,10 +15,7 @@ export default defineConfig({
     },
   },
 
-  plugins: [
-    react(),
-    ...(isDev ? [componentTagger()] : []),
-  ],
+  plugins,
 
   resolve: {
     alias: {
