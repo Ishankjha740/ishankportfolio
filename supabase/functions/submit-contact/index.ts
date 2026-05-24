@@ -10,7 +10,7 @@ const corsHeaders = {
 
 const GATEWAY_URL = "https://connector-gateway.lovable.dev/resend";
 const OWNER_EMAIL = "jha.ishank74@gmail.com";
-const FROM_ADDRESS = "Ishank Jha <onboarding@resend.dev>";
+const FROM_ADDRESS = "Ishank Jha <hello@ishankportfolio.space>";
 
 const ContactSchema = z.object({
   full_name: z.string().trim().min(1).max(120),
