@@ -37,13 +37,47 @@ const DISCOVERY = [
   "Other",
 ];
 
-const labelCls =
-  "block text-[10px] sm:text-[11px] font-black uppercase tracking-[0.2em] text-ink mb-2";
+type Tone = "light" | "dark";
 
-const inputCls =
-  "w-full bg-transparent border-2 border-ink text-ink placeholder:text-ink-soft/60 px-4 py-3 text-sm font-medium tracking-wide focus:outline-none focus:border-citrus focus:bg-paper transition-colors duration-200";
-
-const selectCls = `${inputCls} appearance-none bg-paper-warm pr-10 cursor-pointer`;
+const styles = (tone: Tone) => {
+  const dark = tone === "dark";
+  return {
+    label: `block text-[10px] sm:text-[11px] font-black uppercase tracking-[0.2em] mb-2 ${
+      dark ? "text-paper" : "text-ink"
+    }`,
+    input: `w-full bg-transparent border-2 px-4 py-3 text-sm font-medium tracking-wide focus:outline-none transition-colors duration-200 ${
+      dark
+        ? "border-paper text-paper placeholder:text-paper/40 focus:border-citrus focus:bg-ink/60"
+        : "border-ink text-ink placeholder:text-ink-soft/60 focus:border-citrus focus:bg-paper"
+    }`,
+    select: `appearance-none pr-10 cursor-pointer ${
+      dark ? "bg-ink/80" : "bg-paper-warm"
+    }`,
+    wrap: `border-2 p-5 sm:p-8 md:p-10 ${
+      dark
+        ? "border-paper bg-ink"
+        : "border-ink bg-paper-warm shadow-pop-yellow"
+    }`,
+    chevron: `pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 font-black ${
+      dark ? "text-paper" : "text-ink"
+    }`,
+    platformInactive: dark
+      ? "border-paper bg-transparent text-paper hover:bg-citrus hover:text-ink hover:border-ink"
+      : "border-ink bg-transparent text-ink hover:bg-ink hover:text-citrus",
+    platformActive: dark
+      ? "border-citrus bg-citrus text-ink"
+      : "border-ink bg-citrus text-ink shadow-pop-yellow",
+    platformBox: dark ? "border-paper" : "border-ink",
+    helper: dark ? "text-paper/60" : "text-ink-soft",
+    successWrap: dark
+      ? "border-2 border-paper bg-ink p-10 sm:p-14 text-center"
+      : "border-2 border-ink bg-paper-warm shadow-pop-yellow p-10 sm:p-14 text-center",
+    successHeading: dark ? "text-paper" : "text-ink",
+    submit: dark
+      ? "bg-citrus text-ink border-2 border-citrus hover:bg-paper hover:border-paper"
+      : "bg-ink text-citrus shadow-pop-yellow hover:translate-x-1 hover:translate-y-1 hover:shadow-none",
+  };
+};
 
 type FormState = {
   full_name: string;
@@ -73,11 +107,14 @@ const initial: FormState = {
   website_url: "",
 };
 
-export const ContactForm = () => {
+type Props = { tone?: Tone; onSuccess?: () => void };
+
+export const ContactForm = ({ tone = "light", onSuccess }: Props = {}) => {
   const [form, setForm] = useState<FormState>(initial);
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState<string>("");
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
+  const s = styles(tone);
 
   const update = <K extends keyof FormState>(k: K, v: FormState[K]) =>
     setForm((f) => ({ ...f, [k]: v }));
@@ -114,6 +151,7 @@ export const ContactForm = () => {
       if (data?.error) throw new Error(data.error);
       setStatus("success");
       setForm(initial);
+      onSuccess?.();
     } catch (err) {
       console.error(err);
       setStatus("error");
@@ -125,20 +163,24 @@ export const ContactForm = () => {
 
   if (status === "success") {
     return (
-      <div className="border-2 border-ink bg-paper-warm shadow-pop-yellow p-10 sm:p-14 text-center animate-in fade-in zoom-in-95 duration-500">
-        <div className="inline-flex items-center justify-center w-16 h-16 border-2 border-ink bg-citrus mb-6">
+      <div className={`${s.successWrap} animate-in fade-in zoom-in-95 duration-500`}>
+        <div className={`inline-flex items-center justify-center w-16 h-16 border-2 ${tone === "dark" ? "border-citrus" : "border-ink"} bg-citrus mb-6`}>
           <Check size={28} className="text-ink" strokeWidth={3} />
         </div>
-        <h3 className="display-heading text-2xl sm:text-3xl md:text-4xl text-ink mb-3">
+        <h3 className={`display-heading text-2xl sm:text-3xl md:text-4xl mb-3 ${s.successHeading}`}>
           Message <span className="bg-citrus px-2">Received</span>
         </h3>
-        <p className="text-ink-soft text-sm sm:text-base max-w-md mx-auto">
+        <p className={`text-sm sm:text-base max-w-md mx-auto ${s.helper}`}>
           Thanks for reaching out — I'll get back to you soon.
         </p>
         <button
           type="button"
           onClick={() => setStatus("idle")}
-          className="mt-8 inline-flex items-center gap-2 px-5 py-2 border-2 border-ink text-ink text-[10px] sm:text-xs font-black uppercase tracking-[0.2em] hover:bg-ink hover:text-citrus transition-colors"
+          className={`mt-8 inline-flex items-center gap-2 px-5 py-2 border-2 text-[10px] sm:text-xs font-black uppercase tracking-[0.2em] transition-colors ${
+            tone === "dark"
+              ? "border-paper text-paper hover:bg-citrus hover:text-ink hover:border-citrus"
+              : "border-ink text-ink hover:bg-ink hover:text-citrus"
+          }`}
         >
           Send Another
         </button>
@@ -150,7 +192,7 @@ export const ContactForm = () => {
     <form
       onSubmit={submit}
       noValidate
-      className="border-2 border-ink bg-paper-warm shadow-pop-yellow p-5 sm:p-8 md:p-10"
+      className={s.wrap}
     >
       {/* Honeypot */}
       <div className="absolute -left-[9999px] w-px h-px overflow-hidden" aria-hidden="true">
