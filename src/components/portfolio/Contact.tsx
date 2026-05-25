@@ -1,8 +1,8 @@
-import { ArrowDownToLine, ArrowUpRight, Mail, Phone, Link2, MapPin } from "lucide-react";
-import type { SVGProps } from "react";
+import { ArrowDownToLine, ArrowUpRight, Mail, Phone, Link2, MapPin, Send } from "lucide-react";
+import { useState, type SVGProps } from "react";
 import { Link } from "react-router-dom";
 import { useSiteText } from "@/hooks/useSiteText";
-import { ContactForm } from "./ContactForm";
+import { ContactDialog } from "./ContactDialog";
 
 const BehanceIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
@@ -25,6 +25,7 @@ const LinkedinIcon = (props: SVGProps<SVGSVGElement>) => (
 );
 
 export const Contact = () => {
+  const [open, setOpen] = useState(false);
   const email = useSiteText("contact.email", "jha.ishank74@gmail.com");
   const phone = useSiteText("contact.phone", "+91 99858 76895");
   const linkedin = useSiteText("contact.linkedin", "https://www.linkedin.com/in/ishankjha");
@@ -76,33 +77,31 @@ export const Contact = () => {
           ))}
         </div>
 
-        <div className="mt-14 sm:mt-20">
-          <div className="text-center mb-8 sm:mb-10">
-            <div className="inline-block border-2 border-ink px-5 sm:px-8 py-3 sm:py-4 bg-paper-warm shadow-pop-yellow">
-              <h3 className="display-heading text-2xl sm:text-3xl md:text-5xl text-ink">
-                Let's <span className="bg-citrus px-2">Connect</span>
-              </h3>
-            </div>
-            <p className="mt-4 sm:mt-5 text-ink-soft text-sm sm:text-base max-w-xl mx-auto">
-              Got a role, project, or collaboration in mind? Drop the details below.
-            </p>
+        <div className="mt-12 sm:mt-16 flex flex-col items-center gap-6 sm:gap-8 text-center">
+          <div className="flex flex-col sm:flex-row items-stretch justify-center gap-4 sm:gap-5 w-full max-w-xl">
+            <button
+              type="button"
+              onClick={() => setOpen(true)}
+              className="group flex-1 inline-flex items-center justify-center gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-ink text-citrus border-2 border-ink text-xs sm:text-sm font-black uppercase tracking-widest shadow-pop-yellow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all duration-300"
+            >
+              <Send size={16} />
+              Contact Me
+            </button>
+            <a
+              href={resumeUrl}
+              download
+              className="group flex-1 inline-flex items-center justify-center gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-citrus text-ink border-2 border-ink text-xs sm:text-sm font-black uppercase tracking-widest shadow-pop hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all duration-300"
+            >
+              <ArrowDownToLine size={16} />
+              Download Resume
+            </a>
           </div>
-          <ContactForm />
-        </div>
-
-        <div className="mt-10 sm:mt-12 flex flex-col items-center gap-5 sm:gap-6 text-center">
-          <a
-            href={resumeUrl}
-            download
-            className="group inline-flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-ink text-citrus text-xs sm:text-sm font-black uppercase tracking-widest shadow-pop-yellow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all duration-300"
-          >
-            <ArrowDownToLine size={16} />
-            Download Resume
-          </a>
           <p className="display-heading text-xl sm:text-2xl md:text-3xl text-ink mt-2 sm:mt-4">
             Thanks <span className="bg-citrus px-2">For Patience!</span>
           </p>
         </div>
+
+        <ContactDialog open={open} onOpenChange={setOpen} />
 
         <div className="mt-12 sm:mt-16 pt-5 sm:pt-6 border-t-2 border-ink flex flex-col sm:flex-row sm:flex-wrap items-center sm:justify-between gap-2 sm:gap-3 text-[10px] sm:text-xs uppercase tracking-wider text-ink-soft font-bold text-center">
           <span>© {new Date().getFullYear()} Ishank Jha</span>
