@@ -1,9 +1,0 @@
-{
-  "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "ishankportfolio",
-  "compatibility_date": "2026-05-23",
-  "assets": {
-    "directory": "./dist",
-    "not_found_handling": "single-page-application"
-  }
-}
