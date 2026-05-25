@@ -210,7 +210,7 @@ export const ContactForm = ({ tone = "light", onSuccess }: Props = {}) => {
 
       <div className="grid sm:grid-cols-2 gap-5 sm:gap-6">
         <div>
-          <label htmlFor="full_name" className={labelCls}>
+          <label htmlFor="full_name" className={s.label}>
             Full Name <span className="text-citrus">*</span>
           </label>
           <input
@@ -219,7 +219,7 @@ export const ContactForm = ({ tone = "light", onSuccess }: Props = {}) => {
             required
             value={form.full_name}
             onChange={(e) => update("full_name", e.target.value)}
-            className={inputCls}
+            className={s.input}
             placeholder="Your name"
           />
           {fieldErrors.full_name && (
@@ -230,7 +230,7 @@ export const ContactForm = ({ tone = "light", onSuccess }: Props = {}) => {
         </div>
 
         <div>
-          <label htmlFor="company_name" className={labelCls}>
+          <label htmlFor="company_name" className={s.label}>
             Company / Brand
           </label>
           <input
@@ -238,13 +238,13 @@ export const ContactForm = ({ tone = "light", onSuccess }: Props = {}) => {
             type="text"
             value={form.company_name}
             onChange={(e) => update("company_name", e.target.value)}
-            className={inputCls}
+            className={s.input}
             placeholder="Optional"
           />
         </div>
 
         <div>
-          <label htmlFor="email" className={labelCls}>
+          <label htmlFor="email" className={s.label}>
             Email <span className="text-citrus">*</span>
           </label>
           <input
@@ -253,7 +253,7 @@ export const ContactForm = ({ tone = "light", onSuccess }: Props = {}) => {
             required
             value={form.email}
             onChange={(e) => update("email", e.target.value)}
-            className={inputCls}
+            className={s.input}
             placeholder="you@email.com"
           />
           {fieldErrors.email && (
@@ -264,7 +264,7 @@ export const ContactForm = ({ tone = "light", onSuccess }: Props = {}) => {
         </div>
 
         <div>
-          <label htmlFor="phone" className={labelCls}>
+          <label htmlFor="phone" className={s.label}>
             Phone / WhatsApp
           </label>
           <input
@@ -272,13 +272,13 @@ export const ContactForm = ({ tone = "light", onSuccess }: Props = {}) => {
             type="tel"
             value={form.phone}
             onChange={(e) => update("phone", e.target.value)}
-            className={inputCls}
+            className={s.input}
             placeholder="+1 555 000 0000"
           />
         </div>
 
         <div className="sm:col-span-2">
-          <label htmlFor="website" className={labelCls}>
+          <label htmlFor="website" className={s.label}>
             Website / Social Handle
           </label>
           <input
@@ -286,13 +286,13 @@ export const ContactForm = ({ tone = "light", onSuccess }: Props = {}) => {
             type="text"
             value={form.website}
             onChange={(e) => update("website", e.target.value)}
-            className={inputCls}
+            className={s.input}
             placeholder="@handle or https://…"
           />
         </div>
 
         <div>
-          <label htmlFor="opportunity_type" className={labelCls}>
+          <label htmlFor="opportunity_type" className={s.label}>
             What are you reaching out for?
           </label>
           <div className="relative">
@@ -300,7 +300,7 @@ export const ContactForm = ({ tone = "light", onSuccess }: Props = {}) => {
               id="opportunity_type"
               value={form.opportunity_type}
               onChange={(e) => update("opportunity_type", e.target.value)}
-              className={selectCls}
+              className={`${s.input} ${s.select}`}
             >
               <option value="">Select an option</option>
               {OPPORTUNITIES.map((o) => (
@@ -316,7 +316,7 @@ export const ContactForm = ({ tone = "light", onSuccess }: Props = {}) => {
         </div>
 
         <div>
-          <label htmlFor="timeline" className={labelCls}>
+          <label htmlFor="timeline" className={s.label}>
             Timeline
           </label>
           <div className="relative">
@@ -324,7 +324,7 @@ export const ContactForm = ({ tone = "light", onSuccess }: Props = {}) => {
               id="timeline"
               value={form.timeline}
               onChange={(e) => update("timeline", e.target.value)}
-              className={selectCls}
+              className={`${s.input} ${s.select}`}
             >
               <option value="">Select a timeline</option>
               {TIMELINES.map((o) => (
@@ -340,7 +340,7 @@ export const ContactForm = ({ tone = "light", onSuccess }: Props = {}) => {
         </div>
 
         <div className="sm:col-span-2">
-          <label htmlFor="project_details" className={labelCls}>
+          <label htmlFor="project_details" className={s.label}>
             Tell me about the role / project
           </label>
           <textarea
@@ -348,13 +348,13 @@ export const ContactForm = ({ tone = "light", onSuccess }: Props = {}) => {
             rows={6}
             value={form.project_details}
             onChange={(e) => update("project_details", e.target.value)}
-            className={`${inputCls} resize-y min-h-[140px]`}
+            className={`${s.input} resize-y min-h-[140px]`}
             placeholder="Scope, goals, audience, references…"
           />
         </div>
 
         <div className="sm:col-span-2">
-          <span className={labelCls}>Preferred Platforms</span>
+          <span className={s.label}>Preferred Platforms</span>
           <div className="flex flex-wrap gap-2 sm:gap-3">
             {PLATFORMS.map((p) => {
               const active = form.platforms.includes(p);
@@ -382,7 +382,7 @@ export const ContactForm = ({ tone = "light", onSuccess }: Props = {}) => {
         </div>
 
         <div className="sm:col-span-2">
-          <label htmlFor="discovery_source" className={labelCls}>
+          <label htmlFor="discovery_source" className={s.label}>
             How did you find me?
           </label>
           <div className="relative">
@@ -390,7 +390,7 @@ export const ContactForm = ({ tone = "light", onSuccess }: Props = {}) => {
               id="discovery_source"
               value={form.discovery_source}
               onChange={(e) => update("discovery_source", e.target.value)}
-              className={selectCls}
+              className={`${s.input} ${s.select}`}
             >
               <option value="">Select an option</option>
               {DISCOVERY.map((o) => (
