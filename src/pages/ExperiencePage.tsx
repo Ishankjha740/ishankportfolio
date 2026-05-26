@@ -4,9 +4,9 @@ import { ArrowLeft } from "lucide-react";
 import { Experience } from "@/components/portfolio/Experience";
 
 export default function ExperiencePage() {
-  const title = "Resume & Experience | Ishank Jha — Brand Manager & Digital Strategist";
+  const title = "Experience & Resume | Ishank Jha";
   const description =
-    "Explore Ishank Jha's professional experience across brand management, social ecosystems, and data-led digital strategy—from StreeVia Studios to UNFPA and Cog Culture.";
+    "Ishank Jha's professional experience across brand management, social ecosystems, and data-led digital strategy at StreeVia, UNFPA & Cog Culture.";
   const url = "https://ishankportfolio.lovable.app/experience";
 
   return (
