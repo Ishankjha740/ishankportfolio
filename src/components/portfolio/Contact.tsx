@@ -45,13 +45,13 @@ export const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-16 md:py-28 bg-paper">
+    <section id="contact" className="py-10 md:py-28 bg-paper">
       <div className="container max-w-6xl">
-        <div className="text-center mb-10 md:mb-12">
-          <div className="inline-block border-2 border-ink px-6 sm:px-8 md:px-16 py-4 sm:py-5 bg-paper-warm shadow-pop-yellow">
-            <h2 className="display-heading text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-ink">Contact</h2>
+        <div className="text-center mb-6 md:mb-12">
+          <div className="inline-block border-2 border-ink px-5 sm:px-8 md:px-16 py-3 sm:py-5 bg-paper-warm shadow-pop-yellow">
+            <h2 className="display-heading text-2xl sm:text-4xl md:text-6xl lg:text-7xl text-ink">Contact</h2>
           </div>
-          <p className="mt-5 sm:mt-6 text-ink-soft text-base sm:text-lg">
+          <p className="mt-3 sm:mt-6 text-ink-soft text-sm sm:text-lg">
             Feel <span className="bg-citrus px-1 font-bold text-ink">free</span> to contact me!
           </p>
         </div>
