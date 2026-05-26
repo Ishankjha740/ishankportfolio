@@ -1,7 +1,8 @@
 import portrait from "@/assets/ishank-portrait.png";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Send } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useSiteText } from "@/hooks/useSiteText";
+import { ContactDialog } from "./ContactDialog";
 
 type Stat = { n: string; l: string; target: number; suffix: string; prefix: string };
 
@@ -41,6 +42,7 @@ const useCountUp = (target: number, startDelay: number, duration = 1200, decimal
 };
 
 export const Hero = () => {
+  const [contactOpen, setContactOpen] = useState(false);
   const descriptor = useSiteText("hero.descriptor", "Brand Strategist · Content Architect");
   const intro = useSiteText(
     "hero.intro",
@@ -93,6 +95,14 @@ export const Hero = () => {
               More About Me
               <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
             </a>
+            <button
+              type="button"
+              onClick={() => setContactOpen(true)}
+              className="group inline-flex items-center gap-3 px-5 sm:px-7 py-3 sm:py-4 bg-ink text-citrus border-2 border-ink text-xs sm:text-sm font-black uppercase tracking-wider shadow-pop-yellow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all duration-300"
+            >
+              <Send size={16} />
+              Contact Me
+            </button>
             <a
               href="#work"
               className="group inline-flex items-center gap-3 px-5 sm:px-7 py-3 sm:py-4 border-2 border-ink text-ink text-xs sm:text-sm font-black uppercase tracking-wider hover:bg-ink hover:text-citrus transition-colors duration-300"
@@ -165,6 +175,8 @@ export const Hero = () => {
           ))}
         </div>
       </div>
+
+      <ContactDialog open={contactOpen} onOpenChange={setContactOpen} />
     </section>
   );
 };
