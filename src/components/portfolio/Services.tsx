@@ -35,15 +35,35 @@ const services = [
 
 export const Services = () => {
   return (
-    <section id="services" className="py-16 md:py-28 bg-paper">
+    <section id="services" className="py-10 md:py-28 bg-paper">
       <div className="container max-w-6xl">
-        <div className="text-center mb-10 md:mb-14">
-          <div className="inline-block border-2 border-ink px-6 sm:px-8 md:px-16 py-4 sm:py-5 bg-paper-warm shadow-pop-yellow">
-            <h2 className="display-heading text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-ink">Services</h2>
+        <div className="text-center mb-6 md:mb-14">
+          <div className="inline-block border-2 border-ink px-5 sm:px-8 md:px-16 py-3 sm:py-5 bg-paper-warm shadow-pop-yellow">
+            <h2 className="display-heading text-2xl sm:text-4xl md:text-6xl lg:text-7xl text-ink">Services</h2>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-ink border-2 border-ink">
+        {/* Mobile: horizontal snap carousel. Desktop: grid */}
+        <div className="md:hidden flex snap-row overflow-x-auto -mx-5 px-5 gap-3 pb-2">
+          {services.map((s) => (
+            <article
+              key={s.n}
+              className="group relative shrink-0 w-[78%] border-2 border-ink bg-paper-warm p-5"
+            >
+              <div className="flex items-start justify-between mb-5">
+                <span className="display-heading text-3xl text-ink">{s.n}</span>
+                <ArrowUpRight size={18} className="text-ink opacity-60" />
+              </div>
+              <h3 className="display-heading text-base leading-tight text-ink">{s.title}</h3>
+              <p className="mt-2.5 text-xs leading-relaxed text-ink-soft">{s.desc}</p>
+            </article>
+          ))}
+        </div>
+        <p className="md:hidden mt-2 text-center text-[10px] uppercase tracking-[0.2em] font-bold text-ink-soft">
+          Swipe →
+        </p>
+
+        <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-ink border-2 border-ink">
           {services.map((s) => (
             <article
               key={s.n}

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { ChevronDown } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 
 const fallbackRoles = [
@@ -67,6 +68,7 @@ const fallbackRoles = [
 
 export const Experience = () => {
   const [roles, setRoles] = useState(fallbackRoles);
+  const [showAll, setShowAll] = useState(false);
 
   useEffect(() => {
     supabase
@@ -78,32 +80,37 @@ export const Experience = () => {
       });
   }, []);
 
+  const visible = showAll ? roles : roles.slice(0, 3);
+
   return (
-    <section id="experience" className="py-16 md:py-28 bg-paper-warm relative overflow-hidden">
+    <section id="experience" className="py-10 md:py-28 bg-paper-warm relative overflow-hidden">
       <div className="container max-w-6xl">
-        <div className="text-center mb-10 md:mb-14">
-          <div className="inline-block border-2 border-ink px-6 sm:px-8 md:px-16 py-4 sm:py-5 bg-paper shadow-pop-yellow">
-            <h2 className="display-heading text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-ink">Resume</h2>
+        <div className="text-center mb-6 md:mb-14">
+          <div className="inline-block border-2 border-ink px-5 sm:px-8 md:px-16 py-3 sm:py-5 bg-paper shadow-pop-yellow">
+            <h2 className="display-heading text-2xl sm:text-4xl md:text-6xl lg:text-7xl text-ink">Resume</h2>
           </div>
         </div>
 
-        <h3 className="display-heading text-lg sm:text-xl text-ink mb-5 sm:mb-6 flex items-center gap-3">
+        <h3 className="display-heading text-lg sm:text-xl text-ink mb-4 sm:mb-6 flex items-center gap-3">
           <span className="w-8 h-1 bg-citrus" /> Experience
         </h3>
 
+        {/* Mobile shows first 3 + toggle; desktop always shows all */}
         <div className="grid md:grid-cols-2 gap-px bg-ink border-2 border-ink">
           {roles.map((r, i) => (
             <article
               key={r.company + r.period}
-              className="group bg-paper p-5 sm:p-6 md:p-7 hover:bg-citrus transition-colors duration-300 cursor-default relative"
+              className={`group bg-paper p-4 sm:p-6 md:p-7 hover:bg-citrus transition-colors duration-300 cursor-default relative ${
+                !showAll && i >= 3 ? "hidden md:block" : ""
+              }`}
             >
-              <div className="flex items-center justify-between gap-3 mb-3">
+              <div className="flex items-center justify-between gap-3 mb-2 sm:mb-3">
                 <span className="display-heading text-2xl text-ink">0{i + 1}</span>
                 <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.16em] sm:tracking-[0.18em] font-bold text-ink-soft tabular-nums text-right">{r.period}</span>
               </div>
-              <h4 className="display-heading text-lg sm:text-xl text-ink leading-tight">{r.title}</h4>
+              <h4 className="display-heading text-base sm:text-xl text-ink leading-tight">{r.title}</h4>
               <p className="text-xs sm:text-sm font-bold uppercase tracking-wider text-ink-soft mt-1 group-hover:text-ink">— {r.company}</p>
-              <ul className="mt-3 sm:mt-4 space-y-2 text-xs sm:text-sm text-ink-soft group-hover:text-ink/80 leading-relaxed">
+              <ul className="mt-2 sm:mt-4 space-y-1.5 sm:space-y-2 text-xs sm:text-sm text-ink-soft group-hover:text-ink/80 leading-relaxed">
                 {r.points.map((p) => (
                   <li key={p} className="flex gap-2">
                     <span className="text-ink mt-2 h-px w-3 bg-ink shrink-0 translate-y-2" />
@@ -114,6 +121,22 @@ export const Experience = () => {
             </article>
           ))}
         </div>
+
+        {roles.length > 3 && (
+          <div className="mt-5 flex justify-center md:hidden">
+            <button
+              type="button"
+              onClick={() => setShowAll((v) => !v)}
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-ink text-citrus border-2 border-ink text-[11px] font-black uppercase tracking-[0.2em] shadow-pop-yellow"
+            >
+              {showAll ? "Show Less" : `Show ${roles.length - 3} More`}
+              <ChevronDown
+                size={14}
+                className={`transition-transform duration-300 ${showAll ? "rotate-180" : ""}`}
+              />
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
