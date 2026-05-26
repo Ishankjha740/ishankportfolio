@@ -224,3 +224,40 @@
 .hero-slide-up    { animation: heroSlideUpFade 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
 .hero-scale-x     { animation: heroScaleXReveal 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards; transform-origin: left center; }
 .hero-grow-down   { animation: heroGrowDown 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards; transform-origin: top center; }
+
+/* Mobile: shorter, snappier hero animations + reduced motion respect */
+@media (max-width: 768px) {
+  .hero-fade-in,
+  .hero-slide-left,
+  .hero-slide-right,
+  .hero-slide-up,
+  .hero-scale-x,
+  .hero-grow-down {
+    animation-duration: 0.9s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  html { scroll-behavior: auto; }
+}
+
+/* Add bottom safe-area padding on mobile so floating nav doesn't cover footer */
+@media (max-width: 1023px) {
+  body { padding-bottom: 64px; }
+}
+
+/* Horizontal snap scroll utility for mobile carousels */
+.snap-row {
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.snap-row::-webkit-scrollbar { display: none; }
+.snap-row > * { scroll-snap-align: start; }
