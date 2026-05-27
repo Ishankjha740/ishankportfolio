@@ -216,17 +216,14 @@
 
 .hero-anim {
   opacity: 0;
-  animation-duration: 1.8s;
-  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
-  animation-fill-mode: forwards;
-  animation-iteration-count: 1;
+  --hero-delay: 0s;
 }
-.hero-fade-in    { animation-name: heroFadeIn; animation-timing-function: ease; }
-.hero-slide-left { animation-name: heroSlideInLeft; }
-.hero-slide-right{ animation-name: heroSlideInRight; }
-.hero-slide-up   { animation-name: heroSlideUpFade; }
-.hero-scale-x    { animation-name: heroScaleXReveal; transform-origin: left center; }
-.hero-grow-down  { animation-name: heroGrowDown; transform-origin: top center; }
+.hero-fade-in    { animation: heroFadeIn 1.8s ease var(--hero-delay) forwards; }
+.hero-slide-left { animation: heroSlideInLeft 1.8s cubic-bezier(0.22, 1, 0.36, 1) var(--hero-delay) forwards; }
+.hero-slide-right{ animation: heroSlideInRight 1.8s cubic-bezier(0.22, 1, 0.36, 1) var(--hero-delay) forwards; }
+.hero-slide-up   { animation: heroSlideUpFade 1.8s cubic-bezier(0.22, 1, 0.36, 1) var(--hero-delay) forwards; }
+.hero-scale-x    { animation: heroScaleXReveal 1.8s cubic-bezier(0.22, 1, 0.36, 1) var(--hero-delay) forwards; transform-origin: left center; }
+.hero-grow-down  { animation: heroGrowDown 1.8s cubic-bezier(0.22, 1, 0.36, 1) var(--hero-delay) forwards; transform-origin: top center; }
 
 /* Mobile: shorter, snappier hero animations + reduced motion respect */
 @media (max-width: 768px) {
