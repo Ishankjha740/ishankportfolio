@@ -1,11 +1,12 @@
 import portrait from "@/assets/ishank-portrait.png";
 import { ArrowRight, ArrowUpRight, Send } from "lucide-react";
+import type { CSSProperties } from "react";
 import { useEffect, useState } from "react";
 import { useSiteText } from "@/hooks/useSiteText";
 import { ContactDialog } from "./ContactDialog";
 
 type Stat = { n: string; l: string; target: number; suffix: string; prefix: string };
-type HeroDelay = { "--hero-delay": string };
+type HeroDelay = CSSProperties & { "--hero-delay": string };
 
 const heroDelay = (delay: string): HeroDelay => ({ "--hero-delay": delay });
 
