@@ -31,7 +31,7 @@ export const MobileBottomNav = () => {
   return (
     <nav
       aria-label="Quick navigation"
-      className="fixed bottom-3 left-1/2 -translate-x-1/2 z-[55] flex items-center gap-1 bg-ink border-2 border-ink shadow-pop-yellow px-1.5 py-1.5 rounded-none"
+      className="lg:hidden fixed bottom-3 left-1/2 -translate-x-1/2 z-[55] flex items-center gap-1 bg-ink border-2 border-ink shadow-pop-yellow px-1.5 py-1.5 rounded-none"
     >
       {items.map((it) => {
         const Icon = it.icon;
