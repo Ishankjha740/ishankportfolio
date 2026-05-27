@@ -5,6 +5,9 @@ import { useSiteText } from "@/hooks/useSiteText";
 import { ContactDialog } from "./ContactDialog";
 
 type Stat = { n: string; l: string; target: number; suffix: string; prefix: string };
+type HeroDelay = { "--hero-delay": string };
+
+const heroDelay = (delay: string): HeroDelay => ({ "--hero-delay": delay });
 
 const STATS: Stat[] = [
   { n: "6.5L+", l: "Reach Scaled", target: 6.5, suffix: "L+", prefix: "" },
@@ -64,30 +67,30 @@ export const Hero = () => {
         {/* LEFT — copy block */}
         <div className="flex flex-col justify-center px-5 sm:px-8 md:px-16 lg:px-20 py-7 sm:py-10 lg:py-20 relative">
           {/* yellow strip accent */}
-          <span className="hidden lg:block absolute top-0 right-0 w-2 h-32 bg-citrus hero-anim hero-grow-down" style={{ animationDelay: "0.9s" }} />
+          <span className="hidden lg:block absolute top-0 right-0 w-2 h-32 bg-citrus hero-anim hero-grow-down" style={heroDelay("0.9s")} />
 
           <div className="fade-up">
-            <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.3em] text-ink-soft mb-3 hero-anim hero-slide-left" style={{ animationDelay: "0.3s" }}>Hi There!</p>
+            <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.3em] text-ink-soft mb-3 hero-anim hero-slide-left" style={heroDelay("0.3s")}>Hi There!</p>
             <h1 className="display-heading text-[10vw] sm:text-[9vw] lg:text-[6rem] xl:text-[7.5rem] text-ink leading-[1.05] break-words">
               <span className="sr-only">Ishank Jha — Brand Strategist &amp; Content Architect. </span>
-              <span className="inline-block hero-anim hero-slide-up" style={{ animationDelay: "0.5s" }}>I'M</span>{" "}
+              <span className="inline-block hero-anim hero-slide-up" style={heroDelay("0.5s")}>I'M</span>{" "}
               <span className="relative inline-block pr-[0.08em]">
                 <span className="relative z-10 text-ink">ISHANK</span>
-                <span className="absolute left-0 right-0 bottom-1 h-[0.55em] bg-citrus -z-0 hero-anim hero-scale-x" style={{ animationDelay: "0.7s" }} aria-hidden />
+                <span className="absolute left-0 right-0 bottom-1 h-[0.55em] bg-citrus -z-0 hero-anim hero-scale-x" style={heroDelay("0.7s")} aria-hidden />
               </span>
             </h1>
-            <div className="mt-5 inline-flex max-w-full items-center bg-citrus border-2 border-ink px-3 sm:px-4 py-2 hero-anim hero-slide-left" style={{ animationDelay: "1.0s" }}>
+            <div className="mt-5 inline-flex max-w-full items-center bg-citrus border-2 border-ink px-3 sm:px-4 py-2 hero-anim hero-slide-left" style={heroDelay("1.0s")}>
               <span className="text-ink font-black uppercase text-[10px] sm:text-xs tracking-[0.2em] sm:tracking-[0.25em]">
                 {descriptor}
               </span>
             </div>
           </div>
 
-          <p className="mt-4 sm:mt-6 lg:mt-8 max-w-xl text-ink-soft text-[13px] sm:text-base md:text-lg leading-relaxed hero-anim hero-fade-in" style={{ animationDelay: "1.1s" }}>
+          <p className="mt-4 sm:mt-6 lg:mt-8 max-w-xl text-ink-soft text-[13px] sm:text-base md:text-lg leading-relaxed hero-anim hero-fade-in" style={heroDelay("1.1s")}>
             {intro}
           </p>
 
-          <div className="mt-5 sm:mt-8 lg:mt-10 flex flex-wrap items-center gap-2.5 sm:gap-4 hero-anim hero-slide-up" style={{ animationDelay: "1.3s" }}>
+          <div className="mt-5 sm:mt-8 lg:mt-10 flex flex-wrap items-center gap-2.5 sm:gap-4 hero-anim hero-slide-up" style={heroDelay("1.3s")}>
             <a
               href="#about"
               className="group inline-flex items-center gap-3 px-5 sm:px-7 py-3 sm:py-4 bg-citrus border-2 border-ink text-ink text-xs sm:text-sm font-black uppercase tracking-wider shadow-pop hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all duration-300"
@@ -113,7 +116,7 @@ export const Hero = () => {
           </div>
 
           {/* Bottom stats */}
-          <div className="mt-6 sm:mt-10 lg:mt-14 grid grid-cols-3 gap-px bg-ink border-2 border-ink max-w-xl hero-anim hero-fade-in" style={{ animationDelay: "1.5s" }}>
+          <div className="mt-6 sm:mt-10 lg:mt-14 grid grid-cols-3 gap-px bg-ink border-2 border-ink max-w-xl hero-anim hero-fade-in" style={heroDelay("1.5s")}>
             {STATS.map((s, i) => (
               <div key={s.l} className="bg-paper-warm p-2.5 sm:p-5 text-center">
                 <div className="display-heading text-xl sm:text-3xl md:text-4xl text-ink">{counts[i]}</div>
@@ -124,12 +127,12 @@ export const Hero = () => {
         </div>
 
         {/* RIGHT — Portrait panel */}
-        <div className="relative bg-paper-warm border-t-2 lg:border-t-0 lg:border-l-2 border-ink overflow-hidden min-h-[300px] sm:min-h-[420px] lg:min-h-full hero-anim hero-slide-right" style={{ animationDelay: "0.4s" }}>
+        <div className="relative bg-paper-warm border-t-2 lg:border-t-0 lg:border-l-2 border-ink overflow-hidden min-h-[300px] sm:min-h-[420px] lg:min-h-full hero-anim hero-slide-right" style={heroDelay("0.4s")}>
           {/* yellow corner accents */}
-          <span className="absolute top-0 left-0 w-20 h-2 bg-citrus z-20 hero-anim hero-fade-in" style={{ animationDelay: "1.2s" }} />
-          <span className="absolute top-0 left-0 w-2 h-20 bg-citrus z-20 hero-anim hero-fade-in" style={{ animationDelay: "1.2s" }} />
-          <span className="absolute bottom-0 right-0 w-20 h-2 bg-citrus z-20 hero-anim hero-fade-in" style={{ animationDelay: "1.2s" }} />
-          <span className="absolute bottom-0 right-0 w-2 h-20 bg-citrus z-20 hero-anim hero-fade-in" style={{ animationDelay: "1.2s" }} />
+          <span className="absolute top-0 left-0 w-20 h-2 bg-citrus z-20 hero-anim hero-fade-in" style={heroDelay("1.2s")} />
+          <span className="absolute top-0 left-0 w-2 h-20 bg-citrus z-20 hero-anim hero-fade-in" style={heroDelay("1.2s")} />
+          <span className="absolute bottom-0 right-0 w-20 h-2 bg-citrus z-20 hero-anim hero-fade-in" style={heroDelay("1.2s")} />
+          <span className="absolute bottom-0 right-0 w-2 h-20 bg-citrus z-20 hero-anim hero-fade-in" style={heroDelay("1.2s")} />
 
           {/* huge background letter */}
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
@@ -147,7 +150,7 @@ export const Hero = () => {
           />
 
           {/* Floating yellow tag */}
-          <div className="absolute top-4 right-4 sm:top-8 sm:right-8 z-20 bg-citrus border-2 border-ink px-3 sm:px-4 py-1.5 sm:py-2 shadow-pop hero-anim hero-fade-in" style={{ animationDelay: "1.4s" }}>
+          <div className="absolute top-4 right-4 sm:top-8 sm:right-8 z-20 bg-citrus border-2 border-ink px-3 sm:px-4 py-1.5 sm:py-2 shadow-pop hero-anim hero-fade-in" style={heroDelay("1.4s")}>
             <div className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] sm:tracking-[0.25em] text-ink">{availableTag}</div>
           </div>
 
