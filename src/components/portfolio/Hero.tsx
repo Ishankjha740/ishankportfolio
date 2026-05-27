@@ -59,16 +59,16 @@ export const Hero = () => {
   ];
 
   return (
-    <section id="top" className="relative min-h-[78vh] lg:min-h-[90vh] pt-14 lg:pt-12 pb-8 lg:pb-16 overflow-hidden bg-paper">
-      <div className="grid lg:grid-cols-[1fr_45%] min-h-[72vh] lg:min-h-[90vh] relative">
+    <section id="top" className="relative min-h-[90vh] pt-16 lg:pt-12 pb-16 overflow-hidden bg-paper">
+      <div className="grid lg:grid-cols-[1fr_45%] min-h-[90vh] relative">
         {/* LEFT — copy block */}
-        <div className="flex flex-col justify-center px-5 sm:px-8 md:px-16 lg:px-20 py-7 sm:py-10 lg:py-20 relative">
+        <div className="flex flex-col justify-center px-5 sm:px-8 md:px-16 lg:px-20 py-12 sm:py-14 lg:py-20 relative">
           {/* yellow strip accent */}
           <span className="hidden lg:block absolute top-0 right-0 w-2 h-32 bg-citrus hero-anim hero-grow-down" style={{ animationDelay: "0.9s" }} />
 
           <div className="fade-up">
             <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.3em] text-ink-soft mb-3 hero-anim hero-slide-left" style={{ animationDelay: "0.3s" }}>Hi There!</p>
-            <h1 className="display-heading text-[10vw] sm:text-[9vw] lg:text-[6rem] xl:text-[7.5rem] text-ink leading-[1.05] break-words">
+            <h1 className="display-heading text-[11.5vw] sm:text-[10vw] lg:text-[6rem] xl:text-[7.5rem] text-ink leading-[1.05] break-words">
               <span className="sr-only">Ishank Jha — Brand Strategist &amp; Content Architect. </span>
               <span className="inline-block hero-anim hero-slide-up" style={{ animationDelay: "0.5s" }}>I'M</span>{" "}
               <span className="relative inline-block pr-[0.08em]">
@@ -83,11 +83,11 @@ export const Hero = () => {
             </div>
           </div>
 
-          <p className="mt-4 sm:mt-6 lg:mt-8 max-w-xl text-ink-soft text-[13px] sm:text-base md:text-lg leading-relaxed hero-anim hero-fade-in" style={{ animationDelay: "1.1s" }}>
+          <p className="mt-6 sm:mt-8 max-w-xl text-ink-soft text-sm sm:text-base md:text-lg leading-relaxed hero-anim hero-fade-in" style={{ animationDelay: "1.1s" }}>
             {intro}
           </p>
 
-          <div className="mt-5 sm:mt-8 lg:mt-10 flex flex-wrap items-center gap-2.5 sm:gap-4 hero-anim hero-slide-up" style={{ animationDelay: "1.3s" }}>
+          <div className="mt-8 sm:mt-10 flex flex-wrap items-center gap-3 sm:gap-4 hero-anim hero-slide-up" style={{ animationDelay: "1.3s" }}>
             <a
               href="#about"
               className="group inline-flex items-center gap-3 px-5 sm:px-7 py-3 sm:py-4 bg-citrus border-2 border-ink text-ink text-xs sm:text-sm font-black uppercase tracking-wider shadow-pop hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all duration-300"
@@ -113,9 +113,9 @@ export const Hero = () => {
           </div>
 
           {/* Bottom stats */}
-          <div className="mt-6 sm:mt-10 lg:mt-14 grid grid-cols-3 gap-px bg-ink border-2 border-ink max-w-xl hero-anim hero-fade-in" style={{ animationDelay: "1.5s" }}>
+          <div className="mt-10 sm:mt-14 grid grid-cols-3 gap-px bg-ink border-2 border-ink max-w-xl hero-anim hero-fade-in" style={{ animationDelay: "1.5s" }}>
             {STATS.map((s, i) => (
-              <div key={s.l} className="bg-paper-warm p-2.5 sm:p-5 text-center">
+              <div key={s.l} className="bg-paper-warm p-3 sm:p-5 text-center">
                 <div className="display-heading text-xl sm:text-3xl md:text-4xl text-ink">{counts[i]}</div>
                 <div className="text-[9px] sm:text-[10px] uppercase tracking-[0.18em] sm:tracking-[0.2em] text-ink-soft mt-1 sm:mt-2 font-bold leading-tight">{s.l}</div>
               </div>
@@ -124,7 +124,7 @@ export const Hero = () => {
         </div>
 
         {/* RIGHT — Portrait panel */}
-        <div className="relative bg-paper-warm border-t-2 lg:border-t-0 lg:border-l-2 border-ink overflow-hidden min-h-[300px] sm:min-h-[420px] lg:min-h-full hero-anim hero-slide-right" style={{ animationDelay: "0.4s" }}>
+        <div className="relative bg-paper-warm border-t-2 lg:border-t-0 lg:border-l-2 border-ink overflow-hidden min-h-[420px] sm:min-h-[500px] lg:min-h-full hero-anim hero-slide-right" style={{ animationDelay: "0.4s" }}>
           {/* yellow corner accents */}
           <span className="absolute top-0 left-0 w-20 h-2 bg-citrus z-20 hero-anim hero-fade-in" style={{ animationDelay: "1.2s" }} />
           <span className="absolute top-0 left-0 w-2 h-20 bg-citrus z-20 hero-anim hero-fade-in" style={{ animationDelay: "1.2s" }} />

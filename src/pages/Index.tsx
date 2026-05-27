@@ -10,8 +10,6 @@ import { CreativeWorks } from "@/components/portfolio/CreativeWorks";
 import { Clients } from "@/components/portfolio/Clients";
 import { Contact } from "@/components/portfolio/Contact";
 import { SectionDivider } from "@/components/portfolio/SectionDivider";
-import { ScrollProgress } from "@/components/portfolio/ScrollProgress";
-import { MobileBottomNav } from "@/components/portfolio/MobileBottomNav";
 
 const Index = () => {
   return (
@@ -25,7 +23,6 @@ const Index = () => {
     <main
       className="min-h-screen bg-paper transition-[padding] duration-300 ease-out lg:pl-[var(--rail-w,220px)]"
     >
-      <ScrollProgress />
       <Nav />
       <Hero />
       <About />
@@ -36,7 +33,6 @@ const Index = () => {
       <Clients />
       <Skills />
       <Contact />
-      <MobileBottomNav />
     </main>
     </>
   );

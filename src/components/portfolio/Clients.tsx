@@ -137,16 +137,16 @@ const socialMeta: Array<{
 
 export const Clients = () => {
   return (
-    <section id="clients" className="py-10 md:py-28 bg-paper-warm">
+    <section id="clients" className="py-16 md:py-28 bg-paper-warm">
       <div className="container max-w-6xl">
         <div className="text-center mb-3 md:mb-4">
-          <div className="inline-block border-2 border-ink px-5 sm:px-8 md:px-16 py-3 sm:py-5 bg-paper shadow-pop-yellow">
-            <h2 className="display-heading text-2xl sm:text-4xl md:text-6xl lg:text-7xl text-ink">
+          <div className="inline-block border-2 border-ink px-6 sm:px-8 md:px-16 py-4 sm:py-5 bg-paper shadow-pop-yellow">
+            <h2 className="display-heading text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-ink">
               Clients Handled
             </h2>
           </div>
         </div>
-        <p className="text-center label-eyebrow mb-5 md:mb-14">
+        <p className="text-center label-eyebrow mb-10 md:mb-14">
           Brands I've built and scaled
         </p>
 
@@ -154,7 +154,7 @@ export const Clients = () => {
           const renderCard = (c: Client) => (
             <article
               key={c.name}
-              className="group relative bg-paper hover:bg-citrus/40 transition-colors duration-300 p-4 sm:p-7 md:p-8 flex flex-col items-center justify-between min-h-[150px] sm:min-h-[210px]"
+              className="group relative bg-paper hover:bg-citrus/40 transition-colors duration-300 p-5 sm:p-7 md:p-8 flex flex-col items-center justify-between min-h-[180px] sm:min-h-[210px]"
             >
               {/* Logo placeholder block — swap with <img src=... /> later */}
               <div className="flex-1 w-full flex items-center justify-center">

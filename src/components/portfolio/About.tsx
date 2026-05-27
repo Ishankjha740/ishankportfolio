@@ -13,21 +13,21 @@ const known = [
 
 export const About = () => {
   return (
-    <section id="about" className="py-10 md:py-28 bg-paper relative overflow-hidden">
+    <section id="about" className="py-16 md:py-28 bg-paper relative overflow-hidden">
       <div className="container max-w-6xl">
         {/* Boxed title */}
-        <div className="text-center mb-6 md:mb-14">
-          <div className="inline-block border-2 border-ink px-5 sm:px-8 md:px-16 py-3 sm:py-5 bg-paper-warm shadow-pop-yellow">
-            <h2 className="display-heading text-2xl sm:text-4xl md:text-6xl lg:text-7xl text-ink">About Me</h2>
+        <div className="text-center mb-10 md:mb-14">
+          <div className="inline-block border-2 border-ink px-6 sm:px-8 md:px-16 py-4 sm:py-5 bg-paper-warm shadow-pop-yellow">
+            <h2 className="display-heading text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-ink">About Me</h2>
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-12 gap-6 md:gap-10 items-start">
+        <div className="grid lg:grid-cols-12 gap-8 md:gap-10 items-start">
           <div className="lg:col-span-7">
-            <p className="text-lg sm:text-2xl md:text-3xl text-ink leading-snug font-bold">
+            <p className="text-xl sm:text-2xl md:text-3xl text-ink leading-snug font-bold">
               I'm <span className="bg-citrus px-2">Ishank Jha</span>, Brand Strategist &amp; Content Architect.
             </p>
-            <div className="mt-3 sm:mt-6 space-y-3 sm:space-y-5 text-ink-soft text-[13px] sm:text-base md:text-lg leading-relaxed">
+            <div className="mt-5 sm:mt-6 space-y-4 sm:space-y-5 text-ink-soft text-sm sm:text-base md:text-lg leading-relaxed">
               <p>
                 I came up through tech and craft—a <span className="text-ink font-semibold">BCA</span> and a
                 <span className="text-ink font-semibold"> diploma in VFX</span>—before sharpening that lens with an
@@ -59,7 +59,7 @@ export const About = () => {
             </div>
 
             {/* What I Do */}
-            <div className="mt-5 sm:mt-8">
+            <div className="mt-6 sm:mt-8">
               <h3 className="display-heading text-lg sm:text-xl text-ink mb-4 flex items-center gap-3">
                 <span className="w-8 h-1 bg-citrus" /> What I Do?
               </h3>
@@ -79,8 +79,8 @@ export const About = () => {
         </div>
 
         {/* Education timeline */}
-        <div className="mt-8 sm:mt-20">
-          <h3 className="display-heading text-lg sm:text-xl text-ink mb-3 sm:mb-6 flex items-center gap-3">
+        <div className="mt-14 sm:mt-20">
+          <h3 className="display-heading text-lg sm:text-xl text-ink mb-5 sm:mb-6 flex items-center gap-3">
             <span className="w-8 h-1 bg-citrus" /> Education
           </h3>
           <div className="border-t-2 border-ink">
