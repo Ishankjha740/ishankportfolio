@@ -23,7 +23,8 @@ export default function ContactPage() {
         <meta name="twitter:description" content={description} />
       </Helmet>
 
-      <main className="min-h-screen bg-paper">
+      <main className="min-h-dvh bg-paper">
+        <h1 className="sr-only">Contact Ishank Jha</h1>
         <div className="container max-w-6xl py-12 sm:py-16 md:py-24">
           <Link
             to="/"
