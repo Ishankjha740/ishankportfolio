@@ -29,7 +29,7 @@ export const LegalLayout = ({ title, eyebrow, description, path, children }: Leg
         <meta name="twitter:title" content={pageTitle} />
         <meta name="twitter:description" content={desc} />
       </Helmet>
-    <main className="min-h-screen bg-paper">
+    <main className="min-h-dvh bg-paper">
       <div className="container max-w-3xl py-12 sm:py-16 md:py-24">
         <Link
           to="/"

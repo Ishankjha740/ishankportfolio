@@ -39,7 +39,7 @@ const AdminDashboard = () => {
 
   if (loading) {
     return (
-      <main className="min-h-screen bg-paper flex items-center justify-center">
+      <main className="min-h-dvh bg-paper flex items-center justify-center">
         <p className="text-ink-soft text-sm uppercase tracking-widest">Loading…</p>
       </main>
     );
@@ -47,7 +47,7 @@ const AdminDashboard = () => {
 
   if (!session || !isAdmin) {
     return (
-      <main className="min-h-screen bg-paper flex items-center justify-center px-4">
+      <main className="min-h-dvh bg-paper flex items-center justify-center px-4">
         <div className="text-center max-w-md border-2 border-ink bg-paper-warm p-6 shadow-pop-yellow">
           <h1 className="display-heading text-2xl text-ink">Access denied</h1>
           <p className="text-sm text-ink-soft mt-2">You need an admin account to view this page.</p>
@@ -65,7 +65,7 @@ const AdminDashboard = () => {
   };
 
   return (
-    <main className="min-h-screen bg-paper">
+    <main className="min-h-dvh bg-paper">
       <header className="border-b-2 border-ink bg-paper-warm">
         <div className="container max-w-6xl py-4 flex flex-wrap items-center justify-between gap-3">
           <div>

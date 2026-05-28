@@ -37,7 +37,7 @@ const AdminLogin = () => {
   };
 
   return (
-    <main className="min-h-screen bg-paper flex items-center justify-center px-4">
+    <main className="min-h-dvh bg-paper flex items-center justify-center px-4">
       <div className="w-full max-w-md border-2 border-ink bg-paper-warm shadow-pop-yellow p-6 sm:p-8">
         <Link to="/" className="text-[10px] font-black uppercase tracking-[0.25em] text-ink-soft hover:text-ink">
           ← Back to site
