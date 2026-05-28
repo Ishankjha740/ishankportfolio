@@ -29,7 +29,7 @@ const send = async (
       path: typeof window !== "undefined" ? window.location.pathname : null,
       referrer: typeof document !== "undefined" ? document.referrer || null : null,
       visitor_hash: getVisitorHash(),
-      metadata: metadata ?? null,
+      metadata: (metadata ?? null) as never,
     });
   } catch {
     // Silently ignore — analytics must never break the app.
