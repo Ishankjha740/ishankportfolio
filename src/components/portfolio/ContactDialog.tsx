@@ -25,7 +25,6 @@ export const ContactDialog = ({ open, onOpenChange }: Props) => {
           className="fixed inset-0 z-[100] bg-ink/80 backdrop-blur-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0"
         />
         <DialogPrimitive.Content
-          onOpenAutoFocus={(e) => e.preventDefault()}
           className="fixed left-1/2 top-1/2 z-[101] w-[calc(100vw-1rem)] sm:w-[92vw] md:w-[88vw] max-w-3xl max-h-[92vh] -translate-x-1/2 -translate-y-1/2 overflow-y-auto border-2 border-paper bg-ink shadow-[8px_8px_0_0_hsl(var(--citrus))] focus:outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-top-[48%] duration-300"
         >
           {/* Yellow corner accents */}
