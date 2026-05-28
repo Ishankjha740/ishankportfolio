@@ -26,7 +26,7 @@ updates:
     labels:
       - "dependencies"
 
-    # 🔥 Smart grouping (THIS is where speed comes from)
+    # Smart grouping
     groups:
       minor-patch:
         patterns:
@@ -40,8 +40,6 @@ updates:
           - "*"
         update-types:
           - "major"
-
----
 
   # 🔹 GitHub Actions (CI/CD)
   - package-ecosystem: "github-actions"
@@ -61,27 +59,5 @@ updates:
 
     groups:
       gha-updates:
-        patterns:
-          - "*"
-
----
-
-  # 🔹 Optional: Backend (if you have one)
-  - package-ecosystem: "npm"
-    directory: "/backend"
-    schedule:
-      interval: "daily"
-
-    open-pull-requests-limit: 5
-    rebase-strategy: "auto"
-
-    commit-message:
-      prefix: "deps"
-
-    labels:
-      - "dependencies"
-
-    groups:
-      backend-deps:
         patterns:
           - "*"
