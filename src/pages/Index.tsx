@@ -21,7 +21,7 @@ const Index = () => {
       <meta property="og:url" content="https://ishankportfolio.lovable.app/" />
     </Helmet>
     <main
-      className="min-h-screen bg-paper transition-[padding] duration-300 ease-out lg:pl-[var(--rail-w,220px)]"
+      className="min-h-dvh bg-paper transition-[padding] duration-300 ease-out lg:pl-[var(--rail-w,220px)]"
     >
       <Nav />
       <Hero />
