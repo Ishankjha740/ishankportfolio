@@ -3,6 +3,7 @@ import { useState, type SVGProps } from "react";
 import { Link } from "react-router-dom";
 import { useSiteText } from "@/hooks/useSiteText";
 import { ContactDialog } from "./ContactDialog";
+import { trackEvent } from "@/lib/analytics";
 
 const BehanceIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
@@ -81,7 +82,10 @@ export const Contact = () => {
           <div className="flex flex-col sm:flex-row items-stretch justify-center gap-4 sm:gap-5 w-full max-w-xl">
             <button
               type="button"
-              onClick={() => setOpen(true)}
+              onClick={() => {
+                trackEvent("contact_section_contact_me");
+                setOpen(true);
+              }}
               className="group flex-1 inline-flex items-center justify-center gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-ink text-citrus border-2 border-ink text-xs sm:text-sm font-black uppercase tracking-widest shadow-pop-yellow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all duration-300"
             >
               <Send size={16} />
@@ -90,6 +94,7 @@ export const Contact = () => {
             <a
               href={resumeUrl}
               download
+              onClick={() => trackEvent("download_resume")}
               className="group flex-1 inline-flex items-center justify-center gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-citrus text-ink border-2 border-ink text-xs sm:text-sm font-black uppercase tracking-widest shadow-pop hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all duration-300"
             >
               <ArrowDownToLine size={16} />

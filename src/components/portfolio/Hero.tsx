@@ -3,6 +3,7 @@ import { ArrowRight, ArrowUpRight, Send } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useSiteText } from "@/hooks/useSiteText";
 import { ContactDialog } from "./ContactDialog";
+import { trackEvent } from "@/lib/analytics";
 
 type Stat = { n: string; l: string; target: number; suffix: string; prefix: string };
 
@@ -90,6 +91,7 @@ export const Hero = () => {
           <div className="mt-8 sm:mt-10 flex flex-wrap items-center gap-3 sm:gap-4 hero-anim hero-slide-up" style={{ animationDelay: "1.3s" }}>
             <a
               href="#about"
+              onClick={() => trackEvent("hero_more_about_me")}
               className="group inline-flex items-center gap-3 px-5 sm:px-7 py-3 sm:py-4 bg-citrus border-2 border-ink text-ink text-xs sm:text-sm font-black uppercase tracking-wider shadow-pop hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all duration-300"
             >
               More About Me
@@ -97,7 +99,10 @@ export const Hero = () => {
             </a>
             <button
               type="button"
-              onClick={() => setContactOpen(true)}
+              onClick={() => {
+                trackEvent("hero_contact_me");
+                setContactOpen(true);
+              }}
               className="group inline-flex items-center gap-3 px-5 sm:px-7 py-3 sm:py-4 bg-ink text-citrus border-2 border-ink text-xs sm:text-sm font-black uppercase tracking-wider shadow-pop-yellow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all duration-300"
             >
               <Send size={16} />
@@ -105,6 +110,7 @@ export const Hero = () => {
             </button>
             <a
               href="#work"
+              onClick={() => trackEvent("hero_view_work")}
               className="group inline-flex items-center gap-3 px-5 sm:px-7 py-3 sm:py-4 border-2 border-ink text-ink text-xs sm:text-sm font-black uppercase tracking-wider hover:bg-ink hover:text-citrus transition-colors duration-300"
             >
               View Work
