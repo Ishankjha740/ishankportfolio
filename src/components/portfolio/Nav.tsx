@@ -106,7 +106,7 @@ export const Nav = () => {
         className={`hidden lg:flex fixed top-0 left-0 bottom-0 z-50 bg-citrus border-r-2 border-ink flex-col transition-[width] duration-300 ease-out ${
           collapsed ? "w-[72px]" : "w-[220px]"
         }`}
-        aria-label="Primary"
+        aria-label="Main navigation"
       >
         {/* Logo / brand block */}
         <a
