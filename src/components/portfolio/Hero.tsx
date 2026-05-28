@@ -166,8 +166,8 @@ export const Hero = () => {
         </div>
       </div>
 
-      {/* Marquee */}
-      <div className="overflow-hidden border-y-2 border-ink py-4 sm:py-5 bg-ink text-citrus">
+      {/* Marquee — decorative, hidden from assistive tech */}
+      <div aria-hidden="true" className="overflow-hidden border-y-2 border-ink py-4 sm:py-5 bg-ink text-citrus">
         <div className="flex animate-marquee whitespace-nowrap">
           {[...Array(2)].map((_, i) => (
             <div key={i} className="flex items-center gap-6 sm:gap-8 pr-6 sm:pr-8 display-heading text-xl sm:text-2xl md:text-3xl">
