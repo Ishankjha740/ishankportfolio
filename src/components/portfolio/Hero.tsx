@@ -1,5 +1,5 @@
 import portrait from "@/assets/ishank-portrait.png";
-import { ArrowRight, ArrowUpRight, Send } from "lucide-react";
+import { ArrowUpRight, Send } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useSiteText } from "@/hooks/useSiteText";
 import { ContactDialog } from "./ContactDialog";
@@ -8,9 +8,9 @@ import { trackEvent } from "@/lib/analytics";
 type Stat = { n: string; l: string; target: number; suffix: string; prefix: string };
 
 const STATS: Stat[] = [
-  { n: "6.5L+", l: "Reach Scaled", target: 6.5, suffix: "L+", prefix: "" },
-  { n: "2+",    l: "Years Practice", target: 2, suffix: "+", prefix: "" },
-  { n: "12+",   l: "Brands Shaped", target: 12, suffix: "+", prefix: "" },
+  { n: "6.5L+", l: "Avg. Monthly Reach", target: 6.5, suffix: "L+", prefix: "" },
+  { n: "25%",   l: "MoM Engagement Lift", target: 25, suffix: "%", prefix: "" },
+  { n: "12+",   l: "Brands Scaled",   target: 12, suffix: "+", prefix: "" },
 ];
 
 const useCountUp = (target: number, startDelay: number, duration = 1200, decimals = 0) => {
@@ -44,18 +44,18 @@ const useCountUp = (target: number, startDelay: number, duration = 1200, decimal
 
 export const Hero = () => {
   const [contactOpen, setContactOpen] = useState(false);
-  const descriptor = useSiteText("hero.descriptor", "Brand Strategist · Content Architect");
+  const descriptor = useSiteText("hero.descriptor", "Brand & Content Systems for Growth-Stage Teams");
   const intro = useSiteText(
     "hero.intro",
-    "I sit where creativity meets data and execution meets scale, leading brand strategy, social ecosystems, and creative direction for brands like The Trilight, Inside Out, Sri Aditya Vantage, Style Chai, The Commons by Incor, and GMR Hyderabad Airport; building high-impact digital ecosystems that don't just look good but drive engagement, adoption, and qualified growth."
+    "I help founders and marketing leads turn scattered content into a measurable growth engine — built on strategy, executed with craft, judged by numbers. Trusted by GMR Hyderabad Airport, The Trilight, Sri Aditya Vantage, Style Chai and 8+ more."
   );
-  const availableTag = useSiteText("hero.available_tag", "Available · 2026");
+  const availableTag = useSiteText("hero.available_tag", "Now Booking · Q1");
   const reach = useCountUp(6.5, 1600, 2400, 1);
-  const years = useCountUp(2, 1600, 2200, 0);
+  const lift = useCountUp(25, 1600, 2200, 0);
   const brands = useCountUp(12, 1600, 2400, 0);
   const counts = [
     `${reach.toFixed(1)}L+`,
-    `${Math.round(years)}+`,
+    `${Math.round(lift)}%`,
     `${Math.round(brands)}+`,
   ];
 
@@ -69,12 +69,13 @@ export const Hero = () => {
 
           <div className="fade-up">
             <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.3em] text-ink-soft mb-3 hero-anim hero-slide-left" style={{ animationDelay: "0.3s" }}>Hi There!</p>
-            <h1 className="display-heading text-[11.5vw] sm:text-[10vw] lg:text-[6rem] xl:text-[7.5rem] text-ink leading-[1.05] break-words">
-              <span className="sr-only">Ishank Jha — Brand Strategist &amp; Content Architect. </span>
-              <span className="inline-block hero-anim hero-slide-up" style={{ animationDelay: "0.5s" }}>I'M</span>{" "}
+          <h1 className="display-heading text-[10vw] sm:text-[8.5vw] lg:text-[5.25rem] xl:text-[6.5rem] text-ink leading-[1.02] break-words">
+              <span className="sr-only">Ishank Jha — Brand systems that compound. </span>
+              <span className="inline-block hero-anim hero-slide-up" style={{ animationDelay: "0.5s" }}>Brand systems</span>{" "}
+              <span className="inline-block hero-anim hero-slide-up" style={{ animationDelay: "0.6s" }}>that</span>{" "}
               <span className="relative inline-block pr-[0.08em]">
-                <span className="relative z-10 text-ink">ISHANK</span>
-                <span className="absolute left-0 right-0 bottom-1 h-[0.55em] bg-citrus -z-0 hero-anim hero-scale-x" style={{ animationDelay: "0.7s" }} aria-hidden />
+                <span className="relative z-10 text-ink">compound.</span>
+                <span className="absolute left-0 right-0 bottom-1 h-[0.45em] bg-citrus -z-0 hero-anim hero-scale-x" style={{ animationDelay: "0.75s" }} aria-hidden />
               </span>
             </h1>
             <div className="mt-5 inline-flex max-w-full items-center bg-citrus border-2 border-ink px-3 sm:px-4 py-2 hero-anim hero-slide-left" style={{ animationDelay: "1.0s" }}>
@@ -89,31 +90,23 @@ export const Hero = () => {
           </p>
 
           <div className="mt-8 sm:mt-10 flex flex-wrap items-center gap-3 sm:gap-4 hero-anim hero-slide-up" style={{ animationDelay: "1.3s" }}>
-            <a
-              href="#about"
-              onClick={() => trackEvent("hero_more_about_me")}
-              className="group inline-flex items-center gap-3 px-5 sm:px-7 py-3 sm:py-4 bg-citrus border-2 border-ink text-ink text-xs sm:text-sm font-black uppercase tracking-wider shadow-pop hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all duration-300"
-            >
-              More About Me
-              <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
-            </a>
             <button
               type="button"
               onClick={() => {
-                trackEvent("hero_contact_me");
+                trackEvent("hero_start_brief");
                 setContactOpen(true);
               }}
-              className="group inline-flex items-center gap-3 px-5 sm:px-7 py-3 sm:py-4 bg-ink text-citrus border-2 border-ink text-xs sm:text-sm font-black uppercase tracking-wider shadow-pop-yellow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all duration-300"
+              className="group inline-flex items-center gap-3 px-6 sm:px-8 py-3.5 sm:py-4 bg-citrus border-2 border-ink text-ink text-xs sm:text-sm font-black uppercase tracking-wider shadow-pop hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all duration-300"
             >
               <Send size={16} />
-              Contact Me
+              Start a Project Brief
             </button>
             <a
               href="#work"
               onClick={() => trackEvent("hero_view_work")}
-              className="group inline-flex items-center gap-3 px-5 sm:px-7 py-3 sm:py-4 border-2 border-ink text-ink text-xs sm:text-sm font-black uppercase tracking-wider hover:bg-ink hover:text-citrus transition-colors duration-300"
+              className="group inline-flex items-center gap-3 px-6 sm:px-8 py-3.5 sm:py-4 border-2 border-ink text-ink text-xs sm:text-sm font-black uppercase tracking-wider hover:bg-ink hover:text-citrus transition-colors duration-300"
             >
-              View Work
+              See Selected Work
               <ArrowUpRight size={16} />
             </a>
           </div>

@@ -1,8 +1,6 @@
 const education = [
   { year: "2025–2026", school: "ISB Hyderabad", program: "Advanced Digital Marketing & Analytics" },
   { year: "2022–2024", school: "Woxsen University", program: "MBA — Analytics & Marketing" },
-  { year: "2018–2021", school: "Amity University", program: "BCA — Computer Applications" },
-  { year: "2018–2019", school: "Wiztoonz", program: "Diploma in VFX" },
 ];
 
 const known = [
@@ -25,19 +23,18 @@ export const About = () => {
         <div className="grid lg:grid-cols-12 gap-8 md:gap-10 items-start">
           <div className="lg:col-span-7">
             <p className="text-xl sm:text-2xl md:text-3xl text-ink leading-snug font-bold">
-              I'm <span className="bg-citrus px-2">Ishank Jha</span>, Brand Strategist &amp; Content Architect.
+              I build <span className="bg-citrus px-2">brand systems</span> where creative and analytics actually talk to each other.
             </p>
             <div className="mt-5 sm:mt-6 space-y-4 sm:space-y-5 text-ink-soft text-sm sm:text-base md:text-lg leading-relaxed">
               <p>
-                I came up through tech and craft—a <span className="text-ink font-semibold">BCA</span> and a
-                <span className="text-ink font-semibold"> diploma in VFX</span>—before sharpening that lens with an
-                <span className="text-ink font-semibold"> MBA in Analytics &amp; Marketing</span> and an advanced
-                certification at <span className="text-ink font-semibold">ISB Hyderabad</span>.
+                Over two years I've shaped <span className="text-ink font-semibold">12+ brands</span> across
+                real-estate, hospitality, F&amp;B and lifestyle — scaling reach past
+                <span className="text-ink font-semibold"> 6.5 lakh/month</span> and turning content from a cost
+                center into a pipeline.
               </p>
               <p>
-                I sit at the intersection of creative, data and systems—building brand ecosystems that don't
-                just look good, they perform. Every campaign starts with a question, and ends with a number
-                that moved.
+                Background spans engineering, VFX, and an MBA in analytics, so I can sit equally with a designer,
+                a media buyer, or a CFO. <span className="text-ink font-semibold">What you get: a system, not a deliverable.</span>
               </p>
             </div>
           </div>
