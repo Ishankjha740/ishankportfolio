@@ -89,7 +89,7 @@ export const Contact = () => {
               className="group flex-1 inline-flex items-center justify-center gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-ink text-citrus border-2 border-ink text-xs sm:text-sm font-black uppercase tracking-widest shadow-pop-yellow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all duration-300"
             >
               <Send size={16} />
-              Contact Me
+              Start a Project Brief
             </button>
             <a
               href={resumeUrl}
@@ -101,8 +101,8 @@ export const Contact = () => {
               Download Resume
             </a>
           </div>
-          <p className="display-heading text-xl sm:text-2xl md:text-3xl text-ink mt-2 sm:mt-4">
-            Thanks <span className="bg-citrus px-2">For Patience!</span>
+          <p className="display-heading text-xl sm:text-2xl md:text-3xl text-ink mt-2 sm:mt-4 max-w-2xl">
+            Reply within <span className="bg-citrus px-2">24 hours.</span> No templates, no fluff.
           </p>
         </div>
 
