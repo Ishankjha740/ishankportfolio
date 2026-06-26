@@ -7,7 +7,7 @@ import { Skills } from "@/components/portfolio/Skills";
 import { Services } from "@/components/portfolio/Services";
 import { Work } from "@/components/portfolio/Work";
 import { CreativeWorks } from "@/components/portfolio/CreativeWorks";
-import { Clients } from "@/components/portfolio/Clients";
+
 import { FeaturedCase } from "@/components/portfolio/FeaturedCase";
 import { Contact } from "@/components/portfolio/Contact";
 import { SectionDivider } from "@/components/portfolio/SectionDivider";
@@ -26,7 +26,7 @@ const Index = () => {
     >
       <Nav />
       <Hero />
-      <Clients />
+      
       <Services />
       <FeaturedCase />
       <Work />
