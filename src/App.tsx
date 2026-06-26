@@ -45,6 +45,7 @@ const App = () => (
           <Route path="/license" element={<License />} />
           <Route path="/sitemap" element={<Sitemap />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="/guides/hiring-a-brand-strategist" element={<HiringBrandStrategist />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
