@@ -16,6 +16,7 @@ import Security from "./pages/legal/Security.tsx";
 import CodeOfConduct from "./pages/legal/CodeOfConduct.tsx";
 import License from "./pages/legal/License.tsx";
 import Sitemap from "./pages/legal/Sitemap.tsx";
+import HiringBrandStrategist from "./pages/guides/HiringBrandStrategist.tsx";
 
 const queryClient = new QueryClient();
 
