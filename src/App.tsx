@@ -11,6 +11,7 @@ import ContactPage from "./pages/ContactPage.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import AdminLogin from "./pages/admin/Login.tsx";
 import AdminDashboard from "./pages/admin/Dashboard.tsx";
+import AdminResetPassword from "./pages/admin/ResetPassword.tsx";
 import Security from "./pages/legal/Security.tsx";
 import CodeOfConduct from "./pages/legal/CodeOfConduct.tsx";
 import License from "./pages/legal/License.tsx";
@@ -36,6 +37,7 @@ const App = () => (
           <Route path="/experience" element={<ExperiencePage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/admin/reset-password" element={<AdminResetPassword />} />
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/security" element={<Security />} />
           <Route path="/code-of-conduct" element={<CodeOfConduct />} />
