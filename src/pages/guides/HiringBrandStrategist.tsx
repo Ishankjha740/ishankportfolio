@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import { ArrowLeft, CheckCircle, AlertTriangle, Lightbulb, Users, FileSearch, MessageSquare, Briefcase } from "lucide-react";
 
 export default function HiringBrandStrategist() {
-  const title = "How to Hire a Brand Strategist | Complete Guide for Founders";
+  const title = "Hire a Brand Strategist: What Founders Actually Need to Ask";
   const description =
-    "A practical guide for founders and marketing leads on how to evaluate, interview, and hire a brand strategist. Learn what to look for, what questions to ask, and how to turn scattered content into a measurable growth engine.";
+    "Hiring a brand strategist or brand strategy consulting firm? Learn what to ask in interviews, red flags to avoid, and how to turn scattered content into growth.";
   const url = "https://ishankportfolio.lovable.app/guides/hiring-a-brand-strategist";
 
   return (
@@ -18,6 +18,7 @@ export default function HiringBrandStrategist() {
         <meta property="og:description" content={description} />
         <meta property="og:url" content={url} />
         <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
         <script type="application/ld+json">
