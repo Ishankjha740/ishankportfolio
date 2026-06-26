@@ -47,8 +47,8 @@ const styles = (tone: Tone) => {
     }`,
     input: `w-full bg-transparent border-2 px-4 py-3 text-sm font-medium tracking-wide focus:outline-none transition-colors duration-200 ${
       dark
-        ? "border-paper text-paper placeholder:text-paper/40 focus:border-citrus focus:bg-ink/60"
-        : "border-ink text-ink placeholder:text-ink-soft/60 focus:border-citrus focus:bg-paper"
+        ? "border-paper text-paper placeholder:text-paper/60 focus:border-citrus focus:bg-ink/60"
+        : "border-ink text-ink placeholder:text-ink-soft focus:border-citrus focus:bg-paper"
     }`,
     select: `appearance-none pr-10 cursor-pointer ${
       dark ? "bg-ink/80" : "bg-paper-warm"
