@@ -11,6 +11,7 @@ const AdminLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [busy, setBusy] = useState(false);
+  const [resetBusy, setResetBusy] = useState(false);
 
   useEffect(() => {
     document.title = "Admin Login | Ishank Jha";
@@ -33,6 +34,33 @@ const AdminLogin = () => {
       toast({ title: "Error", description: message, variant: "destructive" });
     } finally {
       setBusy(false);
+    }
+  };
+
+  const handleReset = async () => {
+    if (!email) {
+      toast({
+        title: "Enter your admin email first",
+        description: "Type the email you sign in with, then click Reset password.",
+        variant: "destructive",
+      });
+      return;
+    }
+    setResetBusy(true);
+    try {
+      const { error } = await supabase.auth.resetPasswordForEmail(email, {
+        redirectTo: `${window.location.origin}/admin/reset-password`,
+      });
+      if (error) throw error;
+      toast({
+        title: "Reset link sent",
+        description: `Check ${email} for a link to set a new password.`,
+      });
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Could not send reset email";
+      toast({ title: "Error", description: message, variant: "destructive" });
+    } finally {
+      setResetBusy(false);
     }
   };
 
@@ -79,6 +107,14 @@ const AdminLogin = () => {
             className="w-full bg-ink text-citrus py-3 text-xs font-black uppercase tracking-widest shadow-pop-yellow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all disabled:opacity-60"
           >
             {busy ? "Please wait…" : "Sign In"}
+          </button>
+          <button
+            type="button"
+            onClick={handleReset}
+            disabled={resetBusy}
+            className="w-full text-[10px] font-black uppercase tracking-[0.2em] text-ink-soft hover:text-ink underline underline-offset-4 disabled:opacity-60"
+          >
+            {resetBusy ? "Sending reset link…" : "Forgot password? Reset it"}
           </button>
         </form>
       </div>
