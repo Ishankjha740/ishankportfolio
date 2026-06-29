@@ -89,5 +89,13 @@
     "typescript-eslint": "^8.62.0",
     "vite": "^8.1.0",
     "vitest": "^4.1.9"
+  },
+  "overrides": {
+    "esbuild": "^0.28.1",
+    "@babel/core": "^7.29.6"
+  },
+  "resolutions": {
+    "esbuild": "^0.28.1",
+    "@babel/core": "^7.29.6"
   }
 }
