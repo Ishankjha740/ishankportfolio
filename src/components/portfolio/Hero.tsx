@@ -1,4 +1,4 @@
-import portrait from "@/assets/ishank-portrait.png";
+import portrait from "@/assets/ishank-portrait.webp";
 import { ArrowUpRight, Send } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useSiteText } from "@/hooks/useSiteText";
