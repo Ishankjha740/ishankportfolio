@@ -70,7 +70,7 @@
     "@tailwindcss/typography": "^0.5.20",
     "@testing-library/jest-dom": "^6.6.0",
     "@testing-library/react": "^16.0.0",
-    "@types/node": "^25.9.1",
+    "@types/node": "^26.0.1",
     "@types/react": "^19.2.15",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react-swc": "^4.3.1",
