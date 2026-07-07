@@ -6,7 +6,7 @@ import { Contact } from "@/components/portfolio/Contact";
 export default function ContactPage() {
   const title = "Contact | Ishank Jha — Let's Build Something Bold";
   const description =
-    "Reach out to Ishank Jha for brand strategy, content architecture, and digital ecosystem projects. Email, LinkedIn, Behance, or download the resume directly.";
+    "Reach Ishank Jha for brand strategy, content architecture & digital ecosystem projects. Email, LinkedIn, Behance, or download the resume.";
   const url = "https://ishankportfolio.lovable.app/contact";
 
   return (
