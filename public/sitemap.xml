@@ -46,6 +46,11 @@
     <priority>0.2</priority>
   </url>
   <url>
+    <loc>https://ishankportfolio.lovable.app/admin</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  <url>
     <loc>https://ishankportfolio.lovable.app/admin/reset-password</loc>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
