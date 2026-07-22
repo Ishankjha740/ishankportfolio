@@ -5,7 +5,7 @@ import { ArrowLeft, CheckCircle, AlertTriangle, Lightbulb, Users, FileSearch, Me
 export default function HiringBrandStrategist() {
   const title = "Hire a Brand Strategist: What Founders Actually Need to Ask";
   const description =
-    "Hiring a brand strategist or brand strategy consulting firm? Learn what to ask in interviews, red flags to avoid, and how to turn scattered content into growth.";
+    "Hiring a brand strategist or brand strategy consultant? Learn what to ask, red flags to avoid, and how to turn scattered content into growth.";
   const url = "https://ishankportfolio.lovable.app/guides/hiring-a-brand-strategist";
 
   return (
