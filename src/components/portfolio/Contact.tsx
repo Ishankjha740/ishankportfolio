@@ -32,7 +32,7 @@ export const Contact = () => {
   const linkedin = useSiteText("contact.linkedin", "https://www.linkedin.com/in/ishankjha");
   const behance = useSiteText("contact.behance", "https://www.behance.net/ishankjha");
   const location = useSiteText("contact.location", "Hyderabad, Telangana, India");
-  const resumeUrl = useSiteText("contact.resume_url", "/Ishank Jha_resume_updated.pdf");
+  const resumeUrl = useSiteText("contact.resume_url", "/__l5e/assets-v1/5dbc9dfb-ab3a-43b0-9d03-a6882c907aa3/Ishank_Jha_resume.pdf");
 
   const stripProto = (u: string) => u.replace(/^https?:\/\//, "");
 
