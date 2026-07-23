@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Environment files (Lovable regenerates .env at build time from the Supabase
+# connection; never commit local overrides)
+.env
+.env.local
+.env.*.local
