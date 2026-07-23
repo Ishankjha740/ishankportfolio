@@ -1,0 +1,21 @@
+# Gitleaks configuration
+# Extends the default ruleset and adds a narrow allowlist for the Supabase
+# publishable (anon) key, which is public by design and intentionally shipped
+# in the browser bundle. The service_role key is never committed and would
+# still be caught by the default JWT rule outside of the allowlisted paths.
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Allow Supabase publishable anon key in .env / .env.example / generated client"
+paths = [
+  '''(^|/)\.env$''',
+  '''(^|/)\.env\.example$''',
+  '''(^|/)src/integrations/supabase/client\.ts$''',
+]
+# Supabase anon/publishable JWTs always carry "role":"anon" in the payload.
+# Base64url of {"role":"anon"} contains the literal segment below.
+regexes = [
+  '''eyJ[A-Za-z0-9_-]*Iiwicm9sZSI6ImFub24i[A-Za-z0-9_.-]*''',
+]
