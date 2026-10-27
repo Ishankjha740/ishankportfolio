@@ -8,6 +8,7 @@ import Index from "./pages/Index.tsx";
 import AboutPage from "./pages/AboutPage.tsx";
 import ExperiencePage from "./pages/ExperiencePage.tsx";
 import ContactPage from "./pages/ContactPage.tsx";
+import Maintenance from "./pages/Maintenance.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import AdminLogin from "./pages/admin/Login.tsx";
 import AdminDashboard from "./pages/admin/Dashboard.tsx";
@@ -18,6 +19,9 @@ import License from "./pages/legal/License.tsx";
 import Sitemap from "./pages/legal/Sitemap.tsx";
 import HiringBrandStrategist from "./pages/guides/HiringBrandStrategist.tsx";
 import BrandPositioningFrameworks from "./pages/guides/BrandPositioningFrameworks.tsx";
+
+// Set to false to restore the archived site.
+const MAINTENANCE_MODE = true;
 
 const queryClient = new QueryClient();
 
@@ -34,6 +38,15 @@ const App = () => (
       <BrowserRouter>
         <AnalyticsTracker />
         <Routes>
+          {MAINTENANCE_MODE ? (
+            <>
+              <Route path="/admin/login" element={<AdminLogin />} />
+              <Route path="/admin/reset-password" element={<AdminResetPassword />} />
+              <Route path="/admin" element={<AdminDashboard />} />
+              <Route path="*" element={<Maintenance />} />
+            </>
+          ) : (
+          <>
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/experience" element={<ExperiencePage />} />
@@ -49,6 +62,8 @@ const App = () => (
           <Route path="/guides/hiring-a-brand-strategist" element={<HiringBrandStrategist />} />
           <Route path="/guides/brand-positioning-frameworks" element={<BrandPositioningFrameworks />} />
           <Route path="*" element={<NotFound />} />
+          </>
+          )}
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
